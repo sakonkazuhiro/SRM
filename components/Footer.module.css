@@ -1,0 +1,187 @@
+.footer {
+  background-color: #fafafa;
+  color: #333;
+  padding: 3rem 0 2rem;
+  margin-top: 80px;
+  border-top: 1px solid #eee;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.tagline {
+  margin-bottom: 2rem;
+}
+
+.tagline p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.logoIcon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.logoIcon:hover {
+  color: #c41e3a;
+}
+
+.logoText {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.logoImageWrap {
+  display: inline-block;
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.logoMark {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.35);
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.links a {
+  color: #555;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+.links a::after {
+  content: '↗';
+  position: absolute;
+  right: 0;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.links a:hover {
+  color: #c41e3a;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.social a {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #555;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social a:hover {
+  border-color: #c41e3a;
+  color: #c41e3a;
+  transform: scale(1.1);
+}
+
+.social a svg {
+  width: 20px;
+  height: 20px;
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+  opacity: 0.7;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.copyright p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2.5rem 0 1.5rem;
+  }
+
+  .tagline p {
+    font-size: 0.85rem;
+  }
+
+  .logoImageWrap {
+    width: 100px;
+    height: 100px;
+  }
+
+  .logoText {
+    font-size: 1.2rem;
+  }
+
+  .links {
+    gap: 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .links a {
+    padding-right: 1.2rem;
+  }
+
+  .social {
+    gap: 1rem;
+  }
+
+  .social a {
+    width: 36px;
+    height: 36px;
+  }
+
+  .social a svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+  }
+}

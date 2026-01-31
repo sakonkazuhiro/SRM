@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', 'MS PGothic', sans-serif;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* 画像形式：タイトル「ホシのキッチン」用 - 白背景でもはっきり読める赤＋縁・影 */
+.textStickerGlow {
+  font-weight: bold;
+  color: #b82d3a;
+  text-shadow:
+    0 0 1px rgba(90, 20, 25, 0.9),
+    0 0 2px rgba(80, 15, 20, 0.7),
+    1px 1px 2px rgba(70, 10, 15, 0.5),
+    0 0 4px #fff,
+    0 0 8px rgba(255, 255, 255, 0.6),
+    0 0 12px rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.02em;
+}
+
+.textStickerGlow::after {
+  display: none !important;
+}
+
+/* 画像形式：タグライン用 - 白背景でもはっきり読めるくすみピンク＋縁・影 */
+.textStickerSoft {
+  font-weight: 500;
+  color: #a85c6a;
+  text-shadow:
+    0 0 1px rgba(100, 50, 55, 0.85),
+    0 0 2px rgba(90, 45, 50, 0.6),
+    1px 1px 2px rgba(80, 40, 45, 0.4),
+    0 0 8px #fff,
+    0 0 16px rgba(255, 255, 255, 0.5),
+    0 0 24px rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.03em;
+}
+
+body {
+  padding-top: 70px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* レイアウト */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 80px 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #d4a574;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* ボタン */
+.btn {
+  display: inline-block;
+  padding: 12px 40px;
+  background-color: #c41e3a;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #a0182e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+}
+

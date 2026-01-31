@@ -1,0 +1,153 @@
+.header {
+  background-color: rgba(196, 30, 58, 0.9);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 0.75rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  min-height: 60px;
+}
+
+.logo h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: bold;
+  text-align: left;
+}
+
+.logo h1::after {
+  display: none;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.logoImage {
+  max-width: 350px;
+  width: auto;
+  height: auto;
+  max-height: 100px;
+  object-fit: contain;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  margin: 0;
+  margin-top: 0.125rem;
+  opacity: 0.9;
+  line-height: 1;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: white;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav a:hover {
+  opacity: 0.8;
+}
+
+.nav a.active {
+  border-bottom: 2px solid white;
+}
+
+.menuButton {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.menuButton span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    order: 0;
+  }
+
+  .menuButton {
+    display: flex;
+    order: 1;
+  }
+
+  .nav {
+    display: none;
+    order: 2;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 0.5rem;
+  }
+
+  .nav a {
+    display: block;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* メニュー開いたときだけナビを表示 */
+  .header.menuOpen .nav {
+    display: flex;
+  }
+
+  .menuOpen .menuButton span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menuOpen .menuButton span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menuOpen .menuButton span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+}
+

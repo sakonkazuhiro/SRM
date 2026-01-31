@@ -1,0 +1,430 @@
+.home {
+  min-height: 100vh;
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('/images/hero.jpg') center/cover no-repeat;
+  background-color: #c41e3a;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.heroContent {
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.heroLogoContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.heroLogo {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.heroTitle {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.heroTitle::after {
+  display: none;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.95;
+}
+
+.heroDescription {
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+.notice {
+  background-color: #f9f9f9;
+}
+
+.noticeList {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about {
+  background-color: white;
+}
+
+.aboutContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.aboutText {
+  font-size: 1.1rem;
+  line-height: 2;
+}
+
+.aboutText p {
+  margin-bottom: 1.5rem;
+}
+
+.aboutImage {
+  width: 100%;
+}
+
+.placeholderImage {
+  width: 100%;
+  height: 400px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.aboutPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.recommend {
+  background-color: #f9f9f9;
+}
+
+.menuGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.menuCard {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menuCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.menuImage {
+  width: 100%;
+  height: 250px;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.menuImage .menuCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.menuInfo {
+  padding: 1.5rem;
+}
+
+.menuInfo h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.menuInfo p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.location {
+  background-color: white;
+  padding: 80px 0;
+}
+
+.location .container > h2 {
+  margin-bottom: 4rem;
+}
+
+.locationContent {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.addressInfo {
+  padding: 2rem;
+  text-align: center;
+}
+
+.addressInfo h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  border-bottom: 2px solid #c41e3a;
+}
+
+.addressInfo h3.textStickerGlow {
+  border-bottom: none;
+  padding-bottom: 0.5rem;
+}
+
+.address {
+  font-size: 1.1rem;
+  line-height: 2;
+  color: #444;
+}
+
+.address p {
+  margin-bottom: 1rem;
+}
+
+.addressRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.addressIcon {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.addressIconPin {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  color: #c41e3a;
+}
+
+.addressRowAddress {
+  margin-top: -0.5rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.phoneNumber {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #c41e3a;
+}
+
+.closedDay {
+  font-weight: bold;
+  color: #c41e3a;
+}
+
+.addressBlock {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.addressLabel {
+  color: #333;
+  font-weight: bold;
+}
+
+.addressIndent {
+  padding-left: 1em;
+  display: inline-block;
+}
+
+.hoursLine {
+  display: inline-block;
+  text-align: left;
+}
+
+.hoursLabel {
+  display: inline-block;
+  min-width: 5.5em;
+  text-align: right;
+}
+
+.hoursColon {
+  margin: 0 0.2em 0 0;
+}
+
+.hoursNum {
+  color: #c41e3a;
+  font-weight: bold;
+}
+
+.accessNum {
+  color: #c41e3a;
+  font-weight: bold;
+}
+
+.paymentSection {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.paymentTitle {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.paymentText {
+  color: #000;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.paymentText p {
+  margin: 0 0 0.25rem 0;
+}
+
+.paymentNote {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: #777;
+  text-align: center;
+}
+
+.mapContainer {
+  width: 100%;
+  min-height: 400px;
+}
+
+.mapFrame {
+  width: 100%;
+  height: 400px;
+  border: 0;
+  border-radius: 8px;
+}
+
+.accessNote {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.accessBlock {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  text-align: center;
+}
+
+.mapPlaceholder {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  background-color: #f0f0f0;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.mapNote {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 968px) {
+  .menuGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 500px;
+  }
+
+  .heroLogoContainer {
+    margin-bottom: 1rem;
+  }
+
+  .heroLogo {
+    max-width: 90%;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+  }
+
+  .aboutContent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .menuGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .menuImage {
+    height: 200px;
+  }
+
+  .locationContent {
+    gap: 2rem;
+  }
+
+  .mapContainer {
+    min-height: 300px;
+  }
+
+  .mapPlaceholder {
+    min-height: 300px;
+  }
+
+  .noticeItem {
+    flex-direction: column;
+  }
+
+  .noticeImage {
+    width: 100%;
+    height: 200px;
+  }
+}

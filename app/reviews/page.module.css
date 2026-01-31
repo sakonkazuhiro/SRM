@@ -1,0 +1,161 @@
+.reviewsPage {
+  min-height: 100vh;
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('/images/hero.jpg') center/cover no-repeat;
+  background-color: #c41e3a;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  opacity: 0.95;
+}
+
+.noticeSection {
+  background-color: #fff9e6;
+  padding: 2rem 0;
+  border-bottom: 2px solid #ffd700;
+}
+
+.noticeBox {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.noticeText {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.reviewsSection {
+  background-color: #f9f9f9;
+  padding: 80px 0;
+}
+
+.reviewsList {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.reviewCard {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reviewCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.reviewerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nickname {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.rating {
+  font-size: 1.5rem;
+  color: #ffa500;
+  letter-spacing: 2px;
+}
+
+.mediaContainer {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.media {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.reviewComment {
+  color: #333;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.reviewComment p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero {
+    height: 200px;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .reviewCard {
+    padding: 1.5rem;
+  }
+
+  .reviewHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .rating {
+    font-size: 1.2rem;
+  }
+
+  .media {
+    max-height: 300px;
+  }
+}
