@@ -17,7 +17,7 @@ export default function Header() {
         <div className={styles.logo}>
           <Link href="/" onClick={closeMenu}>
             <img
-              src="/images/logo.png"
+              src="/images/common/logo.png"
               alt="ホシのキッチン"
               className={styles.logoImage}
             />

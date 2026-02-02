@@ -14,7 +14,7 @@ export default function Footer() {
           <Link href="/" className={styles.logoIcon}>
             <span className={styles.logoImageWrap}>
               <img
-                src="/images/S__20152359_0.png"
+                src="/images/common/S__20152359_0.png"
                 alt="ホシのキッチン"
                 className={styles.logoMark}
               />
@@ -32,7 +32,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.social}>
-          <a href="https://x.com/hoshinokichen" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <a href="https://x.com/hoshinokitchen" target="_blank" rel="noopener noreferrer" aria-label="X">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>

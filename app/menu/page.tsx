@@ -437,28 +437,28 @@ export default function Menu() {
             name: '国産和牛ランプステーキ 100g',
             price: '1,650円',
             image: 'ステーキ',
-            imagePath: '/images/26-01-30_188_2%20(1).jpg',
+            imagePath: '/images/menu/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産和牛ランプステーキ 200g',
             price: '3,300円',
             image: 'ステーキ',
-            imagePath: '/images/26-01-30_188_2%20(1).jpg',
+            imagePath: '/images/menu/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産和牛ランプステーキ 300g',
             price: '4,950円',
             image: 'ステーキ',
-            imagePath: '/images/26-01-30_188_2%20(1).jpg',
+            imagePath: '/images/menu/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産和牛ランプステーキ 450g',
             price: '7,425円',
             image: 'ステーキ',
-            imagePath: '/images/26-01-30_188_2%20(1).jpg',
+            imagePath: '/images/menu/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
           },
         ],
@@ -499,21 +499,21 @@ export default function Menu() {
             name: '当店自慢の自家製ハンバーグ 200g',
             price: '1,518円',
             image: 'メイン',
-            imagePath: '/images/26-01-29_116_2.jpg',
+            imagePath: '/images/menu/26-01-29_116_2.jpg',
             description: 'House Hamburger 200g\nデミグラス／トマト／ホワイトチーズ／大根おろしポン酢',
           },
           {
             name: 'チキンソテー 270g',
             price: '1,518円',
             image: 'メイン',
-            imagePath: '/images/26-01-29_097_2.jpg',
+            imagePath: '/images/menu/26-01-29_097_2.jpg',
             description: 'Chicken Saute 270g\nデミグラス／トマト／ホワイトチーズ／大根おろしポン酢／ジンジャー',
           },
           {
             name: 'ポークソテー 240g',
             price: '1,518円',
             image: 'メイン',
-            imagePath: '/images/26-01-29_071_2.jpg',
+            imagePath: '/images/menu/26-01-29_071_2.jpg',
             description: 'Pork Saute 240g\nデミグラス／トマト／ホワイトチーズ／ジンジャー',
           },
           {
@@ -522,17 +522,6 @@ export default function Menu() {
             image: 'メイン',
             description: 'Duck Saute\n赤ワイン／バルサミコ／刻みわさび醤油／ゆずこしょう',
           },
-        ],
-      },
-      {
-        category: 'ディナーセット',
-        items: [
-          { name: '味噌汁', price: '55円', image: 'セット', description: 'Miso Soup' },
-          { name: '味噌汁＋ミニサラダ', price: '165円', image: 'セット', description: 'Miso Soup + Mini Salad' },
-          { name: 'ライス（小／中／大）＋味噌汁', price: '110円', image: 'セット', description: 'Rice (S/M/L) + Miso Soup' },
-          { name: 'ライス（小／中／大）＋味噌汁＋ミニサラダ', price: '220円', image: 'セット', description: 'Rice (S/M/L) + Miso Soup + Mini Salad' },
-          { name: 'パンセット：パン2個＋味噌汁', price: '110円', image: 'セット', description: 'Bread Set: 2 Bread + Miso Soup' },
-          { name: 'パンサラダセット：パン2個＋味噌汁＋ミニサラダ', price: '220円', image: 'セット', description: 'Bread & Salad Set: 2 Bread + Miso Soup + Mini Salad' },
         ],
       },
     ]
@@ -590,7 +579,7 @@ export default function Menu() {
       {
         category: 'パスタ',
         items: [
-          { name: '昔ながらのナポリタン', price: '1,078円', image: 'パスタ', imagePath: '/images/26-01-29_069_2.jpg', description: 'Classic Napolitana' },
+          { name: '昔ながらのナポリタン', price: '1,078円', image: 'パスタ', imagePath: '/images/menu/26-01-29_069_2.jpg', description: 'Classic Napolitana' },
           { name: '濃厚カルボナーラ', price: '1,408円', image: 'パスタ', description: 'Rich Carbonara' },
           { name: 'バジル香るジェノベーゼパスタ', price: '1,408円', image: 'パスタ', description: 'Basil Pesto Pasta' },
           { name: 'たっぷりしらすのペペロンチーノ（昆布茶仕立て）', price: '1,408円', image: 'パスタ', description: 'Shirasu Peperoncino (Kombu Tea Style)' },
@@ -645,21 +634,21 @@ export default function Menu() {
             name: '当店自慢の自家製ハンバーグ 200g',
             price: '1,518円',
             image: 'ランチ',
-            imagePath: '/images/26-01-29_116_2.jpg',
+            imagePath: '/images/menu/26-01-29_116_2.jpg',
             description: 'House Hamburger 200g\nデミグラス／トマト／ホワイトチーズ／大根おろしポン酢',
           },
           {
             name: 'チキンソテー 270g',
             price: '1,518円',
             image: 'ランチ',
-            imagePath: '/images/26-01-29_097_2.jpg',
+            imagePath: '/images/menu/26-01-29_097_2.jpg',
             description: 'Chicken Saute 270g\nデミグラス／トマト／ホワイトチーズ／大根おろしポン酢／ジンジャー',
           },
           {
             name: 'ポークソテー 240g',
             price: '1,518円',
             image: 'ランチ',
-            imagePath: '/images/26-01-29_071_2.jpg',
+            imagePath: '/images/menu/26-01-29_071_2.jpg',
             description: 'Pork Saute 240g\nデミグラス／トマト／ホワイトチーズ／ジンジャー',
           },
         ],
@@ -676,10 +665,10 @@ export default function Menu() {
       {
         category: '国産和牛ランプステーキ',
         items: [
-          { name: '国産和牛ランプステーキ 100g', price: '1,650円', image: 'ランチ', imagePath: '/images/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ランプステーキ 200g', price: '3,300円', image: 'ランチ', imagePath: '/images/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ランプステーキ 300g', price: '4,950円', image: 'ランチ', imagePath: '/images/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ランプステーキ 450g', price: '7,425円', image: 'ランチ', imagePath: '/images/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ランプステーキ 100g', price: '1,650円', image: 'ランチ', imagePath: '/images/menu/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ランプステーキ 200g', price: '3,300円', image: 'ランチ', imagePath: '/images/menu/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ランプステーキ 300g', price: '4,950円', image: 'ランチ', imagePath: '/images/menu/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ランプステーキ 450g', price: '7,425円', image: 'ランチ', imagePath: '/images/menu/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
         ],
       },
       {
@@ -703,7 +692,7 @@ export default function Menu() {
       {
         category: 'パスタ',
         items: [
-          { name: '昔ながらのナポリタン', price: '1,078円', image: 'ランチ', imagePath: '/images/26-01-29_069_2.jpg', description: 'Classic Napolitana' },
+          { name: '昔ながらのナポリタン', price: '1,078円', image: 'ランチ', imagePath: '/images/menu/26-01-29_069_2.jpg', description: 'Classic Napolitana' },
           { name: '濃厚カルボナーラ', price: '1,408円', image: 'ランチ', description: 'Rich Carbonara' },
           { name: 'バジル香るジェノベーゼパスタ', price: '1,408円', image: 'ランチ', description: 'Basil Pesto Pasta' },
           { name: 'たっぷりしらすのペペロンチーノ（昆布茶仕立て）', price: '1,408円', image: 'ランチ', description: 'Shirasu Peperoncino (Kombu Tea Style)' },
@@ -734,14 +723,14 @@ export default function Menu() {
       {
         category: 'ソフトドリンク',
         items: [
-          { name: 'ウーロン茶（アイス）', price: '330円', image: 'ドリンク', description: 'Oolong Tea (Iced)' },
-          { name: '緑茶（アイス）', price: '330円', image: 'ドリンク', description: 'Green Tea (Iced)' },
-          { name: 'コーン茶（アイス）', price: '330円', image: 'ドリンク', description: 'Corn Tea (Iced)' },
-          { name: 'カルピス（アイス）', price: '330円', image: 'ドリンク', description: 'Calpis (Iced)' },
-          { name: 'コーラ（アイス）', price: '330円', image: 'ドリンク', description: 'Cola (Iced)' },
-          { name: 'メロンソーダ（アイス）', price: '330円', image: 'ドリンク', description: 'Melon Soda (Iced)' },
-          { name: 'ジンジャーエール（アイス）', price: '330円', image: 'ドリンク', description: 'Ginger Ale (Iced)' },
-          { name: 'オレンジジュース（アイス）', price: '330円', image: 'ドリンク', description: 'Orange Juice (Iced)' },
+          { name: 'ウーロン茶', price: '330円', image: 'ドリンク', description: 'Oolong Tea (Iced)' },
+          { name: '緑茶', price: '330円', image: 'ドリンク', description: 'Green Tea (Iced)' },
+          { name: 'コーン茶', price: '330円', image: 'ドリンク', description: 'Corn Tea (Iced)' },
+          { name: 'カルピス', price: '330円', image: 'ドリンク', description: 'Calpis (Iced)' },
+          { name: 'コカ・コーラ', price: '330円', image: 'ドリンク', description: 'Coca-Cola (Iced)' },
+          { name: 'メロンソーダ', price: '330円', image: 'ドリンク', description: 'Melon Soda (Iced)' },
+          { name: 'ジンジャーエール', price: '330円', image: 'ドリンク', description: 'Ginger Ale (Iced)' },
+          { name: 'オレンジジュース', price: '330円', image: 'ドリンク', description: 'Orange Juice (Iced)' },
           { name: 'アイスティー', price: '330円', image: 'ドリンク', description: 'Iced Tea' },
           { name: 'アイスコーヒー', price: '330円', image: 'ドリンク', description: 'Iced Coffee' },
           { name: 'カフェオレ', price: '330円', image: 'ドリンク', description: 'Cafe au Lait' },
@@ -879,8 +868,12 @@ export default function Menu() {
                 {hasSauceItems ? (
                   category.category === '国産黒毛和牛サーロインステーキ' || 
                   category.category === '国産和牛ミスジステーキ' || 
-                  category.category === '国産和牛ランプステーキ' ||
-                  category.category === 'メイン' ? (
+                  category.category === '国産和牛ランプステーキ' ? (
+                    <>
+                      <span></span>
+                      <span className={styles.categoryNoteRight}>※ソースは各種類から選べます。※メニューの写真や動画はイメージ図となります。※ステーキの画像は200gを使用しております。</span>
+                    </>
+                  ) : category.category === 'メイン' ? (
                     <>
                       <span></span>
                       <span className={styles.categoryNoteRight}>※ソースは各種類から選べます。※メニューの写真や動画はイメージ図となります。</span>

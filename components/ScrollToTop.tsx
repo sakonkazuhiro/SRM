@@ -38,7 +38,7 @@ export default function ScrollToTop() {
           aria-label="ページトップへ戻る"
         >
           <img
-            src="/images/logo.png"
+            src="/images/common/logo.png"
             alt="ページトップへ"
             className={styles.logo}
           />

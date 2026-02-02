@@ -2,6 +2,7 @@ import styles from './page.module.css'
 import Link from 'next/link'
 import { notices } from '@/data/notices'
 import NoticeItem from '@/components/NoticeItem'
+import AboutImageSlider from '@/components/AboutImageSlider'
 
 export default function Home() {
   return (
@@ -42,15 +43,12 @@ export default function Home() {
               </p>
             </div>
             <div className={styles.aboutImage}>
-              <div className={styles.placeholderImage}>
-                <img
-                  src="/images/S__121397254.jpg"
-                  alt="ホシのキッチン 店舗写真"
-                  className={styles.aboutPhoto}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
+              <AboutImageSlider
+                slides={[
+                  { src: '/images/shop/S__121397254.jpg', alt: 'ホシのキッチン 店舗写真' },
+                  { src: '/images/shop/S__20930609.jpg', alt: 'ホシのキッチン 外観' },
+                ]}
+              />
             </div>
           </div>
         </div>
@@ -66,7 +64,7 @@ export default function Home() {
           <div className={styles.menuGrid}>
             <div className={styles.menuCard}>
               <div className={styles.menuImage}>
-                <img src="/images/26-01-29_116_2.jpg" alt="当店自慢の自家製ハンバーグ" className={styles.menuCardImage} loading="lazy" decoding="async" />
+                <img src="/images/menu/26-01-29_116_2.jpg" alt="当店自慢の自家製ハンバーグ" className={styles.menuCardImage} loading="lazy" decoding="async" />
               </div>
               <div className={styles.menuInfo}>
                 <h3>当店自慢の自家製ハンバーグ</h3>
@@ -84,7 +82,7 @@ export default function Home() {
             </div>
             <div className={styles.menuCard}>
               <div className={styles.menuImage}>
-                <img src="/images/26-01-30_188_2%20(1).jpg" alt="国産和牛ランプ" className={styles.menuCardImage} loading="lazy" decoding="async" />
+                <img src="/images/menu/26-01-30_188_2%20(1).jpg" alt="国産和牛ランプ" className={styles.menuCardImage} loading="lazy" decoding="async" />
               </div>
               <div className={styles.menuInfo}>
                 <h3>国産和牛ランプ</h3>
@@ -127,9 +125,18 @@ export default function Home() {
           <h2>所在地・アクセス</h2>
           <div className={styles.locationContent}>
             <div className={styles.mapContainer}>
+              <a
+                href="https://www.google.com/maps/search/%E3%83%9B%E3%82%B7%E3%81%AE%E3%82%AD%E3%83%83%E3%83%81%E3%83%B3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.mapSearchLink}
+                aria-label="ホシのキッチンをGoogleマップで開く"
+              >
+                ホシのキッチン
+              </a>
               <iframe
                 className={styles.mapFrame}
-                src="https://www.google.com/maps?q=%E3%80%90111-0031+%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8F%B0%E6%9D%B1%E5%8C%BA%E5%8D%83%E6%9D%9F2-28-6+%E8%97%A4%E5%B2%A1%E3%83%93%E3%83%AB1F&hl=ja&z=16&output=embed"
+                src="https://www.google.com/maps?q=%E3%83%9B%E3%82%B7%E3%81%AE%E3%82%AD%E3%83%83%E3%83%81%E3%83%B3+%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8F%B0%E6%9D%B1%E5%8C%BA%E5%8D%83%E6%9D%9F2-28-6+%E8%97%A4%E5%B2%A1%E3%83%93%E3%83%AB1F&hl=ja&z=16&output=embed"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
@@ -174,14 +181,14 @@ export default function Home() {
                 <p className={styles.addressBlock}>
                   <strong className={styles.addressLabel}>最寄り</strong><br />
                   <span className={styles.addressAccessLines}>
-                    <span className={styles.addressIndent}>日比谷線入谷駅3番出口より徒歩約<strong className={styles.accessNum}>８</strong>分</span><br />
+                    <span className={styles.addressIndent}>日比谷線入谷駅3番出口より徒歩約<strong className={styles.accessNum}>６</strong>分</span><br />
                     <span className={styles.addressIndent}>つくばエクスプレス 浅草駅　約<strong className={styles.accessNum}>１０</strong>分</span><br />
                     <span className={styles.addressIndent}>銀座線田原町駅から徒歩約<strong className={styles.accessNum}>１５</strong>分</span>
                   </span>
                 </p>
                 <p className={styles.addressBlock}>
                   <strong className={styles.addressLabel}>席数</strong><br />
-                  <span className={styles.addressIndent}>２５席</span>
+                  <span className={styles.addressIndent}>３７席</span>
                 </p>
                 <p className={styles.addressBlock}>
                   <span className={styles.smokingNote}>全店店内禁煙<br />No smoking</span>

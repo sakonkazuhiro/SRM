@@ -21,7 +21,7 @@ export default function Reviews() {
       nickname: 'たろう',
       date: '2026.01.20',
       comment: 'ハンバーグが絶品でした！肉汁がジューシーで、デミグラスソースとの相性も抜群です。また来たいと思います。',
-      image: '/images/review1.jpg',
+      image: '/images/news/review1.jpg',
       rating: 5,
     },
     {
