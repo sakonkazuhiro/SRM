@@ -29,6 +29,7 @@
 .noticeList {
   max-width: 800px;
   margin: 0 auto;
+  overflow: visible;
 }
 
 @media (max-width: 768px) {

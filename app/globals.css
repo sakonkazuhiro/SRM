@@ -45,8 +45,25 @@ body {
   letter-spacing: 0.03em;
 }
 
+/* ヒーロー内タグライン：言葉を黒で縁取りして見やすく */
+.hero .textStickerSoft {
+  color: #ffffff;
+  font-weight: 600;
+  -webkit-text-stroke: 2px #000;
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.6),
+    0 0 16px rgba(255, 255, 255, 0.4),
+    0 0 24px rgba(255, 255, 255, 0.25);
+}
+
 body {
   padding-top: 70px;
+}
+
+/* フッター：温暖色（ほんのり温かい背景） */
+body > footer {
+  background-color: #fef9f3;
+  border-top: 1px solid #f0e8e0;
 }
 
 a {
@@ -58,6 +75,13 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+/* 差し込み画像：PC・スマホどちらでも切れないように（縦横比を保って全体表示）。
+   新規で画像を差し込む際も、このルールで contain がかかるので切れずに表示されます。 */
+main img[src*="/images/"] {
+  object-fit: contain;
+  object-position: center;
 }
 
 /* レイアウト */

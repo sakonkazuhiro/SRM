@@ -105,6 +105,10 @@ export default function Contact() {
 
       <section className={styles.contactSection}>
         <div className="container">
+          <p className={styles.contactNote}>
+            ※現在お問い合わせは準備中です。<br />
+            お急ぎの方はお電話またはSNSよりご連絡ください。
+          </p>
           <form onSubmit={handleSubmit} className={styles.contactForm}>
             {error && (
               <div className={styles.errorMessage}>
@@ -165,7 +169,7 @@ export default function Contact() {
               disabled={isSubmitting}
               className={styles.submitButton}
             >
-              {isSubmitting ? '送信中...' : '送信する'}
+              {isSubmitting ? '送信中...' : '送信'}
             </button>
           </form>
         </div>

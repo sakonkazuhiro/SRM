@@ -10,6 +10,8 @@ type MenuItem = {
   image?: string
   imagePath?: string // 画像パス（/images/xxx.jpg など）
   videoSrc?: string // ← 動画差し込み用（任意）
+  /** ボトルワインなど3段階価格のとき { 税抜, 税込 } の配列 */
+  priceTiers?: { excl: number; incl: number }[]
 }
 
 type MenuCategory = {
@@ -497,6 +499,7 @@ export default function Menu() {
             name: '当店自慢の自家製ハンバーグ 200g',
             price: '1,518円',
             image: 'メイン',
+            imagePath: '/images/26-01-29_116_2.jpg',
             description: 'House Hamburger 200g\nデミグラス／トマト／ホワイトチーズ／大根おろしポン酢',
           },
           {
@@ -642,6 +645,7 @@ export default function Menu() {
             name: '当店自慢の自家製ハンバーグ 200g',
             price: '1,518円',
             image: 'ランチ',
+            imagePath: '/images/26-01-29_116_2.jpg',
             description: 'House Hamburger 200g\nデミグラス／トマト／ホワイトチーズ／大根おろしポン酢',
           },
           {
@@ -728,14 +732,6 @@ export default function Menu() {
 
     const dessertDrink: MenuCategory[] = [
       {
-        category: 'デザート',
-        items: [
-          { name: 'バニラアイス', price: '330円', image: 'デザート', description: 'Vanilla Ice Cream' },
-          { name: '季節のシャーベット', price: '330円', image: 'デザート', description: 'Seasonal Sherbet' },
-          { name: 'コーヒーゼリー', price: '330円', image: 'デザート', description: 'Coffee Jelly' },
-        ],
-      },
-      {
         category: 'ソフトドリンク',
         items: [
           { name: 'ウーロン茶（アイス）', price: '330円', image: 'ドリンク', description: 'Oolong Tea (Iced)' },
@@ -808,34 +804,25 @@ export default function Menu() {
           { name: 'グラスワイン（赤）', price: '638円', image: 'ワイン', description: 'Glass Wine (Red)' },
           { name: 'グラスワイン（白）', price: '638円', image: 'ワイン', description: 'Glass Wine (White)' },
           { name: 'スパークリング（グラス）', price: '638円', image: 'ワイン', description: 'Sparkling (Glass)' },
-          { name: 'ボトルワイン（赤）', price: '3,300円', image: 'ワイン', description: 'Bottle Wine (Red)\n種類はスタッフまで' },
-          { name: 'ボトルワイン（白）', price: '5,500円', image: 'ワイン', description: 'Bottle Wine (White)\n種類はスタッフまで' },
+          { name: 'ボトルワイン（赤）', price: '3,300円〜', image: 'ワイン', description: 'Bottle Wine (Red)\n※種類はスタッフまでお尋ねください', priceTiers: [{ excl: 3000, incl: 3300 }, { excl: 5000, incl: 5500 }, { excl: 10000, incl: 11000 }] },
+          { name: 'ボトルワイン（白）', price: '3,300円〜', image: 'ワイン', description: 'Bottle Wine (White)\n※種類はスタッフまでお尋ねください', priceTiers: [{ excl: 3000, incl: 3300 }, { excl: 5000, incl: 5500 }, { excl: 10000, incl: 11000 }] },
+        ],
+      },
+      {
+        category: 'シャンパン',
+        items: [
+          { name: 'モエ・シャンドン 白', price: '11,000円', image: 'シャンパン', description: 'Moët & Chandon (White)' },
+          { name: 'モエ・シャンドン ロゼ', price: '16,500円', image: 'シャンパン', description: 'Moët & Chandon (Rosé)' },
+          { name: 'ドン・ペリニヨン 白', price: '55,000円', image: 'シャンパン', description: 'Dom Pérignon (White)' },
+          { name: 'ドン・ペリニヨン ロゼ', price: '110,000円', image: 'シャンパン', description: 'Dom Pérignon (Rosé)' },
         ],
       },
       {
         category: '日本酒',
         items: [
-          { name: '富貴（淡麗辛口）', price: '3,300円', image: '日本酒', description: 'Tuki (Dry)' },
-          { name: '久保田', price: '5,500円', image: '日本酒', description: 'Kubota' },
-          { name: '獺祭', price: '11,000円', image: '日本酒', description: 'Dassai' },
-        ],
-      },
-      {
-        category: 'ソフトドリンク',
-        items: [
-          { name: 'ウーロン茶', price: '330円', image: 'ソフト', description: 'Oolong Tea' },
-          { name: '緑茶', price: '330円', image: 'ソフト', description: 'Green Tea' },
-          { name: 'コーン茶', price: '330円', image: 'ソフト', description: 'Corn Tea' },
-          { name: 'カルピス', price: '330円', image: 'ソフト', description: 'Calpis' },
-          { name: 'コーラ', price: '330円', image: 'ソフト', description: 'Cola' },
-          { name: 'メロンソーダ', price: '330円', image: 'ソフト', description: 'Melon Soda' },
-          { name: 'ジンジャーエール', price: '330円', image: 'ソフト', description: 'Ginger Ale' },
-          { name: 'オレンジジュース', price: '330円', image: 'ソフト', description: 'Orange Juice' },
-          { name: 'アイスティー', price: '330円', image: 'ソフト', description: 'Iced Tea' },
-          { name: 'アイスコーヒー', price: '330円', image: 'ソフト', description: 'Iced Coffee' },
-          { name: 'カフェオレ', price: '330円', image: 'ソフト', description: 'Cafe au Lait' },
-          { name: '紅茶（ホット）', price: '330円', image: 'ソフト', description: 'Black Tea (Hot)' },
-          { name: 'コーヒー（ホット）', price: '330円', image: 'ソフト', description: 'Coffee (Hot)' },
+          { name: '富貴（淡麗辛口）', price: '※価格はスタッフまでお尋ねください', image: '日本酒', description: 'Tuki (Dry)' },
+          { name: '久保田', price: '※価格はスタッフまでお尋ねください', image: '日本酒', description: 'Kubota' },
+          { name: '獺祭', price: '※価格はスタッフまでお尋ねください', image: '日本酒', description: 'Dassai' },
         ],
       },
     ]
@@ -844,7 +831,7 @@ export default function Menu() {
       main: { label: 'メインメニュー', categories: main },
       ichipin: { label: '一品メニュー', categories: ichipin },
       lunch: { label: 'ランチメニュー', categories: lunch },
-      dessertDrink: { label: 'デザート・ドリンクメニュー', categories: dessertDrink },
+      dessertDrink: { label: 'ドリンクメニュー', categories: dessertDrink },
       drink: { label: 'アルコールメニュー', categories: drink },
     }
   }, [])
@@ -852,7 +839,7 @@ export default function Menu() {
   const menuCategories = menusByTab[activeTab].categories
 
   return (
-    <div className={styles.menu}>
+    <div className={`${styles.menu} ${(activeTab === 'dessertDrink' || activeTab === 'drink') ? styles.menuDrink : ''}`}>
       <section className={styles.hero}>
         <div className="container">
           <h1>メニュー</h1>
@@ -880,7 +867,7 @@ export default function Menu() {
         </div>
       </section>
 
-      {/* ✅ 表示部分は今のカードUIをそのまま使う */}
+      {/* 表示：1つのJSX構造。PC/スマホのレイアウトは CSS @media (max-width: 768px) で切替 */}
       {menuCategories.map((category, index) => {
         // カテゴリ内にソース説明があるかチェック（「／」が含まれている場合はソース説明と判断）
         const hasSauceItems = category.items.some(item => item.description && item.description.includes('／'))
@@ -931,9 +918,8 @@ export default function Menu() {
                   </div>
 
                   <div className={styles.menuContent}>
-                    <h3 style={(activeTab === 'dessertDrink' || activeTab === 'drink') ? { textAlign: 'center' } : undefined}>{formatMenuName(item.name)}</h3>
+                    <h3>{formatMenuName(item.name)}</h3>
                     {item.description ? <p className={styles.description} style={{
-                      textAlign: 'center',
                       whiteSpace: 'pre-line',
                       ...(category.category === 'メイン' && (item.name.includes('チキンソテー') || item.name.includes('ポークソテー')) ? { marginTop: '3rem' } :
                         category.category === 'メイン' && item.name.includes('当店自慢の自家製ハンバーグ') ? { marginTop: '1rem' } :
@@ -941,7 +927,24 @@ export default function Menu() {
                     }}>{item.description}</p> : null}
                     <div className={styles.priceContainer}>
                       {(() => {
-                        // 価格から数値を抽出（カンマと「円」を除去）
+                        // 3段階価格（ボトルワインなど）：一番下の赤い値段形式で3種類表示
+                        if (item.priceTiers && item.priceTiers.length > 0) {
+                          return (
+                            <div className={styles.priceTiersWrapper}>
+                              {item.priceTiers.map((tier, i) => (
+                                <div key={i} className={styles.priceWrapper}>
+                                  <span className={styles.priceExcludingTax}>
+                                    {tier.excl.toLocaleString()}円（税抜）
+                                  </span>
+                                  <span className={styles.price}>
+                                    {tier.incl.toLocaleString()}円（税込）
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          )
+                        }
+                        // 通常：価格から数値を抽出（カンマと「円」を除去）
                         const priceMatch = item.price.match(/[\d,]+/)
                         if (priceMatch) {
                           const priceWithTax = parseInt(priceMatch[0].replace(/,/g, ''), 10)

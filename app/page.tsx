@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className={styles.home}>
       {/* ヒーローセクション */}
-      <section className={styles.hero}>
+      <section className={`${styles.hero} hero`}>
         <div className={styles.heroContent}>
           <h1 className={`${styles.heroTitle} textStickerGlow`}>ホシのキッチン</h1>
           <p className={`${styles.heroSubtitle} textStickerSoft`}>心温まる洋食レストラン</p>
@@ -173,17 +173,23 @@ export default function Home() {
                 </p>
                 <p className={styles.addressBlock}>
                   <strong className={styles.addressLabel}>最寄り</strong><br />
-                  <span className={styles.addressIndent}>日比谷線入谷駅3番出口より徒歩約<strong className={styles.accessNum}>８</strong>分</span><br />
-                  <span className={styles.addressIndent}>銀座線田原町駅から徒歩約<strong className={styles.accessNum}>２０</strong>分 浅草駅（つくばＥＸＰ）</span>
+                  <span className={styles.addressAccessLines}>
+                    <span className={styles.addressIndent}>日比谷線入谷駅3番出口より徒歩約<strong className={styles.accessNum}>８</strong>分</span><br />
+                    <span className={styles.addressIndent}>つくばエクスプレス 浅草駅　約<strong className={styles.accessNum}>１０</strong>分</span><br />
+                    <span className={styles.addressIndent}>銀座線田原町駅から徒歩約<strong className={styles.accessNum}>１５</strong>分</span>
+                  </span>
+                </p>
+                <p className={styles.addressBlock}>
+                  <strong className={styles.addressLabel}>席数</strong><br />
+                  <span className={styles.addressIndent}>２５席</span>
+                </p>
+                <p className={styles.addressBlock}>
+                  <span className={styles.smokingNote}>全店店内禁煙<br />No smoking</span>
                 </p>
               </div>
               <div className={styles.paymentSection}>
                 <h4 className={styles.paymentTitle}>決済方法</h4>
-                <div className={styles.paymentText}>
-                  <p>現金</p>
-                  <p>クレジット (VISA、Master、JCB)</p>
-                  <p>その他(交通系, PayPay、ID、WAON、nanaco)</p>
-                </div>
+                <p className={styles.paymentText}>現金・クレジットカード・交通系IC・QRコード決済</p>
                 <p className={styles.paymentNote}>※「PiTaPa」はご利用いただけません</p>
               </div>
             </div>

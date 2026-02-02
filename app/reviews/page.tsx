@@ -53,8 +53,7 @@ export default function Reviews() {
         <div className="container">
           <div className={styles.noticeBox}>
             <p className={styles.noticeText}>
-              ※掲載されている口コミは、お客様から掲載許可をいただいたものを掲載しております。<br />
-              ※写真・動画・コメントは、お客様の許可を得て掲載しております。
+              ※口コミはオープン後、掲載許可をいただいたものから順次掲載予定です。
             </p>
           </div>
         </div>

@@ -1,9 +1,9 @@
 .footer {
-  background-color: #fafafa;
+  background-color: #fef9f3 !important;
   color: #333;
   padding: 3rem 0 2rem;
   margin-top: 80px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #f0e8e0;
 }
 
 .container {
@@ -62,7 +62,7 @@
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   transform: scale(1.35);
 }
@@ -130,7 +130,7 @@
 .copyright {
   text-align: center;
   padding-top: 1.5rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #f0e8e0;
   opacity: 0.7;
   font-size: 0.85rem;
   color: #999;
