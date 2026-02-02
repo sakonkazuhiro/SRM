@@ -34,7 +34,7 @@ export default function Menu() {
           <>
             国産黒毛和牛
             <br />
-            <b style={{ display: 'block', textAlign: 'right' }}>サーロインステーキ　{match[1]}</b>
+            <b style={{ display: 'block', textAlign: 'center' }}>サーロインステーキ　{match[1]}</b>
           </>
         )
       }
@@ -47,7 +47,7 @@ export default function Menu() {
           <>
             当店自慢の自家製ハンバーグ
             <br />
-            <b style={{ display: 'block', textAlign: 'right' }}>{match[1]}</b>
+            <b style={{ display: 'block', textAlign: 'center' }}>{match[1]}</b>
           </>
         )
       }
@@ -60,7 +60,7 @@ export default function Menu() {
           <>
             {match[1]}
             <br />
-            <span style={{ marginLeft: '1em' }}>（{match[2]}）</span>
+            <span style={{ display: 'block', textAlign: 'center' }}>（{match[2]}）</span>
           </>
         )
       }
@@ -72,7 +72,7 @@ export default function Menu() {
         return (
           <>
             <b style={{ display: 'block', textAlign: 'center' }}>昔ながらのアジフライ　1枚</b>
-            <span style={{ display: 'block', textAlign: 'right' }}>（{match[1]}）</span>
+            <span style={{ display: 'block', textAlign: 'center' }}>（{match[1]}）</span>
           </>
         )
       }
@@ -84,7 +84,7 @@ export default function Menu() {
         return (
           <>
             <b style={{ display: 'block', textAlign: 'center' }}>手作りメンチカツ　1個</b>
-            <span style={{ display: 'block', textAlign: 'right' }}>（{match[1]}）</span>
+            <span style={{ display: 'block', textAlign: 'center' }}>（{match[1]}）</span>
           </>
         )
       }
@@ -95,8 +95,8 @@ export default function Menu() {
         <>
           とろ〜りクリーミーな
           <br />
-          <b style={{ display: 'block', textAlign: 'right' }}>カニコロッケ　1個</b>
-          <span style={{ display: 'block', textAlign: 'right', marginTop: '0.5rem' }}>（キャベツ付き）</span>
+          <b style={{ display: 'block', textAlign: 'center' }}>カニコロッケ　1個</b>
+          <span style={{ display: 'block', textAlign: 'center', marginTop: '0.5rem' }}>（キャベツ付き）</span>
         </>
       )
     }
@@ -117,7 +117,7 @@ export default function Menu() {
       return (
         <>
           <b style={{ display: 'block', textAlign: 'center' }}>ライス（小／中／大）＋</b>
-          <b style={{ display: 'block', textAlign: 'right' }}>味噌汁</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>味噌汁</b>
         </>
       )
     }
@@ -126,17 +126,7 @@ export default function Menu() {
       return (
         <>
           <b style={{ display: 'block', textAlign: 'center' }}>ライス（小／中／大）＋</b>
-          <b style={{ display: 'block', textAlign: 'right', marginTop: '-0.5rem' }}>味噌汁＋ミニサラダ</b>
-        </>
-      )
-    }
-    // パンサラダセット：パン2個＋味噌汁＋ミニサラダのパターン
-    if (name.includes('パンサラダセット：パン2個＋味噌汁＋ミニサラダ')) {
-      return (
-        <>
-          パンサラダセット：パン2個＋
-          <br />
-          <b style={{ display: 'block', textAlign: 'right' }}>味噌汁＋ミニサラダ</b>
+          <b style={{ display: 'block', textAlign: 'center', marginTop: '-0.5rem' }}>味噌汁＋ミニサラダ</b>
         </>
       )
     }
@@ -146,7 +136,7 @@ export default function Menu() {
         <>
           やみつきビアフライドポテト
           <br />
-          <b style={{ display: 'block', textAlign: 'right' }}>（ケチャップ付き）</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>（ケチャップ付き）</b>
         </>
       )
     }
@@ -160,7 +150,7 @@ export default function Menu() {
         <>
           エビの
           <br />
-          <b style={{ display: 'block', textAlign: 'right' }}>ケイジャンスパイスフライ</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>ケイジャンスパイスフライ</b>
         </>
       )
     }
@@ -174,7 +164,7 @@ export default function Menu() {
         <>
           チェダーチーズの
           <br />
-          <b style={{ display: 'block', textAlign: 'right' }}>スティックフライ</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>スティックフライ</b>
         </>
       )
     }
@@ -184,7 +174,7 @@ export default function Menu() {
         <>
           アボカド＆クリームチーズ
           <br />
-          <b style={{ display: 'block', textAlign: 'right' }}>のスティックフライ</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>のスティックフライ</b>
         </>
       )
     }
@@ -198,7 +188,7 @@ export default function Menu() {
         <>
           チョリソー3本
           <br />
-          <strong style={{ display: 'block', textAlign: 'right' }}>（粒マスタード添え）</strong>
+          <strong style={{ display: 'block', textAlign: 'center' }}>（粒マスタード添え）</strong>
         </>
       )
     }
@@ -208,7 +198,7 @@ export default function Menu() {
         <>
           キャベツマリネ
           <br />
-          <b style={{ display: 'block', textAlign: 'right' }}>ジンジャードレッシング</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>ジンジャードレッシング</b>
         </>
       )
     }
@@ -218,7 +208,7 @@ export default function Menu() {
         <>
           本日のメリメロカルパッチョ
           <br />
-          <b style={{ display: 'block', textAlign: 'right' }}>(3種)</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>(3種)</b>
         </>
       )
     }
@@ -238,8 +228,8 @@ export default function Menu() {
           ブラッターチーズと
           <br />
           <b style={{ display: 'block', textAlign: 'center' }}>シャインマスカットの</b>
-          <b style={{ display: 'block', textAlign: 'right' }}>カプレーゼ</b>
-          <b style={{ display: 'block', textAlign: 'right' }}>(白ワインとライムジュレ)</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>カプレーゼ</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>(白ワインとライムジュレ)</b>
         </>
       )
     }
@@ -291,7 +281,7 @@ export default function Menu() {
         <>
           3種のキノコと
           <br />
-          <b style={{ display: 'block', textAlign: 'right' }}>しらすのアヒージョ</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>しらすのアヒージョ</b>
           <b style={{ display: 'block', textAlign: 'center' }}>(厚切りバケット4個)</b>
         </>
       )
@@ -302,7 +292,7 @@ export default function Menu() {
         <>
           カマンベールとプチトマトの
           <br />
-          <b style={{ display: 'block', textAlign: 'right' }}>アヒージョ</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>アヒージョ</b>
           <b style={{ display: 'block', textAlign: 'center' }}>(厚切りバケット4個)</b>
         </>
       )
@@ -313,7 +303,7 @@ export default function Menu() {
         <>
           濃厚じゃがいもの
           <br />
-          <b style={{ display: 'block', textAlign: 'right' }}>クリームニョッキ</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>クリームニョッキ</b>
         </>
       )
     }
@@ -348,9 +338,9 @@ export default function Menu() {
       return (
         <>
           <b style={{ display: 'block', textAlign: 'center' }}>ダッチベビー</b>
-          <b style={{ display: 'block', textAlign: 'left' }}>（ベリベリストロベリー or</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>（ベリベリストロベリー or</b>
           <b style={{ display: 'block', textAlign: 'center' }}>チョコチョコチョコ +</b>
-          <b style={{ display: 'block', textAlign: 'right' }}>ホイップクリーム・バニラ）</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>ホイップクリーム・バニラ）</b>
         </>
       )
     }
@@ -360,7 +350,7 @@ export default function Menu() {
         <>
           <b style={{ display: 'block', textAlign: 'center' }}>ミニパフェ</b>
           <div style={{ display: 'block', textAlign: 'center' }}>
-            <div style={{ display: 'inline-block', textAlign: 'left' }}>
+            <div style={{ display: 'inline-block', textAlign: 'center' }}>
               <b style={{ display: 'block' }}>（コーンフレーク・バニラ・</b>
               <b style={{ display: 'block', whiteSpace: 'nowrap' }}>ホイップ・ストロベリーソース</b>
             </div>
@@ -382,7 +372,7 @@ export default function Menu() {
         <>
           ベーコンと卵の
           <br />
-          <b style={{ display: 'block', textAlign: 'right' }}>クリームリゾット</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>クリームリゾット</b>
         </>
       )
     }
@@ -391,8 +381,24 @@ export default function Menu() {
     if (name === '＋味噌汁＋ミニサラダ') return <b style={{ display: 'block', textAlign: 'center' }}>味噌汁＋ミニサラダ</b>
     if (name === '＋ライス（小／中／大）＋味噌汁') return <b style={{ display: 'block', textAlign: 'center' }}>ライス（小／中／大）＋味噌汁</b>
     if (name === '＋ライス（小／中／大）＋味噌汁＋ミニサラダ') return <b style={{ display: 'block', textAlign: 'center' }}>ライス（小／中／大）＋味噌汁＋ミニサラダ</b>
-    if (name === 'パンセット：＋パン2個＋味噌汁') return <b style={{ display: 'block', textAlign: 'center' }}>パンセット：パン2個＋味噌汁</b>
-    if (name === 'パンサラダセット：＋パン2個＋味噌汁＋ミニサラダ') return <b style={{ display: 'block', textAlign: 'center' }}>パンサラダセット：パン2個＋味噌汁＋ミニサラダ</b>
+    // パンセット：メニュー名＋2行目「パン２個＋味噌汁」
+    if (name === 'パンセット') {
+      return (
+        <>
+          <b style={{ display: 'block', textAlign: 'center' }}>パンセット</b>
+          <span style={{ display: 'block', textAlign: 'center' }}>パン２個＋味噌汁</span>
+        </>
+      )
+    }
+    // パンサラダセット：メニュー名＋2行目「パン2個＋味噌汁＋ミニサラダ」
+    if (name === 'パンサラダセット') {
+      return (
+        <>
+          <b style={{ display: 'block', textAlign: 'center' }}>パンサラダセット</b>
+          <span style={{ display: 'block', textAlign: 'center' }}>パン2個＋味噌汁＋ミニサラダ</span>
+        </>
+      )
+    }
     // その他はそのまま
     return name
   }
@@ -713,8 +719,8 @@ export default function Menu() {
           { name: '＋味噌汁＋ミニサラダ', price: '165円', image: 'セット', description: 'Miso Soup + Mini Salad' },
           { name: '＋ライス（小／中／大）＋味噌汁', price: '110円', image: 'セット', description: 'Rice (S/M/L) + Miso Soup' },
           { name: '＋ライス（小／中／大）＋味噌汁＋ミニサラダ', price: '220円', image: 'セット', description: 'Rice (S/M/L) + Miso Soup + Mini Salad' },
-          { name: 'パンセット：＋パン2個＋味噌汁', price: '110円', image: 'セット', description: 'Bread Set: + 2 Bread + Miso Soup' },
-          { name: 'パンサラダセット：＋パン2個＋味噌汁＋ミニサラダ', price: '220円', image: 'セット', description: 'Bread & Salad Set: + 2 Bread + Miso\nSoup + Mini Salad' },
+          { name: 'パンセット', price: '110円', image: 'セット', description: 'Bread Set: + 2 Bread + Miso Soup' },
+          { name: 'パンサラダセット', price: '220円', image: 'セット', description: 'Bread & Salad Set: + 2 Bread + Miso\nSoup + Mini Salad' },
         ],
       },
     ]
@@ -871,7 +877,11 @@ export default function Menu() {
                   category.category === '国産和牛ランプステーキ' ? (
                     <>
                       <span></span>
-                      <span className={styles.categoryNoteRight}>※ソースは各種類から選べます。※メニューの写真や動画はイメージ図となります。※ステーキの画像は200gを使用しております。</span>
+                      <span className={`${styles.categoryNoteRight} ${styles.steakNoteBlock}`}>
+                        <span className={styles.steakNoteLine}>※ソースは各種類から選べます。</span>
+                        <span className={styles.steakNoteLine}>※メニューの写真や動画はイメージ図となります。</span>
+                        <span className={styles.steakNoteLine}>※ステーキの画像は200gを使用しております。</span>
+                      </span>
                     </>
                   ) : category.category === 'メイン' ? (
                     <>

@@ -58,6 +58,22 @@
   color: #666;
 }
 
+/* ステーキ※注釈：PCは1行、スマホは3行 */
+.steakNoteBlock .steakNoteLine {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .steakNoteBlock {
+    display: block;
+    text-align: left;
+  }
+
+  .steakNoteBlock .steakNoteLine {
+    display: block;
+  }
+}
+
 /* グリッド：PC 3カラム → タブレット 2カラム → スマホ 1カラム（@media で上書き） */
 .menuGrid {
   display: grid;
@@ -118,6 +134,7 @@
   word-break: keep-all;
   overflow-wrap: break-word;
   min-width: 0;
+  text-align: center;
 }
 
 .menuContent h3 span {
