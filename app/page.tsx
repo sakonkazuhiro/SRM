@@ -153,7 +153,7 @@ export default function Home() {
                 </p>
                 <p className={styles.addressRow}>
                   <span className={styles.addressIcon} aria-hidden>☎</span>
-                  <span className={styles.phoneNumber}>03-6802-3279</span>
+                  <span className={styles.phoneNumber}>03-6802-3273</span>
                 </p>
                 <p className={styles.addressRow}>
                   <span className={styles.addressIcon} aria-hidden>📱</span>

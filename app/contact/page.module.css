@@ -32,6 +32,19 @@
   padding: 80px 0;
 }
 
+.contactNote {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.contactPrivacy {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
 .contactForm {
   max-width: 700px;
   margin: 0 auto;

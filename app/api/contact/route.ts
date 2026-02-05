@@ -1,4 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
+import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
+
+const recipientEmail = 'hoshi.syo@gmail.com' // ホシのキッチンのメールアドレス
+
+// 個人情報保護: お問い合わせ内容はメール送信のみに使用し、DB・ファイル・サーバーログには保存しません。
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,12 +19,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // メール送信処理
-    // 実際のメール送信にはnodemailerやSendGridなどのサービスを使用
-    // ここでは送信先メールアドレスを設定
-    const recipientEmail = 'hoshi.syo@gmail.com' // ホシのキッチンのメールアドレス
-    
-    // メール本文を作成
     const emailBody = `
 お問い合わせがありました。
 
@@ -35,27 +35,70 @@ ${message}
 このメールは「ホシのキッチン」のお問い合わせフォームから送信されました。
 `
 
-    // 実際のメール送信処理はここに実装
-    // 例: nodemailerを使用する場合
-    // const transporter = nodemailer.createTransport({...})
-    // await transporter.sendMail({
-    //   from: email,
-    //   to: recipientEmail,
-    //   subject: '【ホシのキッチン】お問い合わせ',
-    //   text: emailBody,
-    // })
+    // 1) Gmail SMTP が設定されていればこちらを使用（お店のGmailに確実に届く）
+    const gmailUser = process.env.GMAIL_USER || recipientEmail
+    const gmailAppPassword = process.env.GMAIL_APP_PASSWORD
 
-    // 開発環境ではコンソールに出力（本番環境では削除）
-    console.log('=== お問い合わせメール ===')
-    console.log(`送信先: ${recipientEmail}`)
-    console.log(emailBody)
+    if (gmailAppPassword) {
+      const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+          user: gmailUser,
+          pass: gmailAppPassword,
+        },
+      })
+
+      await transporter.sendMail({
+        from: `ホシのキッチン <${gmailUser}>`,
+        to: recipientEmail,
+        replyTo: email,
+        subject: '【ホシのキッチン】お問い合わせ',
+        text: emailBody,
+      })
+
+      return NextResponse.json(
+        { message: 'お問い合わせを受け付けました。' },
+        { status: 200 }
+      )
+    }
+
+    // 2) Resend が設定されていればこちらを使用
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      console.error(
+        'メール送信の設定がありません。.env.local に GMAIL_APP_PASSWORD または RESEND_API_KEY を設定してください。'
+      )
+      return NextResponse.json(
+        { error: 'メール送信の設定が完了していません。しばらくしてから再度お試しください。' },
+        { status: 503 }
+      )
+    }
+
+    const resend = new Resend(apiKey)
+    const { data, error } = await resend.emails.send({
+      from: 'ホシのキッチン <onboarding@resend.dev>',
+      to: [recipientEmail],
+      replyTo: email,
+      subject: '【ホシのキッチン】お問い合わせ',
+      text: emailBody,
+    })
+
+    if (error) {
+      console.error('Resend 送信エラー:', (error as { message?: string; name?: string })?.message ?? error)
+      return NextResponse.json(
+        { error: '送信に失敗しました。しばらくしてから再度お試しください。' },
+        { status: 500 }
+      )
+    }
 
     return NextResponse.json(
       { message: 'お問い合わせを受け付けました。' },
       { status: 200 }
     )
   } catch (error) {
-    console.error('お問い合わせ送信エラー:', error)
+    console.error('お問い合わせ送信エラー:', error instanceof Error ? error.message : 'Unknown')
     return NextResponse.json(
       { error: '送信に失敗しました。しばらくしてから再度お試しください。' },
       { status: 500 }

@@ -109,7 +109,10 @@ export default function Contact() {
             ※現在お問い合わせは準備中です。<br />
             お急ぎの方はお電話またはSNSよりご連絡ください。
           </p>
-          <form onSubmit={handleSubmit} className={styles.contactForm}>
+          <p className={styles.contactPrivacy}>
+            お名前・メールアドレス・お問い合わせ内容は、ご返信の目的でのみ使用します。当サイトのサーバーには保存せず、記載のメールアドレスへ送信するのみです。
+          </p>
+          <form onSubmit={handleSubmit} className={styles.contactForm} autoComplete="off">
             {error && (
               <div className={styles.errorMessage}>
                 {error}
@@ -127,7 +130,8 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 className={styles.input}
-                placeholder="山田 太郎"
+                placeholder="例：山田 太郎"
+                autoComplete="off"
                 required
               />
             </div>
@@ -144,6 +148,7 @@ export default function Contact() {
                 onChange={handleChange}
                 className={styles.input}
                 placeholder="example@email.com"
+                autoComplete="off"
                 required
               />
             </div>
@@ -160,6 +165,7 @@ export default function Contact() {
                 className={styles.textarea}
                 rows={8}
                 placeholder="お問い合わせ内容をご記入ください"
+                autoComplete="off"
                 required
               />
             </div>

@@ -2,24 +2,127 @@
 
 import { useMemo, useState } from 'react'
 import styles from './page.module.css'
+import {
+  menuSectionsSample,
+  sectionToDisplayItems,
+  footerNotes,
+  type DisplayItem,
+  type SectionNotes,
+} from './menuData'
 
-type MenuItem = {
+/** 画像枠：/images/menu 配下を使用。存在しない or 読み込み失敗時はプレースホルダー */
+function MenuCardImage({ imagePath, alt }: { imagePath?: string; alt: string }) {
+  const [failed, setFailed] = useState(false)
+  const usePlaceholder = !imagePath || failed
+  if (usePlaceholder) {
+    return <p>メニュー</p>
+  }
+  return (
+    <img
+      src={imagePath}
+      alt={alt}
+      className={styles.menuCardImage}
+      loading="lazy"
+      decoding="async"
+      onError={() => setFailed(true)}
+    />
+  )
+}
+
+/** 旧形式（既存メニュー用） */
+type LegacyMenuItem = {
   name: string
   price: string
   description?: string
   image?: string
-  imagePath?: string // 画像パス（/images/xxx.jpg など）
-  videoSrc?: string // ← 動画差し込み用（任意）
-  /** ボトルワインなど3段階価格のとき { 税抜, 税込 } の配列 */
+  imagePath?: string
+  videoSrc?: string
   priceTiers?: { excl: number; incl: number }[]
 }
 
 type MenuCategory = {
   category: string
-  items: MenuItem[]
+  items: LegacyMenuItem[]
 }
 
 type TabKey = 'main' | 'ichipin' | 'lunch' | 'dessertDrink' | 'drink'
+
+/** 描画用セクション（見出し・注意書き・カード配列） */
+type RenderSection = {
+  sectionTitle: string
+  sectionNotes?: SectionNotes
+  displayItems: DisplayItem[]
+}
+
+/** 旧カテゴリを RenderSection に変換（価格は税込から税抜を逆算、税率10%） */
+function oldCategoryToRenderSection(cat: MenuCategory): RenderSection {
+  const hasSauceItems = cat.items.some((item) => item.description?.includes('／'))
+  let sectionNotes: SectionNotes | undefined
+  if (hasSauceItems) {
+    if (
+      cat.category === '国産黒毛和牛サーロインステーキ' ||
+      cat.category === '国産和牛ミスジステーキ' ||
+      cat.category === '国産和牛ランプステーキ'
+    ) {
+      sectionNotes = {
+        type: 'block',
+        lines: [
+          '※ソースは各種類から選べます。',
+          '※メニューの写真や動画はイメージ図となります。',
+          '※ステーキの画像は200gを使用しております。',
+        ],
+      }
+    } else if (cat.category === 'メイン') {
+      sectionNotes = { type: 'leftRight', right: '※ソースは各種類から選べます。※メニューの写真や動画はイメージ図となります。' }
+    } else {
+      sectionNotes = {
+        type: 'leftRight',
+        left: '※ソースは各種類から選べます。',
+        right: '※メニューの写真や動画はイメージ図となります。',
+      }
+    }
+  } else {
+    sectionNotes = { type: 'leftRight', right: '※メニューの写真や動画はイメージ図となります。' }
+  }
+  const displayItems: DisplayItem[] = cat.items.map((item) => {
+    const descriptionStyle =
+      cat.category === 'メイン' && (item.name.includes('チキンソテー') || item.name.includes('ポークソテー') || item.name.includes('カモソテー'))
+        ? { marginTop: '3rem' as const }
+        : cat.category === 'メイン' && item.name.includes('当店自慢の自家製ハンバーグ')
+          ? { marginTop: '1rem' as const }
+          : undefined
+    if (item.priceTiers?.length) {
+      return {
+        name: item.name,
+        description: item.description,
+        imagePath: item.imagePath,
+        descriptionStyle,
+        priceTiers: item.priceTiers,
+      }
+    }
+    const priceMatch = item.price.match(/[\d,]+/)
+    if (!priceMatch) {
+      return {
+        name: item.name,
+        description: item.description,
+        imagePath: item.imagePath,
+        descriptionStyle,
+        priceNote: item.price,
+      }
+    }
+    const priceIncl = parseInt(priceMatch[0].replace(/,/g, ''), 10)
+    const priceExcl = Math.round(priceIncl / 1.1)
+    return {
+      name: item.name,
+      description: item.description,
+      imagePath: item.imagePath,
+      descriptionStyle,
+      priceExcl,
+      priceIncl,
+    }
+  })
+  return { sectionTitle: cat.category, sectionNotes, displayItems }
+}
 
 export default function Menu() {
   const [activeTab, setActiveTab] = useState<TabKey>('main')
@@ -403,39 +506,9 @@ export default function Menu() {
     return name
   }
 
-  // ✅ タブごとのメニューデータ
-  // （フード完全版、ランチ、デザート&ドリンク、ドリンク を切替）
+  // ✅ タブごとのメニューデータ（国産和牛ミスジは menuData.menuSectionsSample で管理）
   const menusByTab: Record<TabKey, { label: string; categories: MenuCategory[] }> = useMemo(() => {
     const main: MenuCategory[] = [
-      {
-        category: '国産和牛ミスジステーキ',
-        items: [
-          {
-            name: '国産和牛ミスジステーキ 100g',
-            price: '1,320円',
-            image: 'ステーキ',
-            description: 'Japanese Beef Misuji Steak 100g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
-          },
-          {
-            name: '国産和牛ミスジステーキ 200g',
-            price: '2,640円',
-            image: 'ステーキ',
-            description: 'Japanese Beef Misuji Steak 200g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
-          },
-          {
-            name: '国産和牛ミスジステーキ 300g',
-            price: '3,960円',
-            image: 'ステーキ',
-            description: 'Japanese Beef Misuji Steak 300g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
-          },
-          {
-            name: '国産和牛ミスジステーキ 450g',
-            price: '5,940円',
-            image: 'ステーキ',
-            description: 'Japanese Beef Misuji Steak 450g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
-          },
-        ],
-      },
       {
         category: '国産和牛ランプステーキ',
         items: [
@@ -443,28 +516,28 @@ export default function Menu() {
             name: '国産和牛ランプステーキ 100g',
             price: '1,650円',
             image: 'ステーキ',
-            imagePath: '/images/menu/26-01-30_188_2%20(1).jpg',
+            imagePath: '/images/menu/main/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産和牛ランプステーキ 200g',
             price: '3,300円',
             image: 'ステーキ',
-            imagePath: '/images/menu/26-01-30_188_2%20(1).jpg',
+            imagePath: '/images/menu/main/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産和牛ランプステーキ 300g',
             price: '4,950円',
             image: 'ステーキ',
-            imagePath: '/images/menu/26-01-30_188_2%20(1).jpg',
+            imagePath: '/images/menu/main/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産和牛ランプステーキ 450g',
             price: '7,425円',
             image: 'ステーキ',
-            imagePath: '/images/menu/26-01-30_188_2%20(1).jpg',
+            imagePath: '/images/menu/main/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
           },
         ],
@@ -505,21 +578,21 @@ export default function Menu() {
             name: '当店自慢の自家製ハンバーグ 200g',
             price: '1,518円',
             image: 'メイン',
-            imagePath: '/images/menu/26-01-29_116_2.jpg',
+            imagePath: '/images/menu/main/26-01-29_116_2.jpg',
             description: 'House Hamburger 200g\nデミグラス／トマト／ホワイトチーズ／大根おろしポン酢',
           },
           {
             name: 'チキンソテー 270g',
             price: '1,518円',
             image: 'メイン',
-            imagePath: '/images/menu/26-01-29_097_2.jpg',
+            imagePath: '/images/menu/main/26-01-29_097_2.jpg',
             description: 'Chicken Saute 270g\nデミグラス／トマト／ホワイトチーズ／大根おろしポン酢／ジンジャー',
           },
           {
             name: 'ポークソテー 240g',
             price: '1,518円',
             image: 'メイン',
-            imagePath: '/images/menu/26-01-29_071_2.jpg',
+            imagePath: '/images/menu/main/26-01-29_071_2.jpg',
             description: 'Pork Saute 240g\nデミグラス／トマト／ホワイトチーズ／ジンジャー',
           },
           {
@@ -585,7 +658,7 @@ export default function Menu() {
       {
         category: 'パスタ',
         items: [
-          { name: '昔ながらのナポリタン', price: '1,078円', image: 'パスタ', imagePath: '/images/menu/26-01-29_069_2.jpg', description: 'Classic Napolitana' },
+          { name: '昔ながらのナポリタン', price: '1,078円', image: 'パスタ', imagePath: '/images/menu/side/26-01-29_069_2.jpg', description: 'Classic Napolitana' },
           { name: '濃厚カルボナーラ', price: '1,408円', image: 'パスタ', description: 'Rich Carbonara' },
           { name: 'バジル香るジェノベーゼパスタ', price: '1,408円', image: 'パスタ', description: 'Basil Pesto Pasta' },
           { name: 'たっぷりしらすのペペロンチーノ（昆布茶仕立て）', price: '1,408円', image: 'パスタ', description: 'Shirasu Peperoncino (Kombu Tea Style)' },
@@ -640,21 +713,21 @@ export default function Menu() {
             name: '当店自慢の自家製ハンバーグ 200g',
             price: '1,518円',
             image: 'ランチ',
-            imagePath: '/images/menu/26-01-29_116_2.jpg',
+            imagePath: '/images/menu/lunch/26-01-29_116_2.jpg',
             description: 'House Hamburger 200g\nデミグラス／トマト／ホワイトチーズ／大根おろしポン酢',
           },
           {
             name: 'チキンソテー 270g',
             price: '1,518円',
             image: 'ランチ',
-            imagePath: '/images/menu/26-01-29_097_2.jpg',
+            imagePath: '/images/menu/lunch/26-01-29_097_2.jpg',
             description: 'Chicken Saute 270g\nデミグラス／トマト／ホワイトチーズ／大根おろしポン酢／ジンジャー',
           },
           {
             name: 'ポークソテー 240g',
             price: '1,518円',
             image: 'ランチ',
-            imagePath: '/images/menu/26-01-29_071_2.jpg',
+            imagePath: '/images/menu/lunch/26-01-29_071_2.jpg',
             description: 'Pork Saute 240g\nデミグラス／トマト／ホワイトチーズ／ジンジャー',
           },
         ],
@@ -671,10 +744,10 @@ export default function Menu() {
       {
         category: '国産和牛ランプステーキ',
         items: [
-          { name: '国産和牛ランプステーキ 100g', price: '1,650円', image: 'ランチ', imagePath: '/images/menu/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ランプステーキ 200g', price: '3,300円', image: 'ランチ', imagePath: '/images/menu/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ランプステーキ 300g', price: '4,950円', image: 'ランチ', imagePath: '/images/menu/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ランプステーキ 450g', price: '7,425円', image: 'ランチ', imagePath: '/images/menu/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ランプステーキ 100g', price: '1,650円', image: 'ランチ', imagePath: '/images/menu/lunch/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ランプステーキ 200g', price: '3,300円', image: 'ランチ', imagePath: '/images/menu/lunch/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ランプステーキ 300g', price: '4,950円', image: 'ランチ', imagePath: '/images/menu/lunch/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ランプステーキ 450g', price: '7,425円', image: 'ランチ', imagePath: '/images/menu/lunch/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
         ],
       },
       {
@@ -698,7 +771,7 @@ export default function Menu() {
       {
         category: 'パスタ',
         items: [
-          { name: '昔ながらのナポリタン', price: '1,078円', image: 'ランチ', imagePath: '/images/menu/26-01-29_069_2.jpg', description: 'Classic Napolitana' },
+          { name: '昔ながらのナポリタン', price: '1,078円', image: 'ランチ', imagePath: '/images/menu/lunch/26-01-29_069_2.jpg', description: 'Classic Napolitana' },
           { name: '濃厚カルボナーラ', price: '1,408円', image: 'ランチ', description: 'Rich Carbonara' },
           { name: 'バジル香るジェノベーゼパスタ', price: '1,408円', image: 'ランチ', description: 'Basil Pesto Pasta' },
           { name: 'たっぷりしらすのペペロンチーノ（昆布茶仕立て）', price: '1,408円', image: 'ランチ', description: 'Shirasu Peperoncino (Kombu Tea Style)' },
@@ -833,6 +906,20 @@ export default function Menu() {
 
   const menuCategories = menusByTab[activeTab].categories
 
+  /** 描画用セクション配列（データ駆動：国産和牛ミスジは menuSectionsSample、他は旧カテゴリから変換） */
+  const sectionsForRender: RenderSection[] = useMemo(() => {
+    const firstNewSection: RenderSection = {
+      sectionTitle: menuSectionsSample[0].sectionTitle,
+      sectionNotes: menuSectionsSample[0].sectionNotes,
+      displayItems: sectionToDisplayItems(menuSectionsSample[0]),
+    }
+    const restSections = menuCategories.map(oldCategoryToRenderSection)
+    if (activeTab === 'main') {
+      return [firstNewSection, ...restSections]
+    }
+    return restSections
+  }, [activeTab, menuCategories])
+
   return (
     <div className={`${styles.menu} ${(activeTab === 'dessertDrink' || activeTab === 'drink') ? styles.menuDrink : ''}`}>
       <section className={styles.hero}>
@@ -862,126 +949,87 @@ export default function Menu() {
         </div>
       </section>
 
-      {/* 表示：1つのJSX構造。PC/スマホのレイアウトは CSS @media (max-width: 768px) で切替 */}
-      {menuCategories.map((category, index) => {
-        // カテゴリ内にソース説明があるかチェック（「／」が含まれている場合はソース説明と判断）
-        const hasSauceItems = category.items.some(item => item.description && item.description.includes('／'))
-        return (
-          <section key={index} className={styles.categorySection}>
-            <div className="container">
-              <h2 className={styles.categoryTitle}>{category.category}</h2>
-              <div className={styles.categoryNotes}>
-                {hasSauceItems ? (
-                  category.category === '国産黒毛和牛サーロインステーキ' || 
-                  category.category === '国産和牛ミスジステーキ' || 
-                  category.category === '国産和牛ランプステーキ' ? (
-                    <>
-                      <span></span>
-                      <span className={`${styles.categoryNoteRight} ${styles.steakNoteBlock}`}>
-                        <span className={styles.steakNoteLine}>※ソースは各種類から選べます。</span>
-                        <span className={styles.steakNoteLine}>※メニューの写真や動画はイメージ図となります。</span>
-                        <span className={styles.steakNoteLine}>※ステーキの画像は200gを使用しております。</span>
-                      </span>
-                    </>
-                  ) : category.category === 'メイン' ? (
-                    <>
-                      <span></span>
-                      <span className={styles.categoryNoteRight}>※ソースは各種類から選べます。※メニューの写真や動画はイメージ図となります。</span>
-                    </>
-                  ) : (
-                    <>
-                      <span className={styles.categoryNoteLeft}>※ソースは各種類から選べます。</span>
-                      <span className={styles.categoryNoteRight}>※メニューの写真や動画はイメージ図となります。</span>
-                    </>
-                  )
-                ) : (
-                  <>
-                    <span></span>
-                    <span className={styles.categoryNoteRight}>※メニューの写真や動画はイメージ図となります。</span>
-                  </>
-                )}
-              </div>
-              <div className={styles.menuGrid}>
-              {category.items.map((item, itemIndex) => (
+      {/* データ駆動：セクション・カードとも配列 + map で量産（手書きJSX禁止） */}
+      {sectionsForRender.map((section, sectionIndex) => (
+        <section key={sectionIndex} className={styles.categorySection}>
+          <div className="container">
+            <h2 className={styles.categoryTitle}>{section.sectionTitle}</h2>
+            <div className={styles.categoryNotes}>
+              {section.sectionNotes?.type === 'block' ? (
+                <>
+                  <span></span>
+                  <span className={`${styles.categoryNoteRight} ${styles.steakNoteBlock}`}>
+                    {section.sectionNotes.lines.map((line, i) => (
+                      <span key={i} className={styles.steakNoteLine}>{line}</span>
+                    ))}
+                  </span>
+                </>
+              ) : section.sectionNotes?.type === 'leftRight' ? (
+                <>
+                  <span className={styles.categoryNoteLeft}>{section.sectionNotes.left}</span>
+                  <span className={styles.categoryNoteRight}>{section.sectionNotes.right}</span>
+                </>
+              ) : (
+                <>
+                  <span></span>
+                  <span className={styles.categoryNoteRight}>※メニューの写真や動画はイメージ図となります。</span>
+                </>
+              )}
+            </div>
+            <div className={styles.menuGrid}>
+              {section.displayItems.map((item, itemIndex) => (
                 <div key={itemIndex} className={styles.menuItem}>
                   <div className={styles.menuImage}>
-                    {item.imagePath ? (
-                      <img src={item.imagePath} alt={item.name} className={styles.menuCardImage} loading="lazy" decoding="async" />
-                    ) : item.videoSrc ? (
-                      <video
-                        src={item.videoSrc}
-                        controls
-                        muted
-                        playsInline
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                      />
-                    ) : (
-                      <p>{item.image ?? 'メニュー'}</p>
-                    )}
+                    <MenuCardImage imagePath={item.imagePath} alt={item.name} />
                   </div>
-
                   <div className={styles.menuContent}>
                     <h3>{formatMenuName(item.name)}</h3>
-                    {item.description ? <p className={styles.description} style={{
-                      whiteSpace: 'pre-line',
-                      ...(category.category === 'メイン' && (item.name.includes('チキンソテー') || item.name.includes('ポークソテー')) ? { marginTop: '3rem' } :
-                        category.category === 'メイン' && item.name.includes('当店自慢の自家製ハンバーグ') ? { marginTop: '1rem' } :
-                        category.category === 'メイン' && item.name.includes('カモソテー') ? { marginTop: '3rem' } : {}),
-                    }}>{item.description}</p> : null}
+                    {item.description != null && item.description !== '' && (
+                      <p className={styles.description} style={{ whiteSpace: 'pre-line', ...item.descriptionStyle }}>
+                        {item.description}
+                      </p>
+                    )}
+                    {item.notes != null && item.notes.length > 0 && (
+                      <p className={styles.menuNote}>{item.notes.join(' ')}</p>
+                    )}
                     <div className={styles.priceContainer}>
-                      {(() => {
-                        // 3段階価格（ボトルワインなど）：一番下の赤い値段形式で3種類表示
-                        if (item.priceTiers && item.priceTiers.length > 0) {
-                          return (
-                            <div className={styles.priceTiersWrapper}>
-                              {item.priceTiers.map((tier, i) => (
-                                <div key={i} className={styles.priceWrapper}>
-                                  <span className={styles.priceExcludingTax}>
-                                    {tier.excl.toLocaleString()}円（税抜）
-                                  </span>
-                                  <span className={styles.price}>
-                                    {tier.incl.toLocaleString()}円（税込）
-                                  </span>
-                                </div>
-                              ))}
+                      {item.priceTiers != null && item.priceTiers.length > 0 ? (
+                        <div className={styles.priceTiersWrapper}>
+                          {item.priceTiers.map((tier, i) => (
+                            <div key={i} className={styles.priceWrapper}>
+                              <span className={styles.priceExcludingTax}>{tier.excl.toLocaleString()}円（税抜）</span>
+                              <span className={styles.price}>{tier.incl.toLocaleString()}円（税込）</span>
                             </div>
-                          )
-                        }
-                        // 通常：価格から数値を抽出（カンマと「円」を除去）
-                        const priceMatch = item.price.match(/[\d,]+/)
-                        if (priceMatch) {
-                          const priceWithTax = parseInt(priceMatch[0].replace(/,/g, ''), 10)
-                          const priceExcludingTax = Math.round(priceWithTax / 1.1)
-                          return (
-                            <div className={styles.priceWrapper}>
-                              <span className={styles.priceExcludingTax}>
-                                {priceExcludingTax.toLocaleString()}円（税抜）
-                              </span>
-                              <span className={styles.price}>
-                                {priceWithTax.toLocaleString()}円（税込）
-                              </span>
-                            </div>
-                          )
-                        }
-                        return <span className={styles.price}>{item.price}</span>
-                      })()}
+                          ))}
+                        </div>
+                      ) : item.priceExcl != null && item.priceIncl != null ? (
+                        <div className={styles.priceWrapper}>
+                          <span className={styles.priceExcludingTax}>{item.priceExcl.toLocaleString()}円（税抜）</span>
+                          <span className={styles.price}>{item.priceIncl.toLocaleString()}円（税込）</span>
+                        </div>
+                      ) : item.priceNote ? (
+                        <span className={styles.price}>{item.priceNote}</span>
+                      ) : (
+                        <span className={styles.price}>※価格はスタッフまで</span>
+                      )}
                     </div>
                   </div>
                 </div>
               ))}
-              </div>
             </div>
-          </section>
-        )
-      })}
+          </div>
+        </section>
+      ))}
 
       <section className={styles.note}>
         <div className="container">
           <p className={styles.noteText}>
-            ※当店の牛・豚・米は１００％国産になります。<br />
-            ※価格は税抜き価格と税込み価格を併記しています。<br />
-            ※メニューは季節により変更になる場合がございます。<br />
-            ※アレルギーに関するお問い合わせは、お気軽にスタッフまでお尋ねください。
+            {footerNotes.map((line, i) => (
+              <span key={i}>
+                {line}
+                {i < footerNotes.length - 1 && <br />}
+              </span>
+            ))}
           </p>
         </div>
       </section>
