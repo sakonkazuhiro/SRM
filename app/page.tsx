@@ -4,6 +4,7 @@ import { notices } from '@/data/notices'
 import NoticeItem from '@/components/NoticeItem'
 import AboutImageSlider from '@/components/AboutImageSlider'
 import { ClickableImage } from '@/components/ImageLightbox'
+import { breakAfterPeriod } from '@/lib/breakAfterPeriod'
 
 export default function Home() {
   return (
@@ -13,9 +14,8 @@ export default function Home() {
         <div className={styles.heroContent}>
           <h1 className={`${styles.heroTitle} textStickerGlow`}>ホシのキッチン</h1>
           <p className={`${styles.heroSubtitle} textStickerSoft`}>心温まる洋食レストラン</p>
-          <p className={styles.heroDescription}>
-            オーナーシェフ星翔が心を込めてお作りする、<br />
-            ひとりひとりに寄り添う洋食をお楽しみください。
+          <p className={`${styles.heroDescription} breakAfterPeriod`}>
+            {breakAfterPeriod('オーナーシェフ星翔が心を込めてお作りする、ひとりひとりに寄り添う洋食をお楽しみください。')}
           </p>
           <Link href="/message" className="btn">
             オーナーシェフの言葉
@@ -29,19 +29,14 @@ export default function Home() {
           <h2 className="textStickerGlow">ホシのキッチンについて</h2>
           <div className={styles.aboutContent}>
             <div className={styles.aboutText}>
-              <p>
-                「ホシのキッチン」は、オーナーシェフ星翔が手がける洋食レストランです。
-                浅草モンブランなどで研鑽を重ね、師の許しを得て独立し、現在に至ります。
-                長年培ってきた技術と、お客様への想いを大切にしながら、
-                ひとつひとつの料理に真心を込めてお作りしています。
+              <p className="breakAfterPeriod">
+                {breakAfterPeriod('「ホシのキッチン」は、オーナーシェフ星翔が手がける洋食レストランです。浅草モンブランなどで研鑽を重ね、師の許しを得て独立し、現在に至ります。長年培ってきた技術と、お客様への想いを大切にしながら、ひとつひとつの料理に真心を込めてお作りしています。')}
               </p>
-              <p>
-                レストランという言葉の語源である「レストラン（restore=元気を回復させる）」のように、
-                お客様が当店で過ごす時間が、心身ともにリフレッシュできる場所となるよう、
-                日々精進してまいります。
+              <p className="breakAfterPeriod">
+                {breakAfterPeriod('レストランという言葉の語源である「レストラン（restore=元気を回復させる）」のように、お客様が当店で過ごす時間が、心身ともにリフレッシュできる場所となるよう、日々精進してまいります。')}
               </p>
-              <p>
-                家族や友人、大切な方とのひとときに、ぜひお立ち寄りください。
+              <p className="breakAfterPeriod">
+                {breakAfterPeriod('家族や友人、大切な方とのひとときに、ぜひお立ち寄りください。')}
               </p>
             </div>
             <div className={styles.aboutImage}>
@@ -75,7 +70,7 @@ export default function Home() {
               </div>
               <div className={styles.menuInfo}>
                 <h3>当店自慢の自家製ハンバーグ</h3>
-                <p>厳選した牛肉を使用した、こだわりのハンバーグです。</p>
+                <p className="breakAfterPeriod">{breakAfterPeriod('厳選した牛肉を使用した、こだわりのハンバーグです。')}</p>
               </div>
             </div>
             <div className={styles.menuCard}>
@@ -84,7 +79,7 @@ export default function Home() {
               </div>
               <div className={styles.menuInfo}>
                 <h3>国産和牛ミスジ</h3>
-                <p>国産和牛の赤身が味わえる、あっさりとしたステーキです。</p>
+                <p className="breakAfterPeriod">{breakAfterPeriod('国産和牛の赤身が味わえる、あっさりとしたステーキです。')}</p>
               </div>
             </div>
             <div className={styles.menuCard}>
@@ -93,7 +88,7 @@ export default function Home() {
               </div>
               <div className={styles.menuInfo}>
                 <h3>国産和牛ランプ</h3>
-                <p>国産和牛のランプ。コクのある味わいのステーキです。</p>
+                <p className="breakAfterPeriod">{breakAfterPeriod('国産和牛のランプ。コクのある味わいのステーキです。')}</p>
               </div>
             </div>
             <div className={styles.menuCard}>
@@ -102,7 +97,7 @@ export default function Home() {
               </div>
               <div className={styles.menuInfo}>
                 <h3>国産黒毛和牛サーロイン</h3>
-                <p>国産黒毛和牛のサーロイン。とろける食感が自慢のステーキです。</p>
+                <p className="breakAfterPeriod">{breakAfterPeriod('国産黒毛和牛のサーロイン。とろける食感が自慢のステーキです。')}</p>
               </div>
             </div>
           </div>
@@ -171,31 +166,33 @@ export default function Home() {
                   hoshi.syo@gmail.com
                 </p>
                 <p className={styles.addressBlock}>
-                  <strong className={styles.addressLabel}>営業時間</strong><br />
+                  <strong className={styles.addressLabel}>営業時間</strong>
                   <span className={styles.hoursLine}>
                     <span className={styles.hoursLabel}>ランチ</span><span className={styles.hoursColon}>：</span>
-                    <strong className={styles.hoursNum}>11:30～15:00</strong>（L.O.<strong className={styles.hoursNum}>14:30</strong>）
+                    <strong className={styles.hoursNum}>11:30～15:00</strong>
+                    <span className={styles.hoursLastOrder}>（L.O.<strong className={styles.hoursNum}>14:30</strong>）</span>
                   </span><br />
                   <span className={styles.hoursLine}>
                     <span className={styles.hoursLabel}>ディナー</span><span className={styles.hoursColon}>：</span>
-                    <strong className={styles.hoursNum}>17:00～24:00</strong>（L.O.<strong className={styles.hoursNum}>23:00</strong>）
+                    <strong className={styles.hoursNum}>17:00～24:00</strong>
+                    <span className={styles.hoursLastOrder}>（L.O.<strong className={styles.hoursNum}>23:00</strong>）</span>
                   </span>
                 </p>
                 <p className={styles.addressBlock}>
-                  <strong className={styles.addressLabel}>定休日</strong><br />
+                  <strong className={styles.addressLabel}>定休日</strong>
                   <span className={`${styles.addressIndent} ${styles.closedDay}`}>毎週火曜日</span>
                 </p>
                 <p className={styles.addressBlock}>
-                  <strong className={styles.addressLabel}>最寄り</strong><br />
+                  <strong className={styles.addressLabel}>最寄り</strong>
                   <span className={styles.addressAccessLines}>
-                    <span className={styles.addressIndent}>日比谷線入谷駅3番出口より徒歩約<strong className={styles.accessNum}>６</strong>分</span><br />
-                    <span className={styles.addressIndent}>JR線鶯谷駅より徒歩約<strong className={styles.accessNum}>１０</strong>分</span><br />
-                    <span className={styles.addressIndent}>つくばエクスプレス 浅草駅　約<strong className={styles.accessNum}>１０</strong>分</span><br />
-                    <span className={styles.addressIndent}>銀座線田原町駅から徒歩約<strong className={styles.accessNum}>１５</strong>分</span>
+                    <span className={styles.addressStationLine}>日比谷線入谷駅3番出口より<span className={styles.nowrap}>徒歩約<strong className={styles.accessNum}>６</strong>分</span></span>
+                    <span className={styles.addressStationLine}>JR線鶯谷駅より<span className={styles.nowrap}>徒歩約<strong className={styles.accessNum}>１０</strong>分</span></span>
+                    <span className={styles.addressStationLine}>つくばエクスプレス 浅草駅　<span className={styles.nowrap}>約<strong className={styles.accessNum}>１０</strong>分</span></span>
+                    <span className={styles.addressStationLine}>銀座線田原町駅から<span className={styles.nowrap}>徒歩約<strong className={styles.accessNum}>１５</strong>分</span></span>
                   </span>
                 </p>
                 <p className={styles.addressBlock}>
-                  <strong className={styles.addressLabel}>席数</strong><br />
+                  <strong className={styles.addressLabel}>席数</strong>
                   <span className={styles.addressIndent}>３７席</span>
                 </p>
                 <p className={styles.addressBlock}>

@@ -1,13 +1,14 @@
 import styles from './Footer.module.css'
 import Link from 'next/link'
+import { breakAfterPeriod } from '@/lib/breakAfterPeriod'
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.tagline}>
-          <p className="textStickerSoft">人を元気にする食卓。</p>
-          <p className="textStickerSoft">心温まる洋食レストラン。</p>
+          <p className="textStickerSoft breakAfterPeriod">{breakAfterPeriod('人を元気にする食卓。')}</p>
+          <p className="textStickerSoft breakAfterPeriod">{breakAfterPeriod('心温まる洋食レストラン。')}</p>
         </div>
 
         <div className={styles.logoContainer}>

@@ -10,6 +10,7 @@ import {
   type SectionNotes,
 } from './menuData'
 import { ClickableImage } from '@/components/ImageLightbox'
+import { breakAfterPeriod } from '@/lib/breakAfterPeriod'
 
 /** 画像枠：/images/menu 配下を使用。存在しない or 読み込み失敗時はプレースホルダー。クリックで全画面表示 */
 function MenuCardImage({ imagePath, alt }: { imagePath?: string; alt: string }) {
@@ -926,8 +927,8 @@ export default function Menu() {
       <section className={styles.hero}>
         <div className="container">
           <h1>メニュー</h1>
-          <p className={styles.heroSubtitle}>
-            オーナーシェフが心を込めてお作りする、こだわりのメニューをご覧ください。
+          <p className={`${styles.heroSubtitle} breakAfterPeriod`}>
+            {breakAfterPeriod('オーナーシェフが心を込めてお作りする、こだわりのメニューをご覧ください。')}
           </p>
         </div>
       </section>
@@ -961,19 +962,19 @@ export default function Menu() {
                   <span></span>
                   <span className={`${styles.categoryNoteRight} ${styles.steakNoteBlock}`}>
                     {section.sectionNotes.lines.map((line, i) => (
-                      <span key={i} className={styles.steakNoteLine}>{line}</span>
+                      <span key={i} className={`${styles.steakNoteLine} breakAfterPeriod`}>{breakAfterPeriod(line)}</span>
                     ))}
                   </span>
                 </>
               ) : section.sectionNotes?.type === 'leftRight' ? (
                 <>
-                  <span className={styles.categoryNoteLeft}>{section.sectionNotes.left}</span>
-                  <span className={styles.categoryNoteRight}>{section.sectionNotes.right}</span>
+                  <span className={`${styles.categoryNoteLeft} breakAfterPeriod`}>{breakAfterPeriod(section.sectionNotes.left ?? '')}</span>
+                  <span className={`${styles.categoryNoteRight} breakAfterPeriod`}>{breakAfterPeriod(section.sectionNotes.right ?? '')}</span>
                 </>
               ) : (
                 <>
                   <span></span>
-                  <span className={styles.categoryNoteRight}>※メニューの写真や動画はイメージ図となります。</span>
+                  <span className={`${styles.categoryNoteRight} breakAfterPeriod`}>{breakAfterPeriod('※メニューの写真や動画はイメージ図となります。')}</span>
                 </>
               )}
             </div>

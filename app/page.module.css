@@ -250,31 +250,63 @@
   color: #c41e3a;
 }
 
+/* 営業時間・定休日・最寄り・席数：見出し中央・ブロック間を開けて見やすく（スマホ・PC共通・二枚目レイアウト） */
 .addressBlock {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.9;
+}
+
+.addressBlock:first-of-type {
+  margin-top: 0;
 }
 
 .addressLabel {
   color: #333;
   font-weight: bold;
+  display: block;
+  text-align: center;
+  margin-bottom: 0.35rem;
 }
 
 .addressIndent {
-  padding-left: 1em;
-  display: inline-block;
+  display: block;
+  margin-top: 0.2rem;
+  padding-left: 0;
 }
 
-/* 最寄り3行：見出しはセンターのまま、本文は左揃え */
+.addressBlock .closedDay {
+  display: block;
+  margin-top: 0.2rem;
+}
+
+/* 最寄り：1行ずつブロックで改行せず表示（約X分が折れない）・PC・スマホとも中央揃え */
 .addressAccessLines {
-  display: inline-block;
-  text-align: left;
+  display: block;
+  text-align: center;
   margin-top: 0.25rem;
+}
+
+.addressStationLine {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.addressStationLine:last-child {
+  margin-bottom: 0;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 .hoursLine {
   display: inline-block;
   text-align: left;
+}
+
+.hoursLastOrder {
+  white-space: nowrap;
 }
 
 .hoursLabel {

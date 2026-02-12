@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
+import { breakAfterPeriod } from '@/lib/breakAfterPeriod'
 import styles from './page.module.css'
 
 export default function Contact() {
@@ -77,9 +78,8 @@ export default function Contact() {
             <div className={styles.successBox}>
               <div className={styles.successIcon}>✓</div>
               <h2>送信完了</h2>
-              <p>
-                お問い合わせありがとうございます。<br />
-                内容を確認次第、ご連絡させていただきます。
+              <p className="breakAfterPeriod">
+                {breakAfterPeriod('お問い合わせありがとうございます。内容を確認次第、ご連絡させていただきます。')}
               </p>
               <button
                 onClick={() => setIsSubmitted(false)}
@@ -105,12 +105,11 @@ export default function Contact() {
 
       <section className={styles.contactSection}>
         <div className="container">
-          <p className={styles.contactNote}>
-            ※現在お問い合わせは準備中です。<br />
-            お急ぎの方はお電話またはSNSよりご連絡ください。
+          <p className={`${styles.contactNote} breakAfterPeriod`}>
+            {breakAfterPeriod('※現在お問い合わせは準備中です。お急ぎの方はお電話またはSNSよりご連絡ください。')}
           </p>
-          <p className={styles.contactPrivacy}>
-            お名前・メールアドレス・お問い合わせ内容は、ご返信の目的でのみ使用します。当サイトのサーバーには保存せず、記載のメールアドレスへ送信するのみです。
+          <p className={`${styles.contactPrivacy} breakAfterPeriod`}>
+            {breakAfterPeriod('お名前・メールアドレス・お問い合わせ内容は、ご返信の目的でのみ使用します。当サイトのサーバーには保存せず、記載のメールアドレスへ送信するのみです。')}
           </p>
           <form onSubmit={handleSubmit} className={styles.contactForm} autoComplete="off">
             {error && (

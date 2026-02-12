@@ -3,6 +3,7 @@
 import type { NoticeItem as NoticeItemType } from '@/data/notices'
 import AboutImageSlider from '@/components/AboutImageSlider'
 import { ClickableImage } from '@/components/ImageLightbox'
+import { breakAfterPeriod } from '@/lib/breakAfterPeriod'
 import styles from './NoticeItem.module.css'
 
 type NoticeItemProps = {
@@ -58,7 +59,7 @@ export default function NoticeItem({ notice }: NoticeItemProps) {
             </span>
           </p>
         ) : notice.type === 'text' && notice.content ? (
-          <p>{notice.content}</p>
+          <p className="breakAfterPeriod">{breakAfterPeriod(notice.content)}</p>
         ) : null}
       </div>
     </div>

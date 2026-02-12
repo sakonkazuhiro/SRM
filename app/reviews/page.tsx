@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ClickableImage } from '@/components/ImageLightbox'
+import { breakAfterPeriod } from '@/lib/breakAfterPeriod'
 import styles from './page.module.css'
 
 type Review = {
@@ -52,8 +53,8 @@ export default function Reviews() {
       <section className={styles.noticeSection}>
         <div className="container">
           <div className={styles.noticeBox}>
-            <p className={styles.noticeText}>
-              ※口コミはオープン後、掲載許可をいただいたものから順次掲載予定です。
+            <p className={`${styles.noticeText} breakAfterPeriod`}>
+              {breakAfterPeriod('※口コミはオープン後、掲載許可をいただいたものから順次掲載予定です。')}
             </p>
           </div>
         </div>
@@ -96,7 +97,7 @@ export default function Reviews() {
                 )}
 
                 <div className={styles.reviewComment}>
-                  <p>{review.comment}</p>
+                  <p className="breakAfterPeriod">{breakAfterPeriod(review.comment)}</p>
                 </div>
               </div>
             ))}

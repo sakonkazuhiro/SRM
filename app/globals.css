@@ -147,6 +147,11 @@ h3 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* 「。」のあとで改行して見やすく（今後も本文に適用する共通ルール） */
+.breakAfterPeriod {
+  white-space: pre-line;
+}
+
 /* レスポンシブ */
 @media (max-width: 768px) {
   section {
