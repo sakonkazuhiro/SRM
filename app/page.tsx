@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notices } from '@/data/notices'
 import NoticeItem from '@/components/NoticeItem'
 import AboutImageSlider from '@/components/AboutImageSlider'
+import { ClickableImage } from '@/components/ImageLightbox'
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
             <div className={styles.aboutText}>
               <p>
                 「ホシのキッチン」は、オーナーシェフ星翔が手がける洋食レストランです。
+                浅草モンブランなどで研鑽を重ね、師の許しを得て独立し、現在に至ります。
                 長年培ってきた技術と、お客様への想いを大切にしながら、
                 ひとつひとつの料理に真心を込めてお作りしています。
               </p>
@@ -47,6 +49,11 @@ export default function Home() {
                 slides={[
                   { src: '/images/shop/S__121397254.jpg', alt: 'ホシのキッチン 店舗写真' },
                   { src: '/images/shop/S__20930609.jpg', alt: 'ホシのキッチン 外観' },
+                  { src: '/images/shop/S__21209165.jpg', alt: 'ホシのキッチン' },
+                  { src: '/images/shop/S__122740739.jpg', alt: 'ホシのキッチン モンブラン時代' },
+                  { src: '/images/shop/S__122970115.jpg', alt: 'ホシのキッチン' },
+                  { src: '/images/shop/S__122970116.jpg', alt: 'ホシのキッチン' },
+                  { src: '/images/shop/S__122970117.jpg', alt: 'ホシのキッチン' },
                 ]}
               />
             </div>
@@ -64,7 +71,7 @@ export default function Home() {
           <div className={styles.menuGrid}>
             <div className={styles.menuCard}>
               <div className={styles.menuImage}>
-                <img src="/images/menu/26-01-29_116_2.jpg" alt="当店自慢の自家製ハンバーグ" className={styles.menuCardImage} loading="lazy" decoding="async" />
+                <ClickableImage src="/images/menu/26-01-29_116_2.jpg" alt="当店自慢の自家製ハンバーグ" className={styles.menuCardImage} loading="lazy" decoding="async" />
               </div>
               <div className={styles.menuInfo}>
                 <h3>当店自慢の自家製ハンバーグ</h3>
@@ -82,7 +89,7 @@ export default function Home() {
             </div>
             <div className={styles.menuCard}>
               <div className={styles.menuImage}>
-                <img src="/images/menu/26-01-30_188_2%20(1).jpg" alt="国産和牛ランプ" className={styles.menuCardImage} loading="lazy" decoding="async" />
+                <ClickableImage src="/images/menu/26-01-30_188_2%20(1).jpg" alt="国産和牛ランプ" className={styles.menuCardImage} loading="lazy" decoding="async" />
               </div>
               <div className={styles.menuInfo}>
                 <h3>国産和牛ランプ</h3>
@@ -182,6 +189,7 @@ export default function Home() {
                   <strong className={styles.addressLabel}>最寄り</strong><br />
                   <span className={styles.addressAccessLines}>
                     <span className={styles.addressIndent}>日比谷線入谷駅3番出口より徒歩約<strong className={styles.accessNum}>６</strong>分</span><br />
+                    <span className={styles.addressIndent}>JR線鶯谷駅より徒歩約<strong className={styles.accessNum}>１０</strong>分</span><br />
                     <span className={styles.addressIndent}>つくばエクスプレス 浅草駅　約<strong className={styles.accessNum}>１０</strong>分</span><br />
                     <span className={styles.addressIndent}>銀座線田原町駅から徒歩約<strong className={styles.accessNum}>１５</strong>分</span>
                   </span>

@@ -1,4 +1,4 @@
-export type NoticeType = 'text' | 'hours'
+export type NoticeType = 'text' | 'hours' | 'imageSlider'
 
 export type NoticeItem = {
   date: string
@@ -7,10 +7,24 @@ export type NoticeItem = {
   type: NoticeType
   /** type が 'text' のときの本文 */
   content?: string
+  /** type が 'imageSlider' のときのタイトル */
+  title?: string
+  /** type が 'imageSlider' のときの画像URL配列（表示順） */
+  images?: string[]
 }
 
 /** お知らせ一覧（ホーム・お知らせページで共通利用） */
 export const notices: NoticeItem[] = [
+  {
+    date: '2026.2.13',
+    type: 'imageSlider',
+    title: 'お店のQRコードの商品画像が追加されました。',
+    images: [
+      '/images/news/S__21209175.jpg',
+      '/images/news/S__21209173.jpg',
+      '/images/news/S__21209172.jpg',
+    ],
+  },
   {
     date: '2026.2.5',
     image: '/images/news/C5B50238-CBBF-4624-AEE2-FB184924250C.png',

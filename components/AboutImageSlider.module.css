@@ -8,11 +8,13 @@
 }
 
 .sliderInner {
-  width: 100%;
   height: 100%;
+  display: flex;
+  transition: transform 0.8s ease;
 }
 
 .slide {
+  flex: 0 0 auto;
   width: 100%;
   height: 100%;
   display: flex;
@@ -26,6 +28,10 @@
   object-fit: contain;
   object-position: center;
   display: block;
+}
+
+.clickableSlide {
+  cursor: pointer;
 }
 
 .btnPrev,

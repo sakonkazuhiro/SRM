@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useImageLightbox } from '@/components/ImageLightbox'
 import styles from './AboutImageSlider.module.css'
 
 type Slide = { src: string; alt: string }
@@ -10,6 +11,7 @@ type AboutImageSliderProps = {
 }
 
 export default function AboutImageSlider({ slides }: AboutImageSliderProps) {
+  const { openImage } = useImageLightbox()
   const [current, setCurrent] = useState(0)
   const total = slides.length
 
@@ -21,24 +23,48 @@ export default function AboutImageSlider({ slides }: AboutImageSliderProps) {
     setCurrent((prev) => (prev === total - 1 ? 0 : prev + 1))
   }
 
+  // 右から左へゆっくり自動スライド（5秒ごと）
+  useEffect(() => {
+    if (total <= 1) return
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev === total - 1 ? 0 : prev + 1))
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [total])
+
   if (slides.length === 0) return null
 
   return (
     <div className={styles.slider}>
-      <div className={styles.sliderInner}>
+      <div
+        className={styles.sliderInner}
+        style={{
+          width: `${total * 100}%`,
+          transform: `translateX(-${current * (100 / total)}%)`,
+        }}
+      >
         {slides.map((slide, index) => (
           <div
             key={index}
             className={styles.slide}
+            style={{ flex: `0 0 ${100 / total}%` }}
             aria-hidden={index !== current}
-            style={{ display: index === current ? 'block' : 'none' }}
           >
             <img
               src={slide.src}
               alt={slide.alt}
-              className={styles.slideImage}
+              className={`${styles.slideImage} ${styles.clickableSlide}`}
               loading={index === 0 ? 'lazy' : undefined}
               decoding="async"
+              onClick={() => openImage(slide.src)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  openImage(slide.src)
+                }
+              }}
             />
           </div>
         ))}

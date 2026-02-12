@@ -3,6 +3,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ScrollToTop from '@/components/ScrollToTop'
+import { ImageLightboxProvider } from '@/components/ImageLightbox'
 
 export const metadata: Metadata = {
   title: 'ホシのキッチン | 洋食レストラン',
@@ -17,10 +18,12 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <ScrollToTop />
+        <ImageLightboxProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <ScrollToTop />
+        </ImageLightboxProvider>
       </body>
     </html>
   )

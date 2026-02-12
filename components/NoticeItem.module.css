@@ -61,10 +61,23 @@
   font-weight: bold;
 }
 
+.noticeTitle {
+  color: #333;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
 .noticeContent p {
   color: #333;
   line-height: 1.8;
   margin-top: 0.5rem;
+}
+
+/* お知らせ内・画像スライダー（ホシのキッチンについてと同じ1枚ずつスライド） */
+.noticeImageSliderWrap {
+  flex-shrink: 0;
+  width: 350px;
 }
 
 .noticeContent strong {
@@ -75,6 +88,10 @@
 @media (max-width: 768px) {
   .noticeItem {
     flex-direction: column;
+  }
+
+  .noticeImageSliderWrap {
+    width: 100%;
   }
 
   .noticeImage {

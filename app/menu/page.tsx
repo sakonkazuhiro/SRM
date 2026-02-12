@@ -9,8 +9,9 @@ import {
   type DisplayItem,
   type SectionNotes,
 } from './menuData'
+import { ClickableImage } from '@/components/ImageLightbox'
 
-/** 画像枠：/images/menu 配下を使用。存在しない or 読み込み失敗時はプレースホルダー */
+/** 画像枠：/images/menu 配下を使用。存在しない or 読み込み失敗時はプレースホルダー。クリックで全画面表示 */
 function MenuCardImage({ imagePath, alt }: { imagePath?: string; alt: string }) {
   const [failed, setFailed] = useState(false)
   const usePlaceholder = !imagePath || failed
@@ -18,7 +19,7 @@ function MenuCardImage({ imagePath, alt }: { imagePath?: string; alt: string }) 
     return <p>メニュー</p>
   }
   return (
-    <img
+    <ClickableImage
       src={imagePath}
       alt={alt}
       className={styles.menuCardImage}

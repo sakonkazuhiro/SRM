@@ -1,4 +1,6 @@
 import styles from './page.module.css'
+import AboutImageSlider from '@/components/AboutImageSlider'
+import { ClickableImage } from '@/components/ImageLightbox'
 
 export default function Message() {
   return (
@@ -16,9 +18,12 @@ export default function Message() {
         <div className="container">
           <div className={styles.messageCard}>
             <div className={styles.messageImage}>
-              <div className={styles.placeholderImage}>
-                <p>オーナーシェフ<br />星 翔</p>
-              </div>
+              <AboutImageSlider
+                slides={[
+                  { src: '/images/owner/S__21209149.jpg', alt: 'オーナーシェフ 星 翔' },
+                  { src: '/images/owner/S__21209151.jpg', alt: 'オーナーシェフ 星 翔' },
+                ]}
+              />
             </div>
             <div className={styles.messageContent}>
               <h2 className={styles.role}>オーナーシェフ 星 翔</h2>
@@ -51,9 +56,11 @@ export default function Message() {
 
           <div className={styles.messageCard}>
             <div className={styles.messageImage}>
-              <div className={styles.placeholderImage}>
-                <p>店長</p>
-              </div>
+              <ClickableImage
+                src="/images/shop/manager.jpg"
+                alt="店長"
+                className={styles.profileImage}
+              />
             </div>
             <div className={styles.messageContent}>
               <h2 className={styles.role}>店長より</h2>
