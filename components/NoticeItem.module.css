@@ -61,6 +61,11 @@
   font-weight: bold;
 }
 
+.closedDay {
+  color: #c41e3a;
+  font-weight: bold;
+}
+
 .noticeTitle {
   color: #333;
   font-weight: bold;
@@ -88,6 +93,11 @@
 @media (max-width: 768px) {
   .noticeItem {
     flex-direction: column;
+  }
+
+  .noticeContent .hoursLine {
+    display: block;
+    text-align: center;
   }
 
   .noticeImageSliderWrap {

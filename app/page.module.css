@@ -496,4 +496,15 @@
     flex-direction: column;
   }
 
+  /* スマホ：ホームの営業時間・ラストオーダーを中央揃え */
+  .addressBlock .hoursLine {
+    display: block;
+    text-align: center;
+  }
+
+  /* スマホ：定休日を赤色で表示 */
+  .addressBlock .closedDay {
+    color: #c41e3a;
+  }
+
 }

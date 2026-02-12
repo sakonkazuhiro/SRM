@@ -55,7 +55,7 @@ export default function NoticeItem({ notice }: NoticeItemProps) {
             </span><br />
             <span className={styles.hoursLine}>
               <span className={styles.hoursLabel}>定休日</span><span className={styles.hoursColon}>：</span>
-              毎週火曜日
+              <span className={styles.closedDay}>毎週火曜日</span>
             </span>
           </p>
         ) : notice.type === 'text' && notice.content ? (
