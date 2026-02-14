@@ -118,6 +118,12 @@
   display: block;
 }
 
+/* ハンバーグ：4種ソーススライダー用の高さ */
+.menuImageHamburger {
+  height: 400px;
+  min-height: 400px;
+}
+
 .menuContent {
   padding: 1.5rem;
   display: flex;
@@ -271,6 +277,19 @@
   margin: 0 auto;
 }
 
+/* ステーキ（ミスジ・ランプ・サーロイン）：PCは4カード、スマホは1画像+4g+税抜税込 */
+.steakSectionDesktop {
+  display: block;
+}
+.steakSectionMobile {
+  display: none;
+}
+.steakWeight {
+  min-width: 3.5em;
+  font-weight: 600;
+  color: #333;
+}
+
 /* タブレット：2カラム */
 @media (max-width: 968px) {
   .menuGrid {
@@ -310,6 +329,11 @@
     height: 200px;
   }
 
+  .menuImageHamburger {
+    height: 280px;
+    min-height: 280px;
+  }
+
   .menuContent h3 {
     font-size: 1.2rem;
     text-align: center;
@@ -331,6 +355,13 @@
 
   .priceExcludingTax {
     font-size: 0.9rem;
+  }
+
+  .steakSectionDesktop {
+    display: none;
+  }
+  .steakSectionMobile {
+    display: block;
   }
 }
 

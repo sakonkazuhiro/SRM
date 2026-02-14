@@ -5,6 +5,7 @@ import NoticeItem from '@/components/NoticeItem'
 import AboutImageSlider from '@/components/AboutImageSlider'
 import { ClickableImage } from '@/components/ImageLightbox'
 import { breakAfterPeriod } from '@/lib/breakAfterPeriod'
+import { HAMBURGER_SAUCE_IMAGES } from '@/app/menu/menuData'
 
 export default function Home() {
   return (
@@ -65,8 +66,13 @@ export default function Home() {
           </p>
           <div className={styles.menuGrid}>
             <div className={styles.menuCard}>
-              <div className={styles.menuImage}>
-                <ClickableImage src="/images/menu/26-01-29_116_2.jpg" alt="当店自慢の自家製ハンバーグ" className={styles.menuCardImage} loading="lazy" decoding="async" />
+              <div className={`${styles.menuImage} ${styles.menuImageHamburger}`}>
+                <AboutImageSlider
+                  slides={HAMBURGER_SAUCE_IMAGES.map((src, i) => ({
+                    src,
+                    alt: `当店自慢の自家製ハンバーグ（${['大根おろしポン酢', 'デミグラスソース', 'トマトソース', 'ホワイトチーズ'][i] ?? `ソース${i + 1}`}）`,
+                  }))}
+                />
               </div>
               <div className={styles.menuInfo}>
                 <h3>当店自慢の自家製ハンバーグ</h3>
@@ -75,7 +81,7 @@ export default function Home() {
             </div>
             <div className={styles.menuCard}>
               <div className={styles.menuImage}>
-                <p>国産和牛ミスジ</p>
+                <ClickableImage src="/images/menu/main/main/26-01-31_122.jpg" alt="国産和牛ミスジ" className={styles.menuCardImage} loading="lazy" decoding="async" />
               </div>
               <div className={styles.menuInfo}>
                 <h3>国産和牛ミスジ</h3>
@@ -84,7 +90,7 @@ export default function Home() {
             </div>
             <div className={styles.menuCard}>
               <div className={styles.menuImage}>
-                <ClickableImage src="/images/menu/26-01-30_188_2%20(1).jpg" alt="国産和牛ランプ" className={styles.menuCardImage} loading="lazy" decoding="async" />
+                <ClickableImage src="/images/menu/main/main/26-01-30_188_2%20(1).jpg" alt="国産和牛ランプ" className={styles.menuCardImage} loading="lazy" decoding="async" />
               </div>
               <div className={styles.menuInfo}>
                 <h3>国産和牛ランプ</h3>
@@ -93,7 +99,7 @@ export default function Home() {
             </div>
             <div className={styles.menuCard}>
               <div className={styles.menuImage}>
-                <p>国産黒毛和牛サーロイン</p>
+                <ClickableImage src="/images/menu/main/main/26-01-31_115_2.jpg" alt="国産黒毛和牛サーロイン" className={styles.menuCardImage} loading="lazy" decoding="async" />
               </div>
               <div className={styles.menuInfo}>
                 <h3>国産黒毛和牛サーロイン</h3>

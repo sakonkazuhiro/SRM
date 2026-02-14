@@ -153,6 +153,12 @@
   display: block;
 }
 
+/* ハンバーグ：4種ソーススライダー用の高さ */
+.menuImageHamburger {
+  height: 400px;
+  min-height: 400px;
+}
+
 .menuInfo {
   padding: 1.5rem;
 }
@@ -478,6 +484,11 @@
 
   .menuImage {
     height: 220px;
+  }
+
+  .menuImageHamburger {
+    height: 280px;
+    min-height: 280px;
   }
 
   .locationContent {
