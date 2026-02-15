@@ -10,6 +10,15 @@ type NoticeItemProps = {
   notice: NoticeItemType
 }
 
+/** 本文から「営業時間」ブロックを検出して分割（before / 営業時間3行 / after） */
+function splitContentWithHours(content: string): { before: string; lunch: string; dinner: string; closed: string; after: string } | null {
+  const match = content.match(
+    /^([\s\S]*?)\n営業時間\nランチ\s*：(.+)\nディナー\s*：(.+)\n定休日：(.+)(\n[\s\S]*)$/
+  )
+  if (!match) return null
+  return { before: match[1], lunch: match[2], dinner: match[3], closed: match[4], after: match[5] }
+}
+
 export default function NoticeItem({ notice }: NoticeItemProps) {
   if (notice.type === 'imageSlider' && notice.images?.length) {
     const slides = notice.images.map((src) => ({ src, alt: notice.title ?? '' }))
@@ -59,7 +68,33 @@ export default function NoticeItem({ notice }: NoticeItemProps) {
             </span>
           </p>
         ) : notice.type === 'text' && notice.content ? (
-          <p className="breakAfterPeriod">{breakAfterPeriod(notice.content)}</p>
+          (() => {
+            const parsed = splitContentWithHours(notice.content)
+            if (parsed) {
+              return (
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod(parsed.before)}
+                  <br /><br />
+                  営業時間<br />
+                  <span className={styles.hoursLine}>
+                    <span className={styles.hoursLabel}>ランチ</span><span className={styles.hoursColon}>：</span>
+                    <strong className={styles.hoursNum}>{parsed.lunch}</strong>
+                  </span><br />
+                  <span className={styles.hoursLine}>
+                    <span className={styles.hoursLabel}>ディナー</span><span className={styles.hoursColon}>：</span>
+                    <strong className={styles.hoursNum}>{parsed.dinner}</strong>
+                  </span><br />
+                  <span className={styles.hoursLine}>
+                    <span className={styles.hoursLabel}>定休日</span><span className={styles.hoursColon}>：</span>
+                    <span className={styles.closedDay}>{parsed.closed}</span>
+                  </span>
+                  <br /><br />
+                  {breakAfterPeriod(parsed.after)}
+                </p>
+              )
+            }
+            return <p className="breakAfterPeriod">{breakAfterPeriod(notice.content)}</p>
+          })()
         ) : null}
       </div>
     </div>

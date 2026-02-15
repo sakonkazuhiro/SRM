@@ -133,7 +133,7 @@ export const menuSectionsSample: MenuSection[] = [
         name: '国産和牛ミスジステーキ',
         nameEn: 'Japanese Beef Misuji Steak',
         imagePath: '/images/menu/main/main/26-01-31_122.jpg',
-        options: ['ガーリック', '甘辛鉄板', '赤ワイン', '刻みわさび醤油', 'ゆずこしょう'],
+        options: ['ガーリック', '甘辛鉄板', '刻みわさび醤油', 'ゆずこしょう'],
         variants: [
           { label: '100g', priceExcl: 1200 },
           { label: '200g', priceExcl: 2400 },
@@ -181,12 +181,12 @@ export const mainMenuSections: MenuSection[] = [
   },
 ]
 
-/** 当店自慢の自家製ハンバーグ：4種ソース画像（スライダー用・main/main 配下） */
+/** 当店自慢の自家製ハンバーグ：4種ソース画像（スライダー用・下のソース順：デミグラス→トマト→ホワイトチーズ→大根おろしポン酢） */
 export const HAMBURGER_SAUCE_IMAGES: string[] = [
-  '/images/menu/main/main/26-02-02_050.jpg',   /* 大根おろしポン酢 */
   '/images/menu/main/main/26-02-02_067.jpg',   /* デミグラスソース */
   '/images/menu/main/main/26-02-02_073_2.jpg', /* トマトソース */
   '/images/menu/main/main/26-02-02_149.jpg',   /* ホワイトチーズ */
+  '/images/menu/main/main/26-02-02_050.jpg',   /* 大根おろしポン酢 */
 ]
 
 /** ダッチベビー：スライド用画像（lunsh 配下） */
@@ -199,6 +199,18 @@ export const DUTCH_BABY_IMAGES: string[] = [
 export const MINI_PARFAIT_IMAGES: string[] = [
   '/images/menu/lunsh/lunsh/26-01-31_268.jpg',
   '/images/menu/lunsh/lunsh/26-01-31_271.jpg',
+]
+
+/** ボトルワイン（赤）：スライド用画像（alcohol 配下） */
+export const RED_WINE_BOTTLE_IMAGES: string[] = [
+  '/images/menu/alcohol/alcohol/26-01-30_341.jpg',
+  '/images/menu/alcohol/alcohol/26-01-30_350.jpg',
+]
+
+/** ボトルワイン（白）：スライド用画像（alcohol 配下） */
+export const WHITE_WINE_BOTTLE_IMAGES: string[] = [
+  '/images/menu/alcohol/alcohol/26-01-30_353.jpg',
+  '/images/menu/alcohol/alcohol/26-01-30_354.jpg',
 ]
 
 /** ページ下部の注意書き（データで管理） */

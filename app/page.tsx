@@ -70,7 +70,7 @@ export default function Home() {
                 <AboutImageSlider
                   slides={HAMBURGER_SAUCE_IMAGES.map((src, i) => ({
                     src,
-                    alt: `当店自慢の自家製ハンバーグ（${['大根おろしポン酢', 'デミグラスソース', 'トマトソース', 'ホワイトチーズ'][i] ?? `ソース${i + 1}`}）`,
+                    alt: `当店自慢の自家製ハンバーグ（${['デミグラスソース', 'トマトソース', 'ホワイトチーズ', '大根おろしポン酢'][i] ?? `ソース${i + 1}`}）`,
                   }))}
                 />
               </div>

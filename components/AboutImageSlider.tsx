@@ -23,12 +23,12 @@ export default function AboutImageSlider({ slides }: AboutImageSliderProps) {
     setCurrent((prev) => (prev === total - 1 ? 0 : prev + 1))
   }
 
-  // 右から左へゆっくり自動スライド（5秒ごと）
+  // 右から左へゆっくり自動スライド（8秒ごと）
   useEffect(() => {
     if (total <= 1) return
     const timer = setInterval(() => {
       setCurrent((prev) => (prev === total - 1 ? 0 : prev + 1))
-    }, 5000)
+    }, 8000)
     return () => clearInterval(timer)
   }, [total])
 

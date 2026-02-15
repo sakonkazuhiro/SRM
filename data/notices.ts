@@ -16,6 +16,13 @@ export type NoticeItem = {
 /** お知らせ一覧（ホーム・お知らせページで共通利用） */
 export const notices: NoticeItem[] = [
   {
+    date: '2026.2.16',
+    image: '/images/news/4C17576E-CF3D-4CDA-8322-2FEC36CC7FF8.png',
+    imageAlt: '営業時間変更のお知らせ',
+    type: 'text',
+    content: 'いつもご来店ありがとうございます。\n2月18日（水）より営業時間を変更いたします。\n\n営業時間\nランチ   ：11:30～15:00（L.O.14:30）\nディナー ：17:30～23:00（L.O.22:00）\n定休日：毎週火曜日\n\nあわせてメニュー内容も一部変更しておりますので、\nご来店の際はぜひご確認ください。\n\n今後ともホシのキッチンをよろしくお願いいたします。',
+  },
+  {
     date: '2026.2.13',
     type: 'imageSlider',
     title: 'お店のQRコードの商品画像が追加されました。',

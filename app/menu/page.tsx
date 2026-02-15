@@ -9,6 +9,8 @@ import {
   HAMBURGER_SAUCE_IMAGES,
   DUTCH_BABY_IMAGES,
   MINI_PARFAIT_IMAGES,
+  RED_WINE_BOTTLE_IMAGES,
+  WHITE_WINE_BOTTLE_IMAGES,
   type DisplayItem,
   type SectionNotes,
 } from './menuData'
@@ -541,28 +543,28 @@ export default function Menu() {
             price: '1,650円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg',
-            description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
+            description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産和牛ランプステーキ 200g',
             price: '3,300円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg',
-            description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
+            description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産和牛ランプステーキ 300g',
             price: '4,950円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg',
-            description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
+            description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産和牛ランプステーキ 450g',
             price: '7,425円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg',
-            description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
+            description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
         ],
       },
@@ -574,28 +576,28 @@ export default function Menu() {
             price: '1,980円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-31_115_2.jpg',
-            description: 'Japanese Black Beef Sirloin Steak 100g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
+            description: 'Japanese Black Beef Sirloin Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産黒毛和牛サーロインステーキ 200g',
             price: '3,960円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-31_115_2.jpg',
-            description: 'Japanese Black Beef Sirloin Steak 200g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
+            description: 'Japanese Black Beef Sirloin Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産黒毛和牛サーロインステーキ 300g',
             price: '5,940円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-31_115_2.jpg',
-            description: 'Japanese Black Beef Sirloin Steak 300g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
+            description: 'Japanese Black Beef Sirloin Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産黒毛和牛サーロインステーキ 450g',
             price: '8,910円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-31_115_2.jpg',
-            description: 'Japanese Black Beef Sirloin Steak 450g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう',
+            description: 'Japanese Black Beef Sirloin Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
         ],
       },
@@ -628,7 +630,7 @@ export default function Menu() {
             price: '1,628円',
             image: 'メイン',
             imagePath: '/images/menu/main/main/26-01-31_110.jpg',
-            description: 'Duck Saute\n赤ワイン／バルサミコ／刻みわさび醤油／ゆずこしょう',
+            description: 'Duck Saute\nバルサミコ／刻みわさび醤油／ゆずこしょう',
           },
         ],
       },
@@ -677,8 +679,8 @@ export default function Menu() {
         items: [
           { name: '3種のキノコとしらすのアヒージョ (厚切りバケット4個)', price: '968円', image: '一品', imagePath: '/images/menu/lunsh/lunsh/26-01-30_189.jpg', description: '3 Mushroom & Shirasu Ajillo (4 Thick Baguette)' },
           { name: 'カマンベールとプチトマトのアヒージョ (厚切りバケット4個)', price: '968円', image: '一品', imagePath: '/images/menu/lunsh/lunsh/26-01-30_195.jpg', description: 'Camembert & Cherry Tomato Ajillo (4 Thick Baguette)' },
-          { name: '鳥ささみのチーズピンク揚げ', price: '858円', image: '一品', imagePath: '/images/menu/main/main/26-01-31_051.jpg', description: 'Chicken Tender Cheese Fry' },
-          { name: '赤いタルタルのチキン南蛮', price: '858円', image: '一品', imagePath: '/images/menu/main/main/26-01-31_031.jpg', description: 'Chicken Nanban with Red Tartar' },
+          { name: '鳥ささみのチーズピンク揚げ', price: '1,078円', image: '一品', imagePath: '/images/menu/main/main/26-01-31_051.jpg', description: 'Chicken Tender Cheese Fry' },
+          { name: '赤いタルタルのチキン南蛮', price: '1,078円', image: '一品', imagePath: '/images/menu/main/main/26-01-31_031.jpg', description: 'Chicken Nanban with Red Tartar' },
           { name: '濃厚じゃがいものクリームニョッキ', price: '748円', image: '一品', imagePath: '/images/menu/lunsh/lunsh/26-01-30_182.jpg', description: 'Creamy Potato Gnocchi' },
           { name: '大エビフライ (3本)', price: '1,628円', image: '一品', imagePath: '/images/menu/main/main/26-01-30_156.jpg', description: 'Large Fried Shrimp (3 pcs)' },
           { name: '【期間限定】カキフライ (6個)', price: '1,738円', image: '一品', imagePath: '/images/menu/main/main/26-01-30_164.jpg', description: '[Limited] Fried Oyster (6 pcs)' },
@@ -764,36 +766,36 @@ export default function Menu() {
       {
         category: '国産和牛ミスジステーキ',
         items: [
-          { name: '国産和牛ミスジステーキ 100g', price: '1,320円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 100g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ミスジステーキ 200g', price: '2,640円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 200g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ミスジステーキ 300g', price: '3,960円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 300g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ミスジステーキ 450g', price: '5,940円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 450g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ミスジステーキ 100g', price: '1,320円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ミスジステーキ 200g', price: '2,640円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ミスジステーキ 300g', price: '3,960円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ミスジステーキ 450g', price: '5,940円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
         ],
       },
       {
         category: '国産和牛ランプステーキ',
         items: [
-          { name: '国産和牛ランプステーキ 100g', price: '1,650円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ランプステーキ 200g', price: '3,300円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ランプステーキ 300g', price: '4,950円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ランプステーキ 450g', price: '7,425円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ランプステーキ 100g', price: '1,650円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ランプステーキ 200g', price: '3,300円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ランプステーキ 300g', price: '4,950円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産和牛ランプステーキ 450g', price: '7,425円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
         ],
       },
       {
         category: '国産黒毛和牛サーロインステーキ',
         items: [
-          { name: '国産黒毛和牛サーロインステーキ 100g', price: '1,980円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 100g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産黒毛和牛サーロインステーキ 200g', price: '3,960円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 200g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産黒毛和牛サーロインステーキ 300g', price: '5,940円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 300g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産黒毛和牛サーロインステーキ 450g', price: '8,910円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 450g\nガーリック／甘辛鉄板／赤ワイン／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛サーロインステーキ 100g', price: '1,980円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛サーロインステーキ 200g', price: '3,960円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛サーロインステーキ 300g', price: '5,940円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛サーロインステーキ 450g', price: '8,910円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
         ],
       },
       {
         category: 'フライ',
         items: [
           { name: '大エビフライ (3本)', price: '1,628円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_156.jpg', description: 'Large Fried Shrimp (3 pcs)' },
-          { name: '鳥ささみのチーズピンク揚げ', price: '858円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_051.jpg', description: 'Chicken Tender Cheese Fry' },
-          { name: '赤いタルタルのチキン南蛮', price: '858円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_031.jpg', description: 'Chicken Nanban with Red Tartar' },
+          { name: '鳥ささみのチーズピンク揚げ', price: '1,078円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_051.jpg', description: 'Chicken Tender Cheese Fry' },
+          { name: '赤いタルタルのチキン南蛮', price: '1,078円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_031.jpg', description: 'Chicken Nanban with Red Tartar' },
           { name: '【期間限定】カキフライ (6個)', price: '1,738円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_164.jpg', description: '[Limited] Fried Oyster (6 pcs)' },
         ],
       },
@@ -861,47 +863,47 @@ export default function Menu() {
       {
         category: 'ビール',
         items: [
-          { name: 'サッポロ生ビール', price: '748円', image: 'ビール', description: 'Sapporo Draft Beer' },
-          { name: '瓶ビール（赤星）', price: '858円', image: 'ビール', description: 'Bottle Beer (Akaboshi)' },
-          { name: 'ノンアルコールビール', price: '748円', image: 'ビール', description: 'Non-Alcoholic Beer' },
+          { name: 'サッポロ生ビール', price: '748円', image: 'ビール', imagePath: '/images/menu/alcohol/alcohol/26-01-30_397.jpg', description: 'Sapporo Draft Beer' },
+          { name: '瓶ビール（赤星）', price: '858円', image: 'ビール', imagePath: '/images/menu/alcohol/alcohol/26-01-30_318.jpg', description: 'Bottle Beer (Akaboshi)' },
+          { name: 'ノンアルコールビール', price: '748円', image: 'ビール', imagePath: '/images/menu/alcohol/alcohol/26-01-30_329.jpg', description: 'Non-Alcoholic Beer' },
         ],
       },
       {
         category: 'ウイスキー（デュワーズ）',
         items: [
-          { name: 'ハイボール', price: '748円', image: 'ウイスキー', description: 'Highball' },
-          { name: 'コークハイ', price: '748円', image: 'ウイスキー', description: 'Coke High' },
-          { name: 'ジンジャーハイボール', price: '748円', image: 'ウイスキー', description: 'Ginger Highball' },
-          { name: 'ホワイトボール', price: '770円', image: 'ウイスキー', description: 'Whiteball' },
+          { name: 'ハイボール', price: '748円', image: 'ウイスキー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_404.jpg', description: 'Highball' },
+          { name: 'コークハイ', price: '748円', image: 'ウイスキー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_401.jpg', description: 'Coke High' },
+          { name: 'ジンジャーハイボール', price: '748円', image: 'ウイスキー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_404.jpg', description: 'Ginger Highball' },
+          { name: 'ホワイトボール', price: '770円', image: 'ウイスキー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_398.jpg', description: 'Whiteball' },
         ],
       },
       {
         category: 'お茶割り（TEA BREAK）',
         items: [
-          { name: 'ウーロンハイ', price: '638円', image: 'お茶割り', description: 'Oolong High' },
-          { name: '緑茶ハイ', price: '638円', image: 'お茶割り', description: 'Green Tea High' },
-          { name: 'コーン茶ハイ', price: '638円', image: 'お茶割り', description: 'Corn Tea High' },
+          { name: 'ウーロンハイ', price: '638円', image: 'お茶割り', imagePath: '/images/menu/alcohol/alcohol/26-01-30_460.jpg', description: 'Oolong High' },
+          { name: '緑茶ハイ', price: '638円', image: 'お茶割り', imagePath: '/images/menu/alcohol/alcohol/26-01-30_461.jpg', description: 'Green Tea High' },
+          { name: 'コーン茶ハイ', price: '638円', image: 'お茶割り', imagePath: '/images/menu/alcohol/alcohol/26-01-30_464.jpg', description: 'Corn Tea High' },
         ],
       },
       {
         category: 'サワー',
         items: [
-          { name: '酎ハイ', price: '605円', image: 'サワー', description: 'Chuhai' },
-          { name: 'レモンサワー', price: '638円', image: 'サワー', description: 'Lemon Sour' },
-          { name: 'ゆずサワー', price: '638円', image: 'サワー', description: 'Yuzu Sour' },
-          { name: '男梅サワー', price: '638円', image: 'サワー', description: 'Otoko Ume Sour' },
-          { name: 'クエン酸サワー', price: '638円', image: 'サワー', description: 'Citric Acid Sour' },
-          { name: 'バイスサワー', price: '638円', image: 'サワー', description: 'Vice Sour' },
-          { name: 'ライムサワー', price: '638円', image: 'サワー', description: 'Lime Sour' },
-          { name: 'カルピスサワー', price: '660円', image: 'サワー', description: 'Calpis Sour' },
+          { name: '酎ハイ', price: '605円', image: 'サワー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_411.jpg', description: 'Chuhai' },
+          { name: 'レモンサワー', price: '638円', image: 'サワー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_407.jpg', description: 'Lemon Sour' },
+          { name: 'ゆずサワー', price: '638円', image: 'サワー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_408.jpg', description: 'Yuzu Sour' },
+          { name: '男梅サワー', price: '638円', image: 'サワー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_417.jpg', description: 'Otoko Ume Sour' },
+          { name: 'クエン酸サワー', price: '638円', image: 'サワー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_424.jpg', description: 'Citric Acid Sour' },
+          { name: 'バイスサワー', price: '638円', image: 'サワー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_445.jpg', description: 'Vice Sour' },
+          { name: 'ライムサワー', price: '638円', image: 'サワー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_421.jpg', description: 'Lime Sour' },
+          { name: 'カルピスサワー', price: '660円', image: 'サワー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_398.jpg', description: 'Calpis Sour' },
         ],
       },
       {
         category: 'ワイン',
         items: [
-          { name: 'グラスワイン（赤）', price: '638円', image: 'ワイン', description: 'Glass Wine (Red)' },
-          { name: 'グラスワイン（白）', price: '638円', image: 'ワイン', description: 'Glass Wine (White)' },
-          { name: 'スパークリング（グラス）', price: '638円', image: 'ワイン', description: 'Sparkling (Glass)' },
+          { name: 'グラスワイン（赤）', price: '638円', image: 'ワイン', imagePath: '/images/menu/alcohol/alcohol/26-01-30_478.jpg', description: 'Glass Wine (Red)' },
+          { name: 'グラスワイン（白）', price: '638円', image: 'ワイン', imagePath: '/images/menu/alcohol/alcohol/26-01-30_465.jpg', description: 'Glass Wine (White)' },
+          { name: 'スパークリング（グラス）', price: '638円', image: 'ワイン', imagePath: '/images/menu/alcohol/alcohol/26-01-30_281.jpg', description: 'Sparkling (Glass)' },
           { name: 'ボトルワイン（赤）', price: '3,300円〜', image: 'ワイン', description: 'Bottle Wine (Red)\n※種類はスタッフまでお尋ねください', priceTiers: [{ excl: 3000, incl: 3300 }, { excl: 5000, incl: 5500 }, { excl: 10000, incl: 11000 }] },
           { name: 'ボトルワイン（白）', price: '3,300円〜', image: 'ワイン', description: 'Bottle Wine (White)\n※種類はスタッフまでお尋ねください', priceTiers: [{ excl: 3000, incl: 3300 }, { excl: 5000, incl: 5500 }, { excl: 10000, incl: 11000 }] },
         ],
@@ -909,18 +911,18 @@ export default function Menu() {
       {
         category: 'シャンパン',
         items: [
-          { name: 'モエ・シャンドン 白', price: '11,000円', image: 'シャンパン', description: 'Moët & Chandon (White)' },
-          { name: 'モエ・シャンドン ロゼ', price: '16,500円', image: 'シャンパン', description: 'Moët & Chandon (Rosé)' },
-          { name: 'ドン・ペリニヨン 白', price: '55,000円', image: 'シャンパン', description: 'Dom Pérignon (White)' },
-          { name: 'ドン・ペリニヨン ロゼ', price: '110,000円', image: 'シャンパン', description: 'Dom Pérignon (Rosé)' },
+          { name: 'モエ・シャンドン 白', price: '11,000円', image: 'シャンパン', imagePath: '/images/menu/alcohol/alcohol/26-01-30_260_2.jpg', description: 'Moët & Chandon (White)' },
+          { name: 'モエ・シャンドン ロゼ', price: '16,500円', image: 'シャンパン', imagePath: '/images/menu/alcohol/alcohol/26-01-30_260_2.jpg', description: 'Moët & Chandon (Rosé)' },
+          { name: 'ドン・ペリニヨン 白', price: '55,000円', image: 'シャンパン', imagePath: '/images/menu/alcohol/alcohol/26-01-30_275.jpg', description: 'Dom Pérignon (White)' },
+          { name: 'ドン・ペリニヨン ロゼ', price: '110,000円', image: 'シャンパン', imagePath: '/images/menu/alcohol/alcohol/26-01-30_275.jpg', description: 'Dom Pérignon (Rosé)' },
         ],
       },
       {
         category: '日本酒',
         items: [
           { name: '富貴（淡麗辛口）', price: '※価格はスタッフまでお尋ねください', image: '日本酒', description: 'Tuki (Dry)' },
-          { name: '久保田', price: '※価格はスタッフまでお尋ねください', image: '日本酒', description: 'Kubota' },
-          { name: '獺祭', price: '※価格はスタッフまでお尋ねください', image: '日本酒', description: 'Dassai' },
+          { name: '久保田', price: '※価格はスタッフまでお尋ねください', image: '日本酒', imagePath: '/images/menu/alcohol/alcohol/26-01-30_299.jpg', description: 'Kubota' },
+          { name: '獺祭', price: '※価格はスタッフまでお尋ねください', image: '日本酒', imagePath: '/images/menu/alcohol/alcohol/26-01-30_305.jpg', description: 'Dassai' },
         ],
       },
     ]
@@ -1078,12 +1080,12 @@ export default function Menu() {
               <div className={styles.menuGrid}>
                 {section.displayItems.map((item, itemIndex) => (
                   <div key={itemIndex} className={styles.menuItem}>
-                    <div className={`${styles.menuImage} ${item.name.includes('当店自慢の自家製ハンバーグ') || item.name.includes('ダッチベビー') || item.name.includes('ミニパフェ') ? styles.menuImageHamburger : ''}`}>
+                    <div className={`${styles.menuImage} ${item.name.includes('当店自慢の自家製ハンバーグ') || item.name.includes('ダッチベビー') || item.name.includes('ミニパフェ') || item.name === 'ボトルワイン（赤）' || item.name === 'ボトルワイン（白）' ? styles.menuImageHamburger : ''}`}>
                       {item.name.includes('当店自慢の自家製ハンバーグ') && HAMBURGER_SAUCE_IMAGES.length > 0 ? (
                         <AboutImageSlider
                           slides={HAMBURGER_SAUCE_IMAGES.map((src, i) => ({
                             src,
-                            alt: `当店自慢の自家製ハンバーグ（${['大根おろしポン酢', 'デミグラスソース', 'トマトソース', 'ホワイトチーズ'][i] ?? `ソース${i + 1}`}）`,
+                            alt: `当店自慢の自家製ハンバーグ（${['デミグラスソース', 'トマトソース', 'ホワイトチーズ', '大根おろしポン酢'][i] ?? `ソース${i + 1}`}）`,
                           }))}
                         />
                       ) : item.name.includes('ダッチベビー') && DUTCH_BABY_IMAGES.length > 0 ? (
@@ -1098,6 +1100,20 @@ export default function Menu() {
                           slides={MINI_PARFAIT_IMAGES.map((src, i) => ({
                             src,
                             alt: `ミニパフェ（${i + 1}）`,
+                          }))}
+                        />
+                      ) : item.name === 'ボトルワイン（赤）' && RED_WINE_BOTTLE_IMAGES.length > 0 ? (
+                        <AboutImageSlider
+                          slides={RED_WINE_BOTTLE_IMAGES.map((src, i) => ({
+                            src,
+                            alt: `ボトルワイン（赤）${i + 1}`,
+                          }))}
+                        />
+                      ) : item.name === 'ボトルワイン（白）' && WHITE_WINE_BOTTLE_IMAGES.length > 0 ? (
+                        <AboutImageSlider
+                          slides={WHITE_WINE_BOTTLE_IMAGES.map((src, i) => ({
+                            src,
+                            alt: `ボトルワイン（白）${i + 1}`,
                           }))}
                         />
                       ) : (

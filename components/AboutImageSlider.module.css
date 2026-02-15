@@ -10,7 +10,7 @@
 .sliderInner {
   height: 100%;
   display: flex;
-  transition: transform 0.8s ease;
+  transition: transform 1.8s ease-in-out;
 }
 
 .slide {

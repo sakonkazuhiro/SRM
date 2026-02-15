@@ -19,12 +19,24 @@ export default function Message() {
         <div className="container">
           <div className={styles.messageCard}>
             <div className={styles.messageImage}>
-              <AboutImageSlider
-                slides={[
-                  { src: '/images/owner/S__21209149.jpg', alt: 'オーナーシェフ 星 翔' },
-                  { src: '/images/owner/S__21209151.jpg', alt: 'オーナーシェフ 星 翔' },
-                ]}
-              />
+              <div className={styles.ownerImageStack}>
+                <div className={styles.ownerImageFixed}>
+                  <ClickableImage
+                    src="/images/owner/S__21241893.jpg"
+                    alt="オーナーシェフ 星 翔"
+                    className={styles.ownerFixedImg}
+                  />
+                </div>
+                <div className={styles.ownerImageSliderWrap}>
+                  <AboutImageSlider
+                    slides={[
+                      { src: '/images/owner/S__21209149.jpg', alt: 'オーナーシェフ 星 翔' },
+                      { src: '/images/owner/S__21209151.jpg', alt: 'オーナーシェフ 星 翔' },
+                      { src: '/images/owner/S__21241892.jpg', alt: 'オーナーシェフ 星 翔' },
+                    ]}
+                  />
+                </div>
+              </div>
             </div>
             <div className={styles.messageContent}>
               <h2 className={styles.role}>オーナーシェフ 星 翔</h2>

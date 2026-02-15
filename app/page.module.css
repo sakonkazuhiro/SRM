@@ -63,7 +63,8 @@
 .noticeList {
   max-width: 800px;
   margin: 0 auto;
-  overflow: visible;
+  max-height: 420px;
+  overflow-y: auto;
 }
 
 .about {
@@ -318,7 +319,8 @@
 .hoursLabel {
   display: inline-block;
   min-width: 5.5em;
-  text-align: right;
+  text-align: left;
+  font-weight: bold;
 }
 
 .hoursColon {
