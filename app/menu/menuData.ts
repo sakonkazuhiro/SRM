@@ -116,10 +116,10 @@ export function sectionToDisplayItems(section: MenuSection): DisplayItem[] {
   return result
 }
 
-/** サンプル：国産和牛ミスジステーキ（100g/200g/300g/450g）。同じ形式で他メニューを追加可能 */
+/** サンプル：国産黒毛和牛A5ランク ミスジステーキ（100g/200g/300g/450g）。同じ形式で他メニューを追加可能 */
 export const menuSectionsSample: MenuSection[] = [
   {
-    sectionTitle: '国産和牛ミスジステーキ',
+    sectionTitle: '国産黒毛和牛A5ランク ミスジステーキ',
     sectionNotes: {
       type: 'block',
       lines: [
@@ -130,7 +130,7 @@ export const menuSectionsSample: MenuSection[] = [
     },
     items: [
       {
-        name: '国産和牛ミスジステーキ',
+        name: '国産黒毛和牛A5ランク ミスジステーキ',
         nameEn: 'Japanese Beef Misuji Steak',
         imagePath: '/images/menu/main/main/26-01-31_122.jpg',
         options: ['ガーリック', '甘辛鉄板', '刻みわさび醤油', 'ゆずこしょう'],
@@ -187,12 +187,6 @@ export const HAMBURGER_SAUCE_IMAGES: string[] = [
   '/images/menu/main/main/26-02-02_073_2.jpg', /* トマトソース */
   '/images/menu/main/main/26-02-02_149.jpg',   /* ホワイトチーズ */
   '/images/menu/main/main/26-02-02_050.jpg',   /* 大根おろしポン酢 */
-]
-
-/** ダッチベビー：スライド用画像（lunsh 配下） */
-export const DUTCH_BABY_IMAGES: string[] = [
-  '/images/menu/lunsh/lunsh/26-01-31_246.jpg',
-  '/images/menu/lunsh/lunsh/26-01-31_247.jpg',
 ]
 
 /** ミニパフェ：スライド用画像（lunsh 配下） */

@@ -34,10 +34,30 @@
   background-color: #f9f9f9;
 }
 
+.categorySectionHeader {
+  position: relative;
+}
+
 .categoryTitle {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: #333;
+}
+
+/* ステーキ題名：PCは1行、スマホは2行（2行目インデント） */
+.steakTitleLine1,
+.steakTitleLine2 {
+  display: inline;
+}
+
+/* ごはん注意：題名の上に表示・かぶらない・大きめ太字 */
+.riceNote {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  font-weight: 700;
+  color: #c41e3a;
+  text-align: right;
 }
 
 .categoryNotes {
@@ -309,15 +329,38 @@
     margin-bottom: 1rem;
   }
 
+  .steakTitleLine1,
+  .steakTitleLine2 {
+    display: block;
+    text-align: center;
+  }
+  .steakTitleLine2 {
+    margin-top: 0.25em;
+  }
+
+  .categorySectionHeader {
+    text-align: center;
+  }
+
+  .riceNote {
+    text-align: center;
+  }
+
   .categoryNotes {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
   }
 
+  .categoryNoteLeft,
   .categoryNoteRight {
-    align-self: flex-end;
+    text-align: left;
+    align-self: center;
+  }
+
+  .steakNoteBlock {
+    text-align: left;
   }
 
   .menuGrid {

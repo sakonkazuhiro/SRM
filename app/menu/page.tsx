@@ -7,7 +7,6 @@ import {
   sectionToDisplayItems,
   footerNotes,
   HAMBURGER_SAUCE_IMAGES,
-  DUTCH_BABY_IMAGES,
   MINI_PARFAIT_IMAGES,
   RED_WINE_BOTTLE_IMAGES,
   WHITE_WINE_BOTTLE_IMAGES,
@@ -63,7 +62,7 @@ type RenderSection = {
 }
 
 /** スマホで1画像+4g+税抜税込にまとめるステーキセクション（PCは4カードのまま） */
-const STEAK_SECTION_TITLES = ['国産和牛ミスジステーキ', '国産和牛ランプステーキ', '国産黒毛和牛サーロインステーキ'] as const
+const STEAK_SECTION_TITLES = ['国産黒毛和牛A5ランク ミスジステーキ', '国産黒毛和牛A5ランク ランプステーキ', '国産黒毛和牛A5ランク サーロインステーキ'] as const
 function isSteakSection(section: RenderSection): boolean {
   return STEAK_SECTION_TITLES.includes(section.sectionTitle as (typeof STEAK_SECTION_TITLES)[number]) && section.displayItems.length === 4
 }
@@ -78,9 +77,9 @@ function oldCategoryToRenderSection(cat: MenuCategory): RenderSection {
   let sectionNotes: SectionNotes | undefined
   if (hasSauceItems) {
     if (
-      cat.category === '国産黒毛和牛サーロインステーキ' ||
-      cat.category === '国産和牛ミスジステーキ' ||
-      cat.category === '国産和牛ランプステーキ'
+      cat.category === '国産黒毛和牛A5ランク サーロインステーキ' ||
+      cat.category === '国産黒毛和牛A5ランク ミスジステーキ' ||
+      cat.category === '国産黒毛和牛A5ランク ランプステーキ'
     ) {
       sectionNotes = {
         type: 'block',
@@ -147,13 +146,13 @@ export default function Menu() {
 
   // メニュー名を適切に改行して表示する関数
   const formatMenuName = (name: string) => {
-    // 国産黒毛和牛サーロインステーキのパターン
-    if (name.includes('国産黒毛和牛サーロインステーキ')) {
-      const match = name.match(/^国産黒毛和牛サーロインステーキ (.+)$/)
+    // 国産黒毛和牛A5ランク サーロインステーキのパターン
+    if (name.includes('国産黒毛和牛A5ランク サーロインステーキ')) {
+      const match = name.match(/^国産黒毛和牛A5ランク サーロインステーキ (.+)$/)
       if (match) {
         return (
           <>
-            国産黒毛和牛
+            国産黒毛和牛A5ランク
             <br />
             <b style={{ display: 'block', textAlign: 'center' }}>サーロインステーキ　{match[1]}</b>
           </>
@@ -221,8 +220,8 @@ export default function Menu() {
         </>
       )
     }
-    // 国産和牛ミスジステーキとランプステーキのパターン（小画面でも切れないよう折り返し可）
-    if (name.includes('国産和牛ミスジステーキ') || name.includes('国産和牛ランプステーキ')) {
+    // 国産黒毛和牛A5ランク ミスジ・ランプステーキのパターン（小画面でも切れないよう折り返し可）
+    if (name.includes('国産黒毛和牛A5ランク ミスジステーキ') || name.includes('国産黒毛和牛A5ランク ランプステーキ')) {
       return <b style={{ overflowWrap: 'break-word', wordBreak: 'keep-all' }}>{name}</b>
     }
     // 味噌汁のパターン（中央揃え、太文字）
@@ -265,20 +264,6 @@ export default function Menu() {
     if (name.includes('イカカラ（マヨ・レモン付き）')) {
       return <b style={{ whiteSpace: 'nowrap' }}>{name}</b>
     }
-    // エビのケイジャンスパイスフライのパターン
-    if (name.includes('エビのケイジャンスパイスフライ')) {
-      return (
-        <>
-          エビの
-          <br />
-          <b style={{ display: 'block', textAlign: 'center' }}>ケイジャンスパイスフライ</b>
-        </>
-      )
-    }
-    // 洋風ちくわのチーズ揚げのパターン（中央揃え）
-    if (name.includes('洋風ちくわのチーズ揚げ')) {
-      return <b style={{ display: 'block', textAlign: 'center' }}>{name}</b>
-    }
     // チェダーチーズのスティックフライのパターン
     if (name.includes('チェダーチーズのスティックフライ')) {
       return (
@@ -313,16 +298,6 @@ export default function Menu() {
         </>
       )
     }
-    // キャベツマリネ ジンジャードレッシングのパターン（2行目を右寄せ・太文字）
-    if (name.includes('キャベツマリネ ジンジャードレッシング')) {
-      return (
-        <>
-          キャベツマリネ
-          <br />
-          <b style={{ display: 'block', textAlign: 'center' }}>ジンジャードレッシング</b>
-        </>
-      )
-    }
     // 本日のメリメロカルパッチョ (3種)のパターン（2行目を右寄せ）
     if (name.includes('本日のメリメロカルパッチョ (3種)')) {
       return (
@@ -333,33 +308,10 @@ export default function Menu() {
         </>
       )
     }
-    // ビックソーセージ2本(マッシュポテト・粒マスタード)のパターン（1行目中央揃え、2行目1列に）
-    if (name.includes('ビックソーセージ2本(マッシュポテト・粒マスタード)')) {
-      return (
-        <>
-          <b style={{ display: 'block', textAlign: 'center' }}>ビックソーセージ2本</b>
-          <b style={{ whiteSpace: 'nowrap' }}>(マッシュポテト・粒マスタード)</b>
-        </>
-      )
-    }
-    // ブラッターチーズとシャインマスカットのカプレーゼ(白ワインとライムジュレ)のパターン（2行目を中央揃え）
-    if (name.includes('ブラッターチーズとシャインマスカットのカプレーゼ(白ワインとライムジュレ)')) {
-      return (
-        <>
-          ブラッターチーズと
-          <br />
-          <b style={{ display: 'block', textAlign: 'center' }}>シャインマスカットの</b>
-          <b style={{ display: 'block', textAlign: 'center' }}>カプレーゼ</b>
-          <b style={{ display: 'block', textAlign: 'center' }}>(白ワインとライムジュレ)</b>
-        </>
-      )
-    }
     // メニューを中央揃えに
     if (name === '茄子のニンニクソース' || 
         name === 'ナスとトマトのチーズ焼き' || 
         name === '一口ミニステーキ' || 
-        name === '生ハム' || 
-        name === '2種チーズ盛り合わせ' ||
         name === '鳥ささみのチーズピンク揚げ' ||
         name === '赤いタルタルのチキン南蛮' ||
         name === '大エビフライ (3本)' ||
@@ -368,7 +320,6 @@ export default function Menu() {
         name === 'たこわさのポテトサラダ' ||
         name === '半熟卵のポテトサラダ' ||
         name === '温玉のせシーザーサラダ' ||
-        name === '3種のチーズサラダ（サウザンドレッシング）' ||
         name === 'ライス 小 180g' ||
         name === 'ライス 中 220g' ||
         name === 'ライス 大 300g' ||
@@ -404,17 +355,6 @@ export default function Menu() {
         </>
       )
     }
-    // 3種のキノコとしらすのアヒージョ (厚切りバケット4個)のパターン
-    if (name.includes('3種のキノコとしらすのアヒージョ (厚切りバケット4個)')) {
-      return (
-        <>
-          3種のキノコと
-          <br />
-          <b style={{ display: 'block', textAlign: 'center' }}>しらすのアヒージョ</b>
-          <b style={{ display: 'block', textAlign: 'center' }}>(厚切りバケット4個)</b>
-        </>
-      )
-    }
     // カマンベールとプチトマトのアヒージョ (厚切りバケット4個)のパターン
     if (name.includes('カマンベールとプチトマトのアヒージョ (厚切りバケット4個)')) {
       return (
@@ -426,28 +366,9 @@ export default function Menu() {
         </>
       )
     }
-    // 濃厚じゃがいものクリームニョッキのパターン
-    if (name.includes('濃厚じゃがいものクリームニョッキ')) {
-      return (
-        <>
-          濃厚じゃがいもの
-          <br />
-          <b style={{ display: 'block', textAlign: 'center' }}>クリームニョッキ</b>
-        </>
-      )
-    }
     // 【期間限定】カキフライ (6個)のパターン（1行で表示）
     if (name.includes('【期間限定】カキフライ (6個)')) {
       return <b style={{ whiteSpace: 'nowrap' }}>{name}</b>
-    }
-    // たっぷりしらすのペペロンチーノ（昆布茶仕立て）のパターン（1行目・2行目を中央揃え）
-    if (name.includes('たっぷりしらすのペペロンチーノ（昆布茶仕立て）')) {
-      return (
-        <>
-          <b style={{ display: 'block', whiteSpace: 'nowrap', textAlign: 'center' }}>たっぷりしらすのペペロンチーノ</b>
-          <b style={{ display: 'block', textAlign: 'center' }}>（昆布茶仕立て）</b>
-        </>
-      )
     }
     // バジル香るジェノベーゼパスタのパターン（1行で表示）
     if (name.includes('バジル香るジェノベーゼパスタ')) {
@@ -459,17 +380,6 @@ export default function Menu() {
         <>
           <b style={{ display: 'block', whiteSpace: 'nowrap', textAlign: 'center' }}>サーモンとアボカドのポキサラダ</b>
           <b style={{ display: 'block', textAlign: 'center' }}>（ポキドレッシング）</b>
-        </>
-      )
-    }
-    // ダッチベビー（ベリベリストロベリー or チョコチョコチョコ + ホイップクリーム・バニラ）のパターン
-    if (name.includes('ダッチベビー（ベリベリストロベリー or チョコチョコチョコ + ホイップクリーム・バニラ）')) {
-      return (
-        <>
-          <b style={{ display: 'block', textAlign: 'center' }}>ダッチベビー</b>
-          <b style={{ display: 'block', textAlign: 'center' }}>（ベリベリストロベリー or</b>
-          <b style={{ display: 'block', textAlign: 'center' }}>チョコチョコチョコ +</b>
-          <b style={{ display: 'block', textAlign: 'center' }}>ホイップクリーム・バニラ）</b>
         </>
       )
     }
@@ -488,12 +398,9 @@ export default function Menu() {
         </>
       )
     }
-    // 自家製すじカレー・野菜の旨みキーマカレー（センター揃え）
+    // 自家製すじカレー（センター揃え）
     if (name === '自家製すじカレー') {
       return <b style={{ display: 'block', textAlign: 'center' }}>自家製すじカレー</b>
-    }
-    if (name === '野菜の旨みキーマカレー') {
-      return <b style={{ display: 'block', textAlign: 'center' }}>野菜の旨みキーマカレー</b>
     }
     // ベーコンと卵のクリームリゾットのパターン
     if (name === 'ベーコンと卵のクリームリゾット') {
@@ -536,31 +443,31 @@ export default function Menu() {
   const menusByTab: Record<TabKey, { label: string; categories: MenuCategory[] }> = useMemo(() => {
     const main: MenuCategory[] = [
       {
-        category: '国産和牛ランプステーキ',
+        category: '国産黒毛和牛A5ランク ランプステーキ',
         items: [
           {
-            name: '国産和牛ランプステーキ 100g',
+            name: '国産黒毛和牛A5ランク ランプステーキ 100g',
             price: '1,650円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
-            name: '国産和牛ランプステーキ 200g',
+            name: '国産黒毛和牛A5ランク ランプステーキ 200g',
             price: '3,300円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
-            name: '国産和牛ランプステーキ 300g',
+            name: '国産黒毛和牛A5ランク ランプステーキ 300g',
             price: '4,950円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
-            name: '国産和牛ランプステーキ 450g',
+            name: '国産黒毛和牛A5ランク ランプステーキ 450g',
             price: '7,425円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg',
@@ -569,31 +476,31 @@ export default function Menu() {
         ],
       },
       {
-        category: '国産黒毛和牛サーロインステーキ',
+        category: '国産黒毛和牛A5ランク サーロインステーキ',
         items: [
           {
-            name: '国産黒毛和牛サーロインステーキ 100g',
+            name: '国産黒毛和牛A5ランク サーロインステーキ 100g',
             price: '1,980円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-31_115_2.jpg',
             description: 'Japanese Black Beef Sirloin Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
-            name: '国産黒毛和牛サーロインステーキ 200g',
+            name: '国産黒毛和牛A5ランク サーロインステーキ 200g',
             price: '3,960円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-31_115_2.jpg',
             description: 'Japanese Black Beef Sirloin Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
-            name: '国産黒毛和牛サーロインステーキ 300g',
+            name: '国産黒毛和牛A5ランク サーロインステーキ 300g',
             price: '5,940円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-31_115_2.jpg',
             description: 'Japanese Black Beef Sirloin Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
-            name: '国産黒毛和牛サーロインステーキ 450g',
+            name: '国産黒毛和牛A5ランク サーロインステーキ 450g',
             price: '8,910円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-31_115_2.jpg',
@@ -647,8 +554,6 @@ export default function Menu() {
             // videoSrc: '/videos/karaage.mp4'
           },
           { name: 'イカカラ（マヨ・レモン付き）', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/26-01-31_144.jpg', description: 'Squid Karaage (Mayo & Lemon)' },
-          { name: 'エビのケイジャンスパイスフライ', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/26-01-31_196.jpg', description: 'Cajun Spice Fried Shrimp' },
-          { name: '洋風ちくわのチーズ揚げ', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/846C1112-B8C2-46F1-960F-E725AABF3C23.jpg', description: 'Western-style Chikuwa Cheese Fry' },
           { name: 'チェダーチーズのスティックフライ', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/26-01-31_139.jpg', description: 'Cheddar Cheese Stick Fry' },
           { name: 'アボカド＆クリームチーズのスティックフライ', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/26-01-31_134.jpg', description: 'Avocado & Cream Cheese Stick Fry' },
           { name: 'ゴロゴロ野菜のラタトゥーユ', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/26BF04BC-73FB-4B53-B45E-CB1853229378.jpg', description: 'Chunky Vegetable Ratatouille' },
@@ -658,30 +563,18 @@ export default function Menu() {
           { name: '茄子のニンニクソース', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/26-01-31_182.jpg', description: 'Eggplant with Garlic Sauce' },
           { name: 'ナスとトマトのチーズ焼き', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/26-01-31_192.jpg', description: 'Eggplant & Tomato Cheese Bake' },
           { name: '一口ミニステーキ', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/5383D8D2-3703-4E74-BB30-8C133D7437BA.jpg', description: 'Bite-sized Mini Steak' },
-          { name: '生ハム', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/26-01-31_158.jpg', description: 'Prosciutto' },
-          { name: '2種チーズ盛り合わせ', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/26-01-31_155.jpg', description: 'Two Cheese Platter' },
           { name: 'エビのアヒージョ（バケット4枚）', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/26-01-31_186.jpg', description: 'Shrimp Ajillo (4 Slices Baguette)' },
           { name: 'チョリソー3本 粒マスタード添え', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/35D1A717-44E3-427C-9302-AA0B92737426.jpg', description: '3 Chorizo (with Grain Mustard)' },
-          { name: 'キャベツマリネ ジンジャードレッシング', price: '550円', image: 'おつまみ', imagePath: '/images/menu/lunsh/lunsh/26-01-31_202.jpg', description: 'Cabbage Marinade with Ginger Dressing' },
-        ],
+          ],
       },
       {
         category: '一品リッチメニュー / Chef\'sSpecial & Ajillo',
         items: [
           { name: '本日のメリメロカルパッチョ (3種)', price: '1,650円', image: '一品', imagePath: '/images/menu/lunsh/lunsh/26-01-30_131_2.jpg', description: 'Today\'s Carpaccio (3 types)' },
-          { name: 'ブラッターチーズとシャインマスカットのカプレーゼ(白ワインとライムジュレ)', price: '1,650円', image: '一品', imagePath: '/images/menu/lunsh/lunsh/26-01-30_142.jpg', description: 'Burrata & Shine Muscat Caprese (White Wine & Lime Jus)' },
-          { name: 'ビックソーセージ2本(マッシュポテト・粒マスタード)', price: '1,485円', image: '一品', imagePath: '/images/menu/lunsh/lunsh/26-01-30_168.jpg', description: 'Big Sausage 2 (Mash Potato & Grain Mustard)' },
           { name: '海鮮アヒージョ (厚切りバケット4個)', price: '1,078円', image: '一品', imagePath: '/images/menu/lunsh/lunsh/26-01-30_191.jpg', description: 'Seafood Ajillo (4 Thick Baguette)' },
-        ],
-      },
-      {
-        category: '一品メニュー',
-        items: [
-          { name: '3種のキノコとしらすのアヒージョ (厚切りバケット4個)', price: '968円', image: '一品', imagePath: '/images/menu/lunsh/lunsh/26-01-30_189.jpg', description: '3 Mushroom & Shirasu Ajillo (4 Thick Baguette)' },
-          { name: 'カマンベールとプチトマトのアヒージョ (厚切りバケット4個)', price: '968円', image: '一品', imagePath: '/images/menu/lunsh/lunsh/26-01-30_195.jpg', description: 'Camembert & Cherry Tomato Ajillo (4 Thick Baguette)' },
+          { name: 'カマンベールとプチトマトのアヒージョ (厚切りバケット4個)', price: '1,078円', image: '一品', imagePath: '/images/menu/lunsh/lunsh/26-01-30_195.jpg', description: 'Camembert & Cherry Tomato Ajillo (4 Thick Baguette)' },
           { name: '鳥ささみのチーズピンク揚げ', price: '1,078円', image: '一品', imagePath: '/images/menu/main/main/26-01-31_051.jpg', description: 'Chicken Tender Cheese Fry' },
           { name: '赤いタルタルのチキン南蛮', price: '1,078円', image: '一品', imagePath: '/images/menu/main/main/26-01-31_031.jpg', description: 'Chicken Nanban with Red Tartar' },
-          { name: '濃厚じゃがいものクリームニョッキ', price: '748円', image: '一品', imagePath: '/images/menu/lunsh/lunsh/26-01-30_182.jpg', description: 'Creamy Potato Gnocchi' },
           { name: '大エビフライ (3本)', price: '1,628円', image: '一品', imagePath: '/images/menu/main/main/26-01-30_156.jpg', description: 'Large Fried Shrimp (3 pcs)' },
           { name: '【期間限定】カキフライ (6個)', price: '1,738円', image: '一品', imagePath: '/images/menu/main/main/26-01-30_164.jpg', description: '[Limited] Fried Oyster (6 pcs)' },
         ],
@@ -692,7 +585,6 @@ export default function Menu() {
           { name: '昔ながらのナポリタン', price: '1,078円', image: 'パスタ', imagePath: '/images/menu/main/main/26-01-29_069_2.jpg', description: 'Classic Napolitana' },
           { name: '濃厚カルボナーラ', price: '1,408円', image: 'パスタ', imagePath: '/images/menu/main/main/26-01-31_096.jpg', description: 'Rich Carbonara' },
           { name: 'バジル香るジェノベーゼパスタ', price: '1,408円', image: 'パスタ', imagePath: '/images/menu/main/main/26-01-31_077.jpg', description: 'Basil Pesto Pasta' },
-          { name: 'たっぷりしらすのペペロンチーノ（昆布茶仕立て）', price: '1,408円', image: 'パスタ', imagePath: '/images/menu/main/main/26-01-31_056.jpg', description: 'Shirasu Peperoncino (Kombu Tea Style)' },
         ],
       },
       {
@@ -701,7 +593,6 @@ export default function Menu() {
           { name: 'たこわさのポテトサラダ', price: '605円', image: 'サラダ', imagePath: '/images/menu/lunsh/lunsh/26-01-30_039.jpg', description: 'Octopus & Wasabi Potato Salad' },
           { name: '半熟卵のポテトサラダ', price: '605円', image: 'サラダ', imagePath: '/images/menu/lunsh/lunsh/26-01-30_043.jpg', description: 'Soft-boiled Egg Potato Salad' },
           { name: '温玉のせシーザーサラダ', price: '1,078円', image: 'サラダ', imagePath: '/images/menu/lunsh/lunsh/26-01-30_108.jpg', description: 'Caesar Salad with Soft Boiled Egg\n※温玉別皿対応可' },
-          { name: '3種のチーズサラダ（サウザンドレッシング）', price: '1,188円', image: 'サラダ', imagePath: '/images/menu/lunsh/lunsh/26-01-30_096.jpg', description: '3 Cheese Salad (Thousand Island)' },
           { name: 'サーモンとアボカドのポキサラダ（ポキドレッシング）', price: '1,320円', image: 'サラダ', imagePath: '/images/menu/lunsh/lunsh/26-01-30_125.jpg', description: 'Salmon & Avocado Poke Salad (Poke Dressing)' },
         ],
       },
@@ -709,7 +600,6 @@ export default function Menu() {
         category: 'カレー＆リゾット',
         items: [
           { name: '自家製すじカレー', price: '1,375円', image: 'カレー', imagePath: '/images/menu/main/main/26-01-31_239.jpg', description: 'Homemade Beef Tendon Curry' },
-          { name: '野菜の旨みキーマカレー', price: '1,265円', image: 'カレー', imagePath: '/images/menu/main/main/26-01-31_230.jpg', description: 'Vegetable Keema Curry' },
           { name: 'ベーコンと卵のクリームリゾット', price: '1,210円', image: 'カレー', imagePath: '/images/menu/main/main/26-01-31_223.jpg', description: 'Cream Risotto with Bacon & Egg' },
         ],
       },
@@ -730,7 +620,6 @@ export default function Menu() {
           { name: 'バニラアイス', price: '330円', image: 'デザート', imagePath: '/images/menu/lunsh/lunsh/26-01-31_256.jpg', description: 'Vanilla Ice Cream' },
           { name: '季節のシャーベット', price: '330円', image: 'デザート', imagePath: '/images/menu/lunsh/lunsh/26-01-31_253.jpg', description: 'Seasonal Sherbet' },
           { name: '店長おすすめのコーヒーゼリー', price: '330円', image: 'デザート', imagePath: '/images/menu/lunsh/lunsh/26-01-31_282.jpg', description: 'Manager\'s Recommended Coffee Jelly' },
-          { name: 'ダッチベビー（ベリベリストロベリー or チョコチョコチョコ + ホイップクリーム・バニラ）', price: '1,408円', image: 'デザート', description: 'Dutch Baby (Berry Blister Berry or Choco + Whipped Cream & Vanilla)' },
           { name: 'ミニパフェ（コーンフレーク・バニラ・ホイップ・ストロベリーソース or チョコソース）', price: '858円', image: 'デザート', description: 'Mini Parfait (Cornflake, Vanilla, Whipped Cream / Strawberry or Chocolate Sauce)' },
         ],
       },
@@ -764,30 +653,30 @@ export default function Menu() {
         ],
       },
       {
-        category: '国産和牛ミスジステーキ',
+        category: '国産黒毛和牛A5ランク ミスジステーキ',
         items: [
-          { name: '国産和牛ミスジステーキ 100g', price: '1,320円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ミスジステーキ 200g', price: '2,640円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ミスジステーキ 300g', price: '3,960円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ミスジステーキ 450g', price: '5,940円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ミスジステーキ 100g', price: '1,320円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ミスジステーキ 200g', price: '2,640円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ミスジステーキ 300g', price: '3,960円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ミスジステーキ 450g', price: '5,940円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
         ],
       },
       {
-        category: '国産和牛ランプステーキ',
+        category: '国産黒毛和牛A5ランク ランプステーキ',
         items: [
-          { name: '国産和牛ランプステーキ 100g', price: '1,650円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ランプステーキ 200g', price: '3,300円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ランプステーキ 300g', price: '4,950円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産和牛ランプステーキ 450g', price: '7,425円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ランプステーキ 100g', price: '1,650円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ランプステーキ 200g', price: '3,300円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ランプステーキ 300g', price: '4,950円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ランプステーキ 450g', price: '7,425円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
         ],
       },
       {
-        category: '国産黒毛和牛サーロインステーキ',
+        category: '国産黒毛和牛A5ランク サーロインステーキ',
         items: [
-          { name: '国産黒毛和牛サーロインステーキ 100g', price: '1,980円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産黒毛和牛サーロインステーキ 200g', price: '3,960円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産黒毛和牛サーロインステーキ 300g', price: '5,940円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産黒毛和牛サーロインステーキ 450g', price: '8,910円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク サーロインステーキ 100g', price: '1,980円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク サーロインステーキ 200g', price: '3,960円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク サーロインステーキ 300g', price: '5,940円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク サーロインステーキ 450g', price: '8,910円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_115_2.jpg', description: 'Japanese Black Beef Sirloin Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
         ],
       },
       {
@@ -805,14 +694,12 @@ export default function Menu() {
           { name: '昔ながらのナポリタン', price: '1,078円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-29_069_2.jpg', description: 'Classic Napolitana' },
           { name: '濃厚カルボナーラ', price: '1,408円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_096.jpg', description: 'Rich Carbonara' },
           { name: 'バジル香るジェノベーゼパスタ', price: '1,408円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_077.jpg', description: 'Basil Pesto Pasta' },
-          { name: 'たっぷりしらすのペペロンチーノ（昆布茶仕立て）', price: '1,408円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_056.jpg', description: 'Shirasu Peperoncino (Kombu Tea Style)' },
         ],
       },
       {
         category: 'カレー＆リゾット',
         items: [
           { name: '自家製すじカレー', price: '1,375円', image: 'カレー', imagePath: '/images/menu/main/main/26-01-31_239.jpg', description: 'Homemade Beef Tendon Curry' },
-          { name: '野菜の旨みキーマカレー', price: '1,265円', image: 'カレー', imagePath: '/images/menu/main/main/26-01-31_230.jpg', description: 'Vegetable Keema Curry' },
           { name: 'ベーコンと卵のクリームリゾット', price: '1,210円', image: 'カレー', imagePath: '/images/menu/main/main/26-01-31_223.jpg', description: 'Cream Risotto with Bacon & Egg' },
         ],
       },
@@ -875,6 +762,8 @@ export default function Menu() {
           { name: 'コークハイ', price: '748円', image: 'ウイスキー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_401.jpg', description: 'Coke High' },
           { name: 'ジンジャーハイボール', price: '748円', image: 'ウイスキー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_404.jpg', description: 'Ginger Highball' },
           { name: 'ホワイトボール', price: '770円', image: 'ウイスキー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_398.jpg', description: 'Whiteball' },
+          { name: '期間限定テキーラ 1800', price: '1,200円', image: 'ウイスキー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_357.jpg', description: 'Tequila 1800 (One Shot)' },
+          { name: '期間限定テキーラ パトロンシルバー', price: '1,500円', image: 'ウイスキー', imagePath: '/images/menu/alcohol/alcohol/26-01-30_374.jpg', description: 'Patrón Silver Tequila (One Shot)' },
         ],
       },
       {
@@ -985,7 +874,26 @@ export default function Menu() {
       {sectionsForRender.map((section, sectionIndex) => (
         <section key={sectionIndex} className={styles.categorySection}>
           <div className="container">
-            <h2 className={styles.categoryTitle}>{section.sectionTitle}</h2>
+            <div className={styles.categorySectionHeader}>
+              {((section.sectionTitle === '国産黒毛和牛A5ランク ミスジステーキ' && activeTab === 'main') || (section.sectionTitle === 'メイン' && activeTab === 'lunch')) && (
+                <p className={styles.riceNote}>
+                  {activeTab === 'main'
+                    ? '全メニューにライスは付きません。単品ライスをご注文下さい！'
+                    : '全メニューにライスは付きません セットメニューをお選び下さい!'}
+                </p>
+              )}
+              <h2 className={styles.categoryTitle}>
+                {STEAK_SECTION_TITLES.includes(section.sectionTitle as (typeof STEAK_SECTION_TITLES)[number]) ? (
+                  <>
+                    <span className={styles.steakTitleLine1}>{section.sectionTitle.split(' ')[0]}</span>
+                    {' '}
+                    <span className={styles.steakTitleLine2}>{section.sectionTitle.split(' ')[1]}</span>
+                  </>
+                ) : (
+                  section.sectionTitle
+                )}
+              </h2>
+            </div>
             <div className={styles.categoryNotes}>
               {section.sectionNotes?.type === 'block' ? (
                 <>
@@ -1050,7 +958,17 @@ export default function Menu() {
                         />
                       </div>
                       <div className={styles.menuContent}>
-                        <h3>{section.sectionTitle}</h3>
+                        <h3>
+                          {STEAK_SECTION_TITLES.includes(section.sectionTitle as (typeof STEAK_SECTION_TITLES)[number]) ? (
+                            <>
+                              <span className={styles.steakTitleLine1}>{section.sectionTitle.split(' ')[0]}</span>
+                              {' '}
+                              <span className={styles.steakTitleLine2}>{section.sectionTitle.split(' ')[1]}</span>
+                            </>
+                          ) : (
+                            section.sectionTitle
+                          )}
+                        </h3>
                         {section.displayItems[0]?.description != null && section.displayItems[0].description !== '' && (
                           <p className={styles.description} style={{ whiteSpace: 'pre-line' }}>
                             {section.displayItems[0].description}
@@ -1080,19 +998,12 @@ export default function Menu() {
               <div className={styles.menuGrid}>
                 {section.displayItems.map((item, itemIndex) => (
                   <div key={itemIndex} className={styles.menuItem}>
-                    <div className={`${styles.menuImage} ${item.name.includes('当店自慢の自家製ハンバーグ') || item.name.includes('ダッチベビー') || item.name.includes('ミニパフェ') || item.name === 'ボトルワイン（赤）' || item.name === 'ボトルワイン（白）' ? styles.menuImageHamburger : ''}`}>
+                    <div className={`${styles.menuImage} ${item.name.includes('当店自慢の自家製ハンバーグ') || item.name.includes('ミニパフェ') || item.name === 'ボトルワイン（赤）' || item.name === 'ボトルワイン（白）' ? styles.menuImageHamburger : ''}`}>
                       {item.name.includes('当店自慢の自家製ハンバーグ') && HAMBURGER_SAUCE_IMAGES.length > 0 ? (
                         <AboutImageSlider
                           slides={HAMBURGER_SAUCE_IMAGES.map((src, i) => ({
                             src,
                             alt: `当店自慢の自家製ハンバーグ（${['デミグラスソース', 'トマトソース', 'ホワイトチーズ', '大根おろしポン酢'][i] ?? `ソース${i + 1}`}）`,
-                          }))}
-                        />
-                      ) : item.name.includes('ダッチベビー') && DUTCH_BABY_IMAGES.length > 0 ? (
-                        <AboutImageSlider
-                          slides={DUTCH_BABY_IMAGES.map((src, i) => ({
-                            src,
-                            alt: `ダッチベビー（${i + 1}）`,
                           }))}
                         />
                       ) : item.name.includes('ミニパフェ') && MINI_PARFAIT_IMAGES.length > 0 ? (

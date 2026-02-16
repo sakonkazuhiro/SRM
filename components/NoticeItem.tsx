@@ -60,7 +60,7 @@ export default function NoticeItem({ notice }: NoticeItemProps) {
             </span><br />
             <span className={styles.hoursLine}>
               <span className={styles.hoursLabel}>ディナー</span><span className={styles.hoursColon}>：</span>
-              <strong className={styles.hoursNum}>17:00～24:00</strong>（L.O.<strong className={styles.hoursNum}>23:00</strong>）
+              <strong className={styles.hoursNum}>17:30～23:00</strong>（L.O.<strong className={styles.hoursNum}>22:00</strong>）
             </span><br />
             <span className={styles.hoursLine}>
               <span className={styles.hoursLabel}>定休日</span><span className={styles.hoursColon}>：</span>

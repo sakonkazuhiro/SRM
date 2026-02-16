@@ -81,28 +81,28 @@ export default function Home() {
             </div>
             <div className={styles.menuCard}>
               <div className={styles.menuImage}>
-                <ClickableImage src="/images/menu/main/main/26-01-31_122.jpg" alt="国産和牛ミスジ" className={styles.menuCardImage} loading="lazy" decoding="async" />
+                <ClickableImage src="/images/menu/main/main/26-01-31_122.jpg" alt="国産黒毛和牛A5ランク ミスジ" className={styles.menuCardImage} loading="lazy" decoding="async" />
               </div>
               <div className={styles.menuInfo}>
-                <h3>国産和牛ミスジ</h3>
+                <h3>国産黒毛和牛A5ランク ミスジ</h3>
                 <p className="breakAfterPeriod">{breakAfterPeriod('国産和牛の赤身が味わえる、あっさりとしたステーキです。')}</p>
               </div>
             </div>
             <div className={styles.menuCard}>
               <div className={styles.menuImage}>
-                <ClickableImage src="/images/menu/main/main/26-01-30_188_2%20(1).jpg" alt="国産和牛ランプ" className={styles.menuCardImage} loading="lazy" decoding="async" />
+                <ClickableImage src="/images/menu/main/main/26-01-30_188_2%20(1).jpg" alt="国産黒毛和牛A5ランク ランプ" className={styles.menuCardImage} loading="lazy" decoding="async" />
               </div>
               <div className={styles.menuInfo}>
-                <h3>国産和牛ランプ</h3>
+                <h3>国産黒毛和牛A5ランク ランプ</h3>
                 <p className="breakAfterPeriod">{breakAfterPeriod('国産和牛のランプ。コクのある味わいのステーキです。')}</p>
               </div>
             </div>
             <div className={styles.menuCard}>
               <div className={styles.menuImage}>
-                <ClickableImage src="/images/menu/main/main/26-01-31_115_2.jpg" alt="国産黒毛和牛サーロイン" className={styles.menuCardImage} loading="lazy" decoding="async" />
+                <ClickableImage src="/images/menu/main/main/26-01-31_115_2.jpg" alt="国産黒毛和牛A5ランク サーロイン" className={styles.menuCardImage} loading="lazy" decoding="async" />
               </div>
               <div className={styles.menuInfo}>
-                <h3>国産黒毛和牛サーロイン</h3>
+                <h3>国産黒毛和牛A5ランク サーロイン</h3>
                 <p className="breakAfterPeriod">{breakAfterPeriod('国産黒毛和牛のサーロイン。とろける食感が自慢のステーキです。')}</p>
               </div>
             </div>
@@ -180,8 +180,8 @@ export default function Home() {
                   </span><br />
                   <span className={styles.hoursLine}>
                     <span className={styles.hoursLabel}>ディナー</span><span className={styles.hoursColon}>：</span>
-                    <strong className={styles.hoursNum}>17:00～24:00</strong>
-                    <span className={styles.hoursLastOrder}>（L.O.<strong className={styles.hoursNum}>23:00</strong>）</span>
+                    <strong className={styles.hoursNum}>17:30～23:00</strong>
+                    <span className={styles.hoursLastOrder}>（L.O.<strong className={styles.hoursNum}>22:00</strong>）</span>
                   </span>
                 </p>
                 <p className={styles.addressBlock}>
