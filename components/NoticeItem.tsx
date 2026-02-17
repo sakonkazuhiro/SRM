@@ -37,18 +37,20 @@ export default function NoticeItem({ notice }: NoticeItemProps) {
 
   return (
     <div className={styles.noticeItem}>
-      <div className={styles.noticeImage}>
-        {notice.image ? (
-          <ClickableImage
-            src={notice.image}
-            alt={notice.imageAlt ?? ''}
-            loading="lazy"
-            decoding="async"
-          />
-        ) : (
-          <span style={{ color: '#999', fontSize: '0.9rem' }}>画像なし</span>
-        )}
-      </div>
+      {!notice.hideImage && (
+        <div className={styles.noticeImage}>
+          {notice.image ? (
+            <ClickableImage
+              src={notice.image}
+              alt={notice.imageAlt ?? ''}
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <span style={{ color: '#999', fontSize: '0.9rem' }}>画像なし</span>
+          )}
+        </div>
+      )}
       <div className={styles.noticeContent}>
         <span className={styles.date}>{notice.date}</span>
         {notice.type === 'hours' ? (

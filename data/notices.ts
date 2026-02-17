@@ -5,6 +5,8 @@ export type NoticeItem = {
   image?: string
   imageAlt?: string
   type: NoticeType
+  /** 画像エリアを非表示にしたい場合 */
+  hideImage?: boolean
   /** type が 'text' のときの本文 */
   content?: string
   /** type が 'imageSlider' のときのタイトル */
@@ -15,6 +17,30 @@ export type NoticeItem = {
 
 /** お知らせ一覧（ホーム・お知らせページで共通利用） */
 export const notices: NoticeItem[] = [
+  {
+    date: '2026.2.18',
+    type: 'imageSlider',
+    title: 'メニュー・価格改定後の新メニュー表',
+    images: [
+      '/images/news/messageImage_1771341456972.jpg',
+      '/images/news/messageImage_1771341459011.jpg',
+      '/images/news/messageImage_1771341493933.jpg',
+      '/images/news/messageImage_1771341506476.jpg',
+      '/images/news/messageImage_1771341515753.jpg',
+      '/images/news/messageImage_1771341527147.jpg',
+      '/images/news/messageImage_1771341536355.jpg',
+      '/images/news/messageImage_1771341546888.jpg',
+      '/images/news/messageImage_1771341555733.jpg',
+      '/images/news/messageImage_1771341563697.jpg',
+    ],
+  },
+  {
+    date: '2026.2.18',
+    type: 'text',
+    hideImage: true,
+    content:
+      'いつもホシのキッチンをご利用いただきありがとうございます。\n誠に心苦しいお知らせではございますが、\n2026年2月18日（水）より\n一部メニューの価格を改定させていただきます。\nあわせて、\nより良い料理をご提供するため、メニュー数を一部見直し・絞らせていただきます。\n原材料費の高騰が続く中でも、品質や味を落とすことなく、こだわりの食材を使用した料理を今後も心を込めてご提供してまいります。\nご理解いただけますと幸いです。\n今後ともよろしくお願いいたします。',
+  },
   {
     date: '2026.2.16',
     image: '/images/news/4C17576E-CF3D-4CDA-8322-2FEC36CC7FF8.png',

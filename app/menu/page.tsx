@@ -447,28 +447,28 @@ export default function Menu() {
         items: [
           {
             name: '国産黒毛和牛A5ランク ランプステーキ 100g',
-            price: '1,650円',
+            price: '1,760円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産黒毛和牛A5ランク ランプステーキ 200g',
-            price: '3,300円',
+            price: '3,520円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産黒毛和牛A5ランク ランプステーキ 300g',
-            price: '4,950円',
+            price: '5,280円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
           },
           {
             name: '国産黒毛和牛A5ランク ランプステーキ 450g',
-            price: '7,425円',
+            price: '7,920円',
             image: 'ステーキ',
             imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg',
             description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう',
@@ -592,7 +592,7 @@ export default function Menu() {
         items: [
           { name: 'たこわさのポテトサラダ', price: '605円', image: 'サラダ', imagePath: '/images/menu/lunsh/lunsh/26-01-30_039.jpg', description: 'Octopus & Wasabi Potato Salad' },
           { name: '半熟卵のポテトサラダ', price: '605円', image: 'サラダ', imagePath: '/images/menu/lunsh/lunsh/26-01-30_043.jpg', description: 'Soft-boiled Egg Potato Salad' },
-          { name: '温玉のせシーザーサラダ', price: '1,078円', image: 'サラダ', imagePath: '/images/menu/lunsh/lunsh/26-01-30_108.jpg', description: 'Caesar Salad with Soft Boiled Egg\n※温玉別皿対応可' },
+          { name: '温玉のせシーザーサラダ', price: '1,078円', image: 'サラダ', imagePath: '/images/menu/lunsh/lunsh/26-01-30_108.jpg', description: 'Caesar Salad with Soft Boiled Egg\n※温玉別皿対応可\n※温玉無し 880円（税抜）' },
           { name: 'サーモンとアボカドのポキサラダ（ポキドレッシング）', price: '1,320円', image: 'サラダ', imagePath: '/images/menu/lunsh/lunsh/26-01-30_125.jpg', description: 'Salmon & Avocado Poke Salad (Poke Dressing)' },
         ],
       },
@@ -655,19 +655,19 @@ export default function Menu() {
       {
         category: '国産黒毛和牛A5ランク ミスジステーキ',
         items: [
-          { name: '国産黒毛和牛A5ランク ミスジステーキ 100g', price: '1,320円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産黒毛和牛A5ランク ミスジステーキ 200g', price: '2,640円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産黒毛和牛A5ランク ミスジステーキ 300g', price: '3,960円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産黒毛和牛A5ランク ミスジステーキ 450g', price: '5,940円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ミスジステーキ 100g', price: '1,540円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ミスジステーキ 200g', price: '3,080円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ミスジステーキ 300g', price: '4,620円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ミスジステーキ 450g', price: '6,930円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-31_122.jpg', description: 'Japanese Beef Misuji Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
         ],
       },
       {
         category: '国産黒毛和牛A5ランク ランプステーキ',
         items: [
-          { name: '国産黒毛和牛A5ランク ランプステーキ 100g', price: '1,650円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産黒毛和牛A5ランク ランプステーキ 200g', price: '3,300円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産黒毛和牛A5ランク ランプステーキ 300g', price: '4,950円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
-          { name: '国産黒毛和牛A5ランク ランプステーキ 450g', price: '7,425円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ランプステーキ 100g', price: '1,760円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 100g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ランプステーキ 200g', price: '3,520円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 200g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ランプステーキ 300g', price: '5,280円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 300g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
+          { name: '国産黒毛和牛A5ランク ランプステーキ 450g', price: '7,920円', image: 'ランチ', imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg', description: 'Japanese Beef Rump Steak 450g\nガーリック／甘辛鉄板／刻みわさび醤油／ゆずこしょう' },
         ],
       },
       {
@@ -1036,6 +1036,12 @@ export default function Menu() {
                       {item.description != null && item.description !== '' && (
                         <p className={styles.description} style={{ whiteSpace: 'pre-line', ...item.descriptionStyle }}>
                           {item.description}
+                        </p>
+                      )}
+                      {item.name === '温玉のせシーザーサラダ' && (
+                        <p className={styles.menuNote} style={{ textAlign: 'center' }}>
+                          ※温玉無し 880円（税抜）
+                          <span className={styles.price}>968円（税込）</span>
                         </p>
                       )}
                       {item.notes != null && item.notes.length > 0 && (
