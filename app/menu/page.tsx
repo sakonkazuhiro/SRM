@@ -383,11 +383,11 @@ export default function Menu() {
         </>
       )
     }
-    // ミニパフェ（コーンフレーク・バニラ・ホイップ・ストロベリーソース or チョコソース）のパターン
-    if (name.includes('ミニパフェ（コーンフレーク・バニラ・ホイップ・ストロベリーソース or チョコソース）')) {
+    // パフェ（コーンフレーク・バニラ・ホイップ・ストロベリーソース or チョコソース）のパターン
+    if (name.includes('パフェ（コーンフレーク・バニラ・ホイップ・ストロベリーソース or チョコソース）')) {
       return (
         <>
-          <b style={{ display: 'block', textAlign: 'center' }}>ミニパフェ</b>
+          <b style={{ display: 'block', textAlign: 'center' }}>パフェ</b>
           <div style={{ display: 'block', textAlign: 'center' }}>
             <div style={{ display: 'inline-block', textAlign: 'center' }}>
               <b style={{ display: 'block' }}>（コーンフレーク・バニラ・</b>
@@ -620,7 +620,7 @@ export default function Menu() {
           { name: 'バニラアイス', price: '330円', image: 'デザート', imagePath: '/images/menu/lunsh/lunsh/26-01-31_256.jpg', description: 'Vanilla Ice Cream' },
           { name: '季節のシャーベット', price: '330円', image: 'デザート', imagePath: '/images/menu/lunsh/lunsh/26-01-31_253.jpg', description: 'Seasonal Sherbet' },
           { name: '店長おすすめのコーヒーゼリー', price: '330円', image: 'デザート', imagePath: '/images/menu/lunsh/lunsh/26-01-31_282.jpg', description: 'Manager\'s Recommended Coffee Jelly' },
-          { name: 'ミニパフェ（コーンフレーク・バニラ・ホイップ・ストロベリーソース or チョコソース）', price: '858円', image: 'デザート', description: 'Mini Parfait (Cornflake, Vanilla, Whipped Cream / Strawberry or Chocolate Sauce)' },
+          { name: 'パフェ（コーンフレーク・バニラ・ホイップ・ストロベリーソース or チョコソース）', price: '858円', image: 'デザート', description: 'Parfait (Cornflake, Vanilla, Whipped Cream / Strawberry or Chocolate Sauce)' },
         ],
       },
     ]
@@ -998,7 +998,7 @@ export default function Menu() {
               <div className={styles.menuGrid}>
                 {section.displayItems.map((item, itemIndex) => (
                   <div key={itemIndex} className={styles.menuItem}>
-                    <div className={`${styles.menuImage} ${item.name.includes('当店自慢の自家製ハンバーグ') || item.name.includes('ミニパフェ') || item.name === 'ボトルワイン（赤）' || item.name === 'ボトルワイン（白）' ? styles.menuImageHamburger : ''}`}>
+                    <div className={`${styles.menuImage} ${item.name.includes('当店自慢の自家製ハンバーグ') || item.name.includes('パフェ（コーンフレーク') || item.name === 'ボトルワイン（赤）' || item.name === 'ボトルワイン（白）' ? styles.menuImageHamburger : ''}`}>
                       {item.name.includes('当店自慢の自家製ハンバーグ') && HAMBURGER_SAUCE_IMAGES.length > 0 ? (
                         <AboutImageSlider
                           slides={HAMBURGER_SAUCE_IMAGES.map((src, i) => ({
@@ -1006,11 +1006,11 @@ export default function Menu() {
                             alt: `当店自慢の自家製ハンバーグ（${['デミグラスソース', 'トマトソース', 'ホワイトチーズ', '大根おろしポン酢'][i] ?? `ソース${i + 1}`}）`,
                           }))}
                         />
-                      ) : item.name.includes('ミニパフェ') && MINI_PARFAIT_IMAGES.length > 0 ? (
+                      ) : item.name.includes('パフェ（コーンフレーク') && MINI_PARFAIT_IMAGES.length > 0 ? (
                         <AboutImageSlider
                           slides={MINI_PARFAIT_IMAGES.map((src, i) => ({
                             src,
-                            alt: `ミニパフェ（${i + 1}）`,
+                            alt: `パフェ（${i + 1}）`,
                           }))}
                         />
                       ) : item.name === 'ボトルワイン（赤）' && RED_WINE_BOTTLE_IMAGES.length > 0 ? (

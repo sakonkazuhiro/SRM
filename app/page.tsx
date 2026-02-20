@@ -193,8 +193,8 @@ export default function Home() {
                   <span className={styles.addressAccessLines}>
                     <span className={styles.addressStationLine}>日比谷線入谷駅3番出口より<span className={styles.nowrap}>徒歩約<strong className={styles.accessNum}>６</strong>分</span></span>
                     <span className={styles.addressStationLine}>JR線鶯谷駅より<span className={styles.nowrap}>徒歩約<strong className={styles.accessNum}>１０</strong>分</span></span>
-                    <span className={styles.addressStationLine}>つくばエクスプレス 浅草駅　<span className={styles.nowrap}>約<strong className={styles.accessNum}>１０</strong>分</span></span>
-                    <span className={styles.addressStationLine}>銀座線田原町駅から<span className={styles.nowrap}>徒歩約<strong className={styles.accessNum}>１５</strong>分</span></span>
+                    <span className={styles.addressStationLine}>つくばエクスプレス 浅草駅より<span className={styles.nowrap}>徒歩約<strong className={styles.accessNum}>１０</strong>分</span></span>
+                    <span className={styles.addressStationLine}>銀座線田原町駅より<span className={styles.nowrap}>徒歩約<strong className={styles.accessNum}>１５</strong>分</span></span>
                   </span>
                 </p>
                 <p className={styles.addressBlock}>

@@ -325,8 +325,11 @@
   }
 
   .categoryTitle {
-    font-size: 2rem;
+    font-size: 1.6rem;
     margin-bottom: 1rem;
+    text-align: center;
+    word-break: keep-all;
+    overflow-wrap: normal;
   }
 
   .steakTitleLine1,

@@ -189,7 +189,7 @@ export const HAMBURGER_SAUCE_IMAGES: string[] = [
   '/images/menu/main/main/26-02-02_050.jpg',   /* 大根おろしポン酢 */
 ]
 
-/** ミニパフェ：スライド用画像（lunsh 配下） */
+/** パフェ：スライド用画像（lunsh 配下） */
 export const MINI_PARFAIT_IMAGES: string[] = [
   '/images/menu/lunsh/lunsh/26-01-31_268.jpg',
   '/images/menu/lunsh/lunsh/26-01-31_271.jpg',
