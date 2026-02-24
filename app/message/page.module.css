@@ -126,6 +126,7 @@
   font-size: 1.05rem;
   line-height: 2.2;
   color: #444;
+  font-weight: bold;
 }
 
 .messageText p {

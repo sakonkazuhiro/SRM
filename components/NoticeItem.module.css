@@ -31,6 +31,7 @@
 
 .noticeContent {
   flex: 1;
+  font-weight: bold;
 }
 
 .date {
@@ -78,6 +79,7 @@
   color: #333;
   line-height: 1.8;
   margin-top: 0.5rem;
+  font-weight: bold;
 }
 
 /* お知らせ内・画像スライダー（ホシのキッチンについてと同じ1枚ずつスライド） */
