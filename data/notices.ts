@@ -11,12 +11,26 @@ export type NoticeItem = {
   content?: string
   /** type が 'imageSlider' のときのタイトル */
   title?: string
+  /** type が 'imageSlider' のときのタイトル下の補足文 */
+  subtitle?: string
   /** type が 'imageSlider' のときの画像URL配列（表示順） */
   images?: string[]
 }
 
 /** お知らせ一覧（ホーム・お知らせページで共通利用） */
 export const notices: NoticeItem[] = [
+  {
+    date: '2026.3.1',
+    type: 'imageSlider',
+    title: 'テイクアウトメニュー',
+    subtitle: 'メニューはこちらを検討しております',
+    images: [
+      '/images/news/teiku.1.png',
+      '/images/news/teiku.2.jpg',
+      '/images/news/teiku.3.jpg',
+      '/images/news/teiku.4.jpg',
+    ],
+  },
   {
     date: '2026.2.25',
     type: 'text',

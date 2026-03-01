@@ -30,6 +30,7 @@ export default function NoticeItem({ notice }: NoticeItemProps) {
         <div className={styles.noticeContent}>
           <span className={styles.date}>{notice.date}</span>
           {notice.title && <p className={styles.noticeTitle}>{notice.title}</p>}
+          {notice.subtitle && <p className={styles.noticeSubtitle}>{notice.subtitle}</p>}
         </div>
       </div>
     )
