@@ -131,6 +131,7 @@
 
 .reviewComment p {
   margin: 0;
+  white-space: pre-line;
 }
 
 @media (max-width: 768px) {

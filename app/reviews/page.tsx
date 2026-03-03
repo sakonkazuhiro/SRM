@@ -20,20 +20,34 @@ export default function Reviews() {
   const [reviews] = useState<Review[]>([
     {
       id: 1,
+      nickname: 'R.W.様',
+      date: '2026.02.26',
+      comment: '平日ランチにご来店。\n「しっかり塩味のあるとろとろチーズとハンバーグが絶妙に合い、濃厚なのにくどくなく美味しかった！」\n店内の雰囲気やハンバーグの濃厚さをご評価いただきました。\n（Google口コミより）',
+      rating: 5,
+    },
+    {
+      id: 2,
+      nickname: 'T2G様',
+      date: '2026.02.10',
+      comment: '「ハンバーグやステーキが美味しい」とのお声をいただきました。\n（Google口コミより）',
+      rating: 4,
+    },
+    {
+      id: 3,
       nickname: 'たろう',
       date: '2026.02.10',
       comment: 'ハンバーグが絶品でした！肉汁がジューシーで、デミグラスソースとの相性も抜群です。また来たいと思います。',
       rating: 5,
     },
     {
-      id: 2,
+      id: 4,
       nickname: 'さくら',
       date: '2026.02.07',
       comment: '国産和牛のステーキをいただきました。柔らかくて美味しかったです。店内の雰囲気も良く、落ち着いて食事できました。',
       rating: 5,
     },
     {
-      id: 3,
+      id: 5,
       nickname: 'けんじ',
       date: '2026.02.05',
       comment: 'ランチで利用しました。ボリュームもあり、コスパが良いです。スタッフの方も親切でした。',
@@ -54,7 +68,7 @@ export default function Reviews() {
         <div className="container">
           <div className={styles.noticeBox}>
             <p className={`${styles.noticeText} breakAfterPeriod`}>
-              {breakAfterPeriod('※口コミはオープン後、掲載許可をいただいたものから順次掲載予定です。')}
+              {breakAfterPeriod('※掲載している口コミは各プラットフォームの公開情報をもとにご紹介しております。問題がございましたらお問い合わせください。')}
             </p>
           </div>
         </div>
