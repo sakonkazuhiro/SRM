@@ -81,6 +81,7 @@
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 0.95rem;
+  white-space: pre-line;
 }
 
 .noticeContent p {

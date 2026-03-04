@@ -20,15 +20,18 @@ export type NoticeItem = {
 /** お知らせ一覧（ホーム・お知らせページで共通利用） */
 export const notices: NoticeItem[] = [
   {
-    date: '2026.3.1',
+    date: '2026.3.4',
     type: 'imageSlider',
-    title: 'テイクアウトメニュー',
-    subtitle: 'メニューはこちらを検討しております',
+    title: 'テイクアウトを開始しました。',
+    subtitle:
+      'ご自宅でもホシのキッチンのハンバーグなど、洋食メニューをお楽しみいただけます。\n\nなお、店内の混雑状況により、テイクアウトのお渡しまでお時間をいただく場合がございます。\nあらかじめご了承いただけますと幸いです。',
     images: [
+      '/images/news/teiku.6.jpg',
       '/images/news/teiku.1.png',
       '/images/news/teiku.2.jpg',
       '/images/news/teiku.3.jpg',
       '/images/news/teiku.4.jpg',
+      '/images/news/teiku.5.jpg',
     ],
   },
   {
