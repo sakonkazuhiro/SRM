@@ -5,6 +5,11 @@ import { ClickableImage } from '@/components/ImageLightbox'
 import { breakAfterPeriod } from '@/lib/breakAfterPeriod'
 import styles from './page.module.css'
 
+/** 口コミ投稿用（Google口コミはこちらから☞） */
+const GOOGLE_REVIEW_POST_URL = 'https://g.page/r/CS1FearbN9qvEAE/review'
+/** 口コミ閲覧用（Google口コミを詳しく☞） */
+const GOOGLE_REVIEWS_VIEW_URL = 'https://www.google.com/maps/search/ホシのキッチン'
+
 type Review = {
   id: number
   nickname: string
@@ -13,24 +18,39 @@ type Review = {
   image?: string
   videoSrc?: string
   rating: number
+  /** 指定時、（Google口コミ）をこのURLへのリンクとして表示 */
+  sourceUrl?: string
 }
 
 export default function Reviews() {
   // サンプル口コミデータ（手動で追加・編集可能）
   const [reviews] = useState<Review[]>([
     {
+      id: 0,
+      nickname: 'chi too様',
+      date: '2026.03.08',
+      comment:
+        'Google評価★５.０/５.０\n\nお客様から嬉しいお声をいただいています\n\n雰囲気は良く、店内も昔ながらでおしゃれな感じです！\n店主の腕前はもちろん、すごくとてもおいしかったです😊お腹いっぱいになりました！\nまた、ご利用させていただきます。\n\n食事: 5/5　サービス: 5/5　雰囲気: 5/5\n（Google口コミより）',
+      rating: 5,
+      sourceUrl: GOOGLE_REVIEWS_VIEW_URL,
+    },
+    {
       id: 1,
       nickname: 'R.W.様',
       date: '2026.02.26',
-      comment: '平日ランチにご来店。\n「しっかり塩味のあるとろとろチーズとハンバーグが絶妙に合い、濃厚なのにくどくなく美味しかった！」\n店内の雰囲気やハンバーグの濃厚さをご評価いただきました。\n（Google口コミより）',
+      comment:
+        'Google評価★５.０/５.０\n\nお客様から嬉しいお声をいただいています\n\n平日ランチにご来店。\n「しっかり塩味のあるとろとろチーズとハンバーグが絶妙に合い、濃厚なのにくどくなく美味しかった！」\n店内の雰囲気やハンバーグの濃厚さをご評価いただきました。\n（Google口コミより）',
       rating: 5,
+      sourceUrl: GOOGLE_REVIEWS_VIEW_URL,
     },
     {
       id: 2,
       nickname: 'T2G様',
       date: '2026.02.10',
-      comment: '「ハンバーグやステーキが美味しい」とのお声をいただきました。\n（Google口コミより）',
+      comment:
+        'Google評価★４.０/５.０\n\nお客様から嬉しいお声をいただいています\n\n「ハンバーグやステーキが美味しい」とのお声をいただきました。\n（Google口コミより）',
       rating: 4,
+      sourceUrl: GOOGLE_REVIEWS_VIEW_URL,
     },
     {
       id: 3,
@@ -67,6 +87,16 @@ export default function Reviews() {
       <section className={styles.noticeSection}>
         <div className="container">
           <div className={styles.noticeBox}>
+            <p className={styles.googleReviewCta}>
+              <a
+                href={GOOGLE_REVIEW_POST_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.googleReviewLink}
+              >
+                Google口コミはこちらから☞
+              </a>
+            </p>
             <p className={`${styles.noticeText} breakAfterPeriod`}>
               {breakAfterPeriod('※掲載している口コミは各プラットフォームの公開情報をもとにご紹介しております。問題がございましたらお問い合わせください。')}
             </p>
@@ -81,7 +111,22 @@ export default function Reviews() {
               <div key={review.id} className={styles.reviewCard}>
                 <div className={styles.reviewHeader}>
                   <div className={styles.reviewerInfo}>
-                    <span className={styles.nickname}>{review.nickname}</span>
+                    <span className={styles.nickname}>
+                      {review.nickname}
+                      {review.sourceUrl ? (
+                        <>
+                          {' '}
+                          <a
+                            href={review.sourceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.sourceLink}
+                          >
+                            （Google口コミを詳しく☞）
+                          </a>
+                        </>
+                      ) : null}
+                    </span>
                     <span className={styles.date}>{review.date}</span>
                   </div>
                   <div className={styles.rating}>
