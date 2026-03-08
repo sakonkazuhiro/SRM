@@ -61,7 +61,7 @@ export default function Home() {
       <section className={styles.recommend}>
         <div className="container">
           <h2>おすすめメニュー</h2>
-          <p style={{ textAlign: 'right', marginTop: '0.5rem', marginBottom: '1rem', fontSize: '0.9rem', color: '#666' }}>
+          <p style={{ textAlign: 'center', marginTop: '0.5rem', marginBottom: '1rem', fontSize: '0.9rem', color: '#666', fontWeight: 'bold' }}>
             ※オーナーシェフお勧めになります、ご賞味あれ👍
           </p>
           <div className={styles.menuGrid}>
@@ -123,6 +123,11 @@ export default function Home() {
             {notices.map((notice) => (
               <NoticeItem key={notice.date} notice={notice} />
             ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <Link href="/notice" className="btn">
+              お知らせ一覧へ
+            </Link>
           </div>
         </div>
       </section>
