@@ -61,7 +61,7 @@ export default function Footer() {
           <p>&copy; 2024 ホシのキッチン. All rights reserved.</p>
           <p>
             Web制作・運営：
-            <Link href="https://ph-beryl.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <Link href="https://ph-orcin-rho.vercel.app/" target="_blank" rel="noopener noreferrer">
               Ignite Works
             </Link>
           </p>
