@@ -63,7 +63,7 @@ export default function Message() {
           <div className={styles.messageCard}>
             <div className={styles.messageImage}>
               <ClickableImage
-                src="/images/shop/manager.jpg"
+                src="/images/owner/S__127123459.jpg"
                 alt="店長"
                 className={styles.profileImage}
               />

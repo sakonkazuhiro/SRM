@@ -43,6 +43,7 @@ export default function Home() {
             <div className={styles.aboutImage}>
               <AboutImageSlider
                 slides={[
+                  { src: '/images/shop/S__127123460.jpg', alt: 'ホシのキッチン 店舗写真' },
                   { src: '/images/shop/S__121397254.jpg', alt: 'ホシのキッチン 店舗写真' },
                   { src: '/images/shop/S__20930609.jpg', alt: 'ホシのキッチン 外観' },
                   { src: '/images/shop/S__21209165.jpg', alt: 'ホシのキッチン' },
