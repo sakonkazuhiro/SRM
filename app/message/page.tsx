@@ -1,5 +1,4 @@
 import styles from './page.module.css'
-import AboutImageSlider from '@/components/AboutImageSlider'
 import { ClickableImage } from '@/components/ImageLightbox'
 import { breakAfterPeriod } from '@/lib/breakAfterPeriod'
 
@@ -19,24 +18,11 @@ export default function Message() {
         <div className="container">
           <div className={styles.messageCard}>
             <div className={styles.messageImage}>
-              <div className={styles.ownerImageStack}>
-                <div className={styles.ownerImageFixed}>
-                  <ClickableImage
-                    src="/images/owner/S__21241893.jpg"
-                    alt="オーナーシェフ 星 翔"
-                    className={styles.ownerFixedImg}
-                  />
-                </div>
-                <div className={styles.ownerImageSliderWrap}>
-                  <AboutImageSlider
-                    slides={[
-                      { src: '/images/owner/S__21209149.jpg', alt: 'オーナーシェフ 星 翔' },
-                      { src: '/images/owner/S__21209151.jpg', alt: 'オーナーシェフ 星 翔' },
-                      { src: '/images/owner/S__21241892.jpg', alt: 'オーナーシェフ 星 翔' },
-                    ]}
-                  />
-                </div>
-              </div>
+              <ClickableImage
+                src="/images/owner/S__21241893.jpg"
+                alt="オーナーシェフ 星 翔"
+                className={styles.profileImage}
+              />
             </div>
             <div className={styles.messageContent}>
               <h2 className={styles.role}>オーナーシェフ 星 翔</h2>
