@@ -77,7 +77,11 @@ export default function Home() {
               </div>
               <div className={styles.menuInfo}>
                 <h3>当店自慢の自家製ハンバーグ</h3>
-                <p className="breakAfterPeriod">{breakAfterPeriod('厳選した牛肉を使用した、こだわりのハンバーグです。')}</p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod(
+                    '厳選した牛肉を１００％使用した手ごねになります。ミディアムレアで仕上げてアツアツの鉄板で提供しているこだわりのハンバーグです。',
+                  )}
+                </p>
               </div>
             </div>
             <div className={styles.menuCard}>

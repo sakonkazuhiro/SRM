@@ -21,6 +21,14 @@ export type NoticeItem = {
  * 画像付きはサムネが 150×150px で表示。追加時は正方形に近い素材（例 300×300px 以上）を推奨。 */
 export const notices: NoticeItem[] = [
   {
+    date: '2026.4.5',
+    image: '/images/news/100.png',
+    imageAlt: '当店自慢のハンバーグ 牛100%手ごね',
+    type: 'text',
+    content:
+      '当店自慢のハンバーグは牛100%手ごねです。\nミディアムレアに仕上げ、アツアツの鉄板で提供しております。\n気になるようでしたら、店員に再加熱をお気軽にお声がけください。',
+  },
+  {
     date: '2026.4.4',
     image: '/images/news/9C97E975-DC18-48E8-A832-112F4A3031F5.jpeg',
     imageAlt: 'オーナーシェフ 星翔 誕生日のご挨拶',
