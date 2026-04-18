@@ -1,5 +1,6 @@
 'use client'
 
+import { Fragment } from 'react'
 import type { NoticeItem as NoticeItemType } from '@/data/notices'
 import AboutImageSlider from '@/components/AboutImageSlider'
 import { ClickableImage } from '@/components/ImageLightbox'
@@ -17,6 +18,19 @@ function splitContentWithHours(content: string): { before: string; lunch: string
   )
   if (!match) return null
   return { before: match[1], lunch: match[2], dinner: match[3], closed: match[4], after: match[5] }
+}
+
+/** 「■休業日」直下の・行を赤字用に分割（ゴールデンウィーク案内など） */
+function splitContentWithGwRestDays(content: string): { before: string; restLines: string[]; after: string } | null {
+  /** 最後の・行のあとは「改行＋（空行可）＋次の■見出し」— \n\n■ ではなく \n■ になるため \n+■ で受ける */
+  const m = content.match(/^([\s\S]*?\n\n■休業日\n)((?:・[^\n]+\n)+)(\n+■[\s\S]*)$/)
+  if (!m) return null
+  const restLines = m[2]
+    .trimEnd()
+    .split('\n')
+    .filter((line) => line.length > 0)
+  if (restLines.length === 0) return null
+  return { before: m[1], restLines, after: m[3] }
 }
 
 export default function NoticeItem({ notice }: NoticeItemProps) {
@@ -72,27 +86,44 @@ export default function NoticeItem({ notice }: NoticeItemProps) {
           </p>
         ) : notice.type === 'text' && notice.content ? (
           (() => {
-            const parsed = splitContentWithHours(notice.content)
-            if (parsed) {
+            const parsedHours = splitContentWithHours(notice.content)
+            if (parsedHours) {
               return (
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod(parsed.before)}
+                  {breakAfterPeriod(parsedHours.before)}
                   <br /><br />
                   営業時間<br />
                   <span className={styles.hoursLine}>
                     <span className={styles.hoursLabel}>ランチ</span><span className={styles.hoursColon}>：</span>
-                    <strong className={styles.hoursNum}>{parsed.lunch}</strong>
+                    <strong className={styles.hoursNum}>{parsedHours.lunch}</strong>
                   </span><br />
                   <span className={styles.hoursLine}>
                     <span className={styles.hoursLabel}>ディナー</span><span className={styles.hoursColon}>：</span>
-                    <strong className={styles.hoursNum}>{parsed.dinner}</strong>
+                    <strong className={styles.hoursNum}>{parsedHours.dinner}</strong>
                   </span><br />
                   <span className={styles.hoursLine}>
                     <span className={styles.hoursLabel}>定休日</span><span className={styles.hoursColon}>：</span>
-                    <span className={styles.closedDay}>{parsed.closed}</span>
+                    <span className={styles.closedDay}>{parsedHours.closed}</span>
                   </span>
                   <br /><br />
-                  {breakAfterPeriod(parsed.after)}
+                  {breakAfterPeriod(parsedHours.after)}
+                </p>
+              )
+            }
+            const parsedGw = splitContentWithGwRestDays(notice.content)
+            if (parsedGw) {
+              return (
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod(parsedGw.before)}
+                  {parsedGw.restLines.map((line, i) => (
+                    <Fragment key={i}>
+                      <span className={styles.restDayLine}>{line}</span>
+                      {i < parsedGw.restLines.length - 1 ? <br /> : null}
+                    </Fragment>
+                  ))}
+                  <br />
+                  <br />
+                  {breakAfterPeriod(parsedGw.after.replace(/^\n+/, ''))}
                 </p>
               )
             }

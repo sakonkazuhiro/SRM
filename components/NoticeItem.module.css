@@ -72,6 +72,12 @@
   font-weight: bold;
 }
 
+/* ゴールデンウィーク等・休業日の行（.noticeContent p の color より優先） */
+.noticeContent p .restDayLine {
+  color: #c41e3a;
+  font-weight: bold;
+}
+
 .noticeTitle {
   color: #333;
   font-weight: bold;

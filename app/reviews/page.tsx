@@ -26,6 +26,15 @@ export default function Reviews() {
   // サンプル口コミデータ（手動で追加・編集可能）
   const [reviews] = useState<Review[]>([
     {
+      id: 6,
+      nickname: 'hiro T様',
+      date: '2026.03.28',
+      comment:
+        'Google評価★５.０/５.０\n\nお客様から嬉しいお声をいただいています\n\nハンバーグとナポリタンを食べました。どちらもとても美味い！\n\n食事: 5/5　サービス: 4/5　雰囲気: 3/5\n（Google口コミより）',
+      rating: 5,
+      sourceUrl: GOOGLE_REVIEWS_VIEW_URL,
+    },
+    {
       id: 0,
       nickname: 'chi too様',
       date: '2026.03.08',
