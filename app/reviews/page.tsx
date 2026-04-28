@@ -26,6 +26,24 @@ export default function Reviews() {
   // サンプル口コミデータ（手動で追加・編集可能）
   const [reviews] = useState<Review[]>([
     {
+      id: 8,
+      nickname: 'BASTILLE Sir様',
+      date: '2026.04.28',
+      comment:
+        'Google評価★５.０/５.０\n\nお客様から嬉しいお声をいただいています\n\n夜遅くまでやってるのが嬉しい！\nチーズハンバーグ美味しい！\n\n食事: 5/5　サービス: 5/5　雰囲気: 5/5\n（Google口コミより）',
+      rating: 5,
+      sourceUrl: GOOGLE_REVIEWS_VIEW_URL,
+    },
+    {
+      id: 7,
+      nickname: '鬼の岩蔵（鬼岩）様',
+      date: '2026.04.27',
+      comment:
+        'Google評価★４.０/５.０\n\nお客様から貴重なご意見をいただいています\n\nもう少し安いと助かります。\nチキンソテーは美味しい。\n\n食事: 4/5　サービス: 3/5　雰囲気: 3/5\n（Google口コミより）',
+      rating: 4,
+      sourceUrl: GOOGLE_REVIEWS_VIEW_URL,
+    },
+    {
       id: 6,
       nickname: 'hiro T様',
       date: '2026.03.28',
@@ -60,27 +78,6 @@ export default function Reviews() {
         'Google評価★４.０/５.０\n\nお客様から嬉しいお声をいただいています\n\n「ハンバーグやステーキが美味しい」とのお声をいただきました。\n（Google口コミより）',
       rating: 4,
       sourceUrl: GOOGLE_REVIEWS_VIEW_URL,
-    },
-    {
-      id: 3,
-      nickname: 'たろう',
-      date: '2026.02.10',
-      comment: 'ハンバーグが絶品でした！肉汁がジューシーで、デミグラスソースとの相性も抜群です。また来たいと思います。',
-      rating: 5,
-    },
-    {
-      id: 4,
-      nickname: 'さくら',
-      date: '2026.02.07',
-      comment: '国産和牛のステーキをいただきました。柔らかくて美味しかったです。店内の雰囲気も良く、落ち着いて食事できました。',
-      rating: 5,
-    },
-    {
-      id: 5,
-      nickname: 'けんじ',
-      date: '2026.02.05',
-      comment: 'ランチで利用しました。ボリュームもあり、コスパが良いです。スタッフの方も親切でした。',
-      rating: 4,
     },
   ])
 
