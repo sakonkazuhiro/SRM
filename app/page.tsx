@@ -26,6 +26,16 @@ export default function Home() {
 
       {/* 店舗紹介セクション */}
       <section className={styles.about}>
+        <video
+          className={styles.aboutBgVideo}
+          src="/images/shop/799517676.372299.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        />
         <div className="container">
           <h2 className="textStickerGlow">ホシのキッチンについて</h2>
           <div className={styles.aboutContent}>
