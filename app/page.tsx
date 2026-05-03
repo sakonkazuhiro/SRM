@@ -52,6 +52,7 @@ export default function Home() {
             </div>
             <div className={styles.aboutImage}>
               <AboutImageSlider
+                transparentBg
                 slides={[
                   { src: '/images/shop/S__127123460.jpg', alt: 'ホシのキッチン 店舗写真' },
                   { src: '/images/shop/S__121397254.jpg', alt: 'ホシのキッチン 店舗写真' },

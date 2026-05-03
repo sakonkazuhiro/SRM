@@ -7,6 +7,10 @@
   overflow: hidden;
 }
 
+.transparentBg {
+  background-color: transparent;
+}
+
 .sliderInner {
   height: 100%;
   display: flex;

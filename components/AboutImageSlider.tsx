@@ -8,9 +8,10 @@ type Slide = { src: string; alt: string }
 
 type AboutImageSliderProps = {
   slides: Slide[]
+  transparentBg?: boolean
 }
 
-export default function AboutImageSlider({ slides }: AboutImageSliderProps) {
+export default function AboutImageSlider({ slides, transparentBg = false }: AboutImageSliderProps) {
   const { openImage } = useImageLightbox()
   const [current, setCurrent] = useState(0)
   const total = slides.length
@@ -35,7 +36,7 @@ export default function AboutImageSlider({ slides }: AboutImageSliderProps) {
   if (slides.length === 0) return null
 
   return (
-    <div className={styles.slider}>
+    <div className={`${styles.slider} ${transparentBg ? styles.transparentBg : ''}`}>
       <div
         className={styles.sliderInner}
         style={{
