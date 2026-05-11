@@ -22,7 +22,7 @@ function MenuCardImage({ imagePath, alt }: { imagePath?: string; alt: string }) 
   const [failed, setFailed] = useState(false)
   const usePlaceholder = !imagePath || failed
   if (usePlaceholder) {
-    return <p>メニュー</p>
+    return <span aria-hidden />
   }
   return (
     <ClickableImage
@@ -50,9 +50,11 @@ type LegacyMenuItem = {
 type MenuCategory = {
   category: string
   items: LegacyMenuItem[]
+  /** 指定時はセクション注釈としてそのまま使用（未指定時は従来どおり説明文から推定） */
+  sectionNotes?: SectionNotes
 }
 
-type TabKey = 'main' | 'ichipin' | 'lunch' | 'dessertDrink' | 'drink'
+type TabKey = 'main' | 'ichipin' | 'lunch' | 'takeout' | 'dessertDrink' | 'drink'
 
 /** 描画用セクション（見出し・注意書き・カード配列） */
 type RenderSection = {
@@ -73,8 +75,11 @@ function extractWeight(name: string): string {
 
 /** 旧カテゴリを RenderSection に変換（価格は税込から税抜を逆算、税率10%） */
 function oldCategoryToRenderSection(cat: MenuCategory): RenderSection {
-  const hasSauceItems = cat.items.some((item) => item.description?.includes('／'))
   let sectionNotes: SectionNotes | undefined
+  if (cat.sectionNotes) {
+    sectionNotes = cat.sectionNotes
+  } else {
+  const hasSauceItems = cat.items.some((item) => item.description?.includes('／'))
   if (hasSauceItems) {
     if (
       cat.category === '国産黒毛和牛A5ランク サーロインステーキ' ||
@@ -101,11 +106,14 @@ function oldCategoryToRenderSection(cat: MenuCategory): RenderSection {
   } else {
     sectionNotes = { type: 'leftRight', right: '※メニューの写真や動画はイメージ図となります。' }
   }
+  }
   const displayItems: DisplayItem[] = cat.items.map((item) => {
+    const isMainLike =
+      cat.category === 'メイン' || cat.category === 'メイン（テイクアウト）'
     const descriptionStyle =
-      cat.category === 'メイン' && (item.name.includes('チキンソテー') || item.name.includes('ポークソテー') || item.name.includes('カモソテー'))
+      isMainLike && (item.name.includes('チキンソテー') || item.name.includes('ポークソテー') || item.name.includes('カモソテー'))
         ? { marginTop: '3rem' as const }
-        : cat.category === 'メイン' && item.name.includes('当店自慢の自家製ハンバーグ')
+        : isMainLike && item.name.includes('当店自慢の自家製ハンバーグ')
           ? { marginTop: '1rem' as const }
           : undefined
     if (item.priceTiers?.length) {
@@ -146,6 +154,15 @@ export default function Menu() {
 
   // メニュー名を適切に改行して表示する関数
   const formatMenuName = (name: string) => {
+    // テイクアウト：国産黒毛和牛（ミスジ／ランプ／サーロイン）200g ガーリック
+    if (
+      (name.startsWith('国産黒毛和牛ミスジ') ||
+        name.startsWith('国産黒毛和牛ランプ') ||
+        name.startsWith('国産黒毛和牛サーロイン')) &&
+      name.includes('ガーリックソース')
+    ) {
+      return <b style={{ display: 'block', textAlign: 'center', overflowWrap: 'break-word', wordBreak: 'keep-all' }}>{name}</b>
+    }
     // 国産黒毛和牛A5ランク サーロインステーキのパターン
     if (name.includes('国産黒毛和牛A5ランク サーロインステーキ')) {
       const match = name.match(/^国産黒毛和牛A5ランク サーロインステーキ (.+)$/)
@@ -315,6 +332,18 @@ export default function Menu() {
         name === '鳥ささみのチーズピンク揚げ' ||
         name === '赤いタルタルのチキン南蛮' ||
         name === '大エビフライ (3本)' ||
+        name === '大エビフライ 3本' ||
+        name === '国産黒毛和牛使用 牛すじカレー' ||
+        name === 'シーザーサラダ 温玉無し' ||
+        name === 'チェダーチーズスティックフライ 6等分カット' ||
+        name === 'アボカドとクリームチーズのスティックフライ 6等分カット' ||
+        name === 'とろ〜りクリーミーなカニコロッケ' ||
+        name === 'イカの唐揚げ' ||
+        name === 'フレンチポテトフライ（明太マヨ付き）' ||
+        name === '特製スペシャル弁当' ||
+        name === '昔ながらのアジフライ' ||
+        name === '手作りメンチカツ' ||
+        name === 'ゴロゴロ野菜のラタトゥーユ' ||
         name === '昔ながらのナポリタン' ||
         name === '濃厚カルボナーラ' ||
         name === 'たこわさのポテトサラダ' ||
@@ -342,8 +371,8 @@ export default function Menu() {
     if (name === 'カモソテー') {
       return <b style={{ display: 'block', textAlign: 'center' }}>{name}</b>
     }
-    // チキンソテーとポークソテーのパターン（中央揃え）
-    if (name.includes('チキンソテー') || name.includes('ポークソテー')) {
+    // チキンソテーとポークソテー・ポークジンジャーのパターン（中央揃え）
+    if (name.includes('チキンソテー') || name.includes('ポークソテー') || name.includes('ポークジンジャー')) {
       return <b style={{ display: 'block', textAlign: 'center' }}>{name}</b>
     }
     // 海鮮アヒージョ (厚切りバケット4個)のパターン（1行目と2行目を中央揃え）
@@ -369,6 +398,10 @@ export default function Menu() {
     // 【期間限定】カキフライ (6個)のパターン（1行で表示）
     if (name.includes('【期間限定】カキフライ (6個)')) {
       return <b style={{ whiteSpace: 'nowrap' }}>{name}</b>
+    }
+    // 【期間限定】カキフライ（6ヶ）テイクアウト表記
+    if (name.includes('【期間限定】カキフライ')) {
+      return <b style={{ display: 'block', textAlign: 'center' }}>{name}</b>
     }
     // バジル香るジェノベーゼパスタのパターン（1行で表示）
     if (name.includes('バジル香るジェノベーゼパスタ')) {
@@ -716,6 +749,249 @@ export default function Menu() {
       },
     ]
 
+    const takeoutSectionFoot: SectionNotes = {
+      type: 'block',
+      lines: ['※価格はすべて税込表示です。', '※メニューの写真や動画はイメージ図となります。'],
+    }
+    const takeoutSteakFoot: SectionNotes = {
+      type: 'block',
+      lines: [
+        'ステーキは塩・コショウのみのご用意も承ります。',
+        '※価格はすべて税込表示です。',
+        '※メニューの写真や動画はイメージ図となります。',
+      ],
+    }
+    const takeoutBentoFoot: SectionNotes = {
+      type: 'block',
+      lines: [
+        '※料金は変わりませんが、苦手な物は抜くことができます。お申し付けください。',
+        '※価格はすべて税込表示です。',
+        '※メニューの写真や動画はイメージ図となります。',
+      ],
+    }
+
+    /** テイクアウト（チラシ構成・他タブと同じカードグリッド／画像は既存メニュー写真を割当） */
+    const takeout: MenuCategory[] = [
+      {
+        category: 'メイン（テイクアウト）',
+        sectionNotes: takeoutSectionFoot,
+        items: [
+          {
+            name: '当店自慢の自家製ハンバーグ 200g',
+            price: '1,518円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/main/main/26-02-02_050.jpg',
+            description: 'House Hamburger 200g\nデミグラス／トマト／ホワイトチーズ／大根おろしポン酢',
+          },
+          {
+            name: 'チキンソテー270g トマトソース',
+            price: '1,518円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/main/main/26-01-29_097_2.jpg',
+            description: 'Chicken saute 270g, tomato sauce',
+          },
+          {
+            name: 'ポークジンジャー 240g',
+            price: '1,518円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/main/main/26-01-29_071_2.jpg',
+            description: 'Pork ginger saute 240g',
+          },
+        ],
+      },
+      {
+        category: '国産黒毛和牛A5ランクステーキ（テイクアウト）',
+        sectionNotes: takeoutSteakFoot,
+        items: [
+          {
+            name: '国産黒毛和牛A5ランク ミスジ 200g ガーリックソース',
+            price: '3,080円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/main/main/26-01-31_122.jpg',
+            description: 'Japanese black beef misuji 200g, garlic sauce',
+          },
+          {
+            name: '国産黒毛和牛A5ランク ランプ 200g ガーリックソース',
+            price: '3,520円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/main/main/26-01-30_188_2%20(1).jpg',
+            description: 'Japanese black beef rump 200g, garlic sauce',
+          },
+          {
+            name: '国産黒毛和牛A5ランク サーロイン 200g ガーリックソース',
+            price: '3,960円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/main/main/26-01-31_115_2.jpg',
+            description: 'Japanese black beef sirloin 200g, garlic sauce',
+          },
+        ],
+      },
+      {
+        category: 'ライス & パン（単品）',
+        sectionNotes: takeoutSectionFoot,
+        items: [
+          { name: 'ライス 小 180g', price: '242円', image: 'ライス' },
+          { name: 'ライス 中 220g', price: '308円', image: 'ライス' },
+          { name: 'ライス 大 300g', price: '385円', image: 'ライス' },
+          { name: 'バケット2個', price: '308円', image: 'パン' },
+        ],
+      },
+      {
+        category: 'パスタ・サラダ・カレー・フライ（テイクアウト）',
+        sectionNotes: takeoutSectionFoot,
+        items: [
+          {
+            name: '【期間限定】カキフライ（6ヶ）',
+            price: '1,738円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/main/main/26-01-30_164.jpg',
+            description: '[Limited] Fried oysters (6 pcs)',
+          },
+          {
+            name: '大エビフライ 3本',
+            price: '1,628円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/main/main/26-01-30_156.jpg',
+            description: 'Large fried shrimp (3 pcs)',
+          },
+          {
+            name: '国産黒毛和牛使用 牛すじカレー',
+            price: '1,375円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/main/main/26-01-31_239.jpg',
+            description: 'Japanese black beef tendon curry',
+          },
+          {
+            name: '昔ながらのナポリタン',
+            price: '1,078円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/main/main/26-01-29_069_2.jpg',
+            description: 'Classic Napolitana',
+          },
+          {
+            name: '半熟卵のポテトサラダ',
+            price: '605円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26-01-30_043.jpg',
+            description: 'Potato salad with soft-boiled egg',
+          },
+          {
+            name: 'たこわさのポテトサラダ',
+            price: '605円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26-01-30_039.jpg',
+            description: 'Octopus & wasabi potato salad',
+          },
+          {
+            name: 'シーザーサラダ 温玉無し',
+            price: '880円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26-01-30_108.jpg',
+            description: 'Caesar salad (without soft-boiled egg)',
+          },
+          {
+            name: 'チェダーチーズスティックフライ 6等分カット',
+            price: '550円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26-01-31_139.jpg',
+            description: 'Cheddar cheese stick fries (6 cuts)',
+          },
+          {
+            name: 'アボカドとクリームチーズのスティックフライ 6等分カット',
+            price: '550円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26-01-31_134.jpg',
+            description: 'Avocado & cream cheese stick fries (6 cuts)',
+          },
+        ],
+      },
+      {
+        category: 'おつまみテイクアウト（各550円）',
+        sectionNotes: takeoutSectionFoot,
+        items: [
+          {
+            name: 'とろ〜りクリーミーなカニコロッケ',
+            price: '550円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26-01-31_162.jpg',
+            description: 'Creamy crab croquette',
+          },
+          {
+            name: '昔ながらのアジフライ',
+            price: '550円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26-01-31_166.jpg',
+            description: 'Classic fried horse mackerel',
+          },
+          {
+            name: '手作りメンチカツ',
+            price: '550円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26-01-31_199.jpg',
+            description: 'Homemade menchi-katsu',
+          },
+          {
+            name: 'イカの唐揚げ',
+            price: '550円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26-01-31_144.jpg',
+            description: 'Fried squid',
+          },
+          {
+            name: '特製からあげ（レモン付き）',
+            price: '550円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26-01-31_127.jpg',
+            description: 'Special karaage (with lemon)',
+          },
+          {
+            name: '茄子のニンニクソース',
+            price: '550円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26-01-31_182.jpg',
+            description: 'Eggplant with garlic sauce',
+          },
+          {
+            name: 'ゴロゴロ野菜のラタトゥーユ',
+            price: '550円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26BF04BC-73FB-4B53-B45E-CB1853229378.jpg',
+            description: 'Chunky vegetable ratatouille',
+          },
+          {
+            name: 'やみつきビアフライドポテト（ケチャップ付き）',
+            price: '550円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26-01-31_123.jpg',
+            description: 'Beer-battered fries (with ketchup)',
+          },
+          {
+            name: 'フレンチポテトフライ（明太マヨ付き）',
+            price: '550円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/lunsh/lunsh/26-01-31_126.jpg',
+            description: 'French fries (with mentaiko mayo)',
+          },
+        ],
+      },
+      {
+        category: '弁当（テイクアウト）',
+        sectionNotes: takeoutBentoFoot,
+        items: [
+          {
+            name: '特製スペシャル弁当',
+            price: '1,950円',
+            image: 'TAKEOUT',
+            imagePath: '/images/menu/takeout/special-bento.png',
+            description:
+              'ホシのキッチン「出れば出るだけ赤字」弁当\n' +
+              'Hamburger steak 200g（デミグラス／トマト／ホワイトチーズ／大根おろしポン酢よりお選びください）\n' +
+              '小エビフライ2本、鳥の唐揚げ1個（50g）、ウインナー1本、ナスの炒め物、ライス220g、漬物・コーン・ブロッコリー・レモン・パセリ・タルタル・ケチャップ・ごま塩 ほか',
+          },
+        ],
+      },
+    ]
+
     const dessertDrink: MenuCategory[] = [
       {
         category: 'ソフトドリンク',
@@ -820,6 +1096,7 @@ export default function Menu() {
       main: { label: 'メインメニュー', categories: main },
       ichipin: { label: '一品メニュー', categories: ichipin },
       lunch: { label: 'ランチメニュー', categories: lunch },
+      takeout: { label: 'TAKEOUT', categories: takeout },
       dessertDrink: { label: 'ドリンクメニュー', categories: dessertDrink },
       drink: { label: 'アルコールメニュー', categories: drink },
     }
@@ -856,7 +1133,7 @@ export default function Menu() {
       <section className={styles.tabs}>
         <div className="container">
           <div className={styles.tabList}>
-            {(['main', 'ichipin', 'lunch', 'dessertDrink', 'drink'] as TabKey[]).map((key) => (
+            {(['main', 'ichipin', 'lunch', 'takeout', 'dessertDrink', 'drink'] as TabKey[]).map((key) => (
               <button
                 key={key}
                 type="button"
@@ -875,11 +1152,13 @@ export default function Menu() {
         <section key={sectionIndex} className={styles.categorySection}>
           <div className="container">
             <div className={styles.categorySectionHeader}>
-              {((section.sectionTitle === '国産黒毛和牛A5ランク ミスジステーキ' && activeTab === 'main') || (section.sectionTitle === 'メイン' && activeTab === 'lunch')) && (
+              {((section.sectionTitle === '国産黒毛和牛A5ランク ミスジステーキ' && activeTab === 'main') || (section.sectionTitle === 'メイン' && activeTab === 'lunch') || (section.sectionTitle === 'メイン（テイクアウト）' && activeTab === 'takeout')) && (
                 <p className={styles.riceNote}>
                   {activeTab === 'main'
                     ? '全メニューにライスは付きません。単品ライスをご注文下さい！'
-                    : '全メニューにライスは付きません セットメニューをお選び下さい!'}
+                    : activeTab === 'lunch'
+                      ? '全メニューにライスは付きません セットメニューをお選び下さい!'
+                      : '全メニューにライスは付きません。単品ライスをご注文下さい！'}
                 </p>
               )}
               <h2 className={styles.categoryTitle}>

@@ -54,6 +54,8 @@
   height: 100%;
   min-height: 400px;
   object-fit: cover;
+  /* 文章量が増えてカード高が伸びても、画像が枠の上からズレて見えないよう上寄せ */
+  object-position: top center;
   display: block;
 }
 

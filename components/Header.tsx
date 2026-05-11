@@ -39,9 +39,6 @@ export default function Header() {
           <Link href="/message" className={pathname === '/message' ? styles.active : ''} onClick={closeMenu}>
             オーナーシェフの言葉
           </Link>
-          <Link href="/contact" className={pathname === '/contact' ? styles.active : ''} onClick={closeMenu}>
-            お問い合わせ
-          </Link>
         </nav>
         <button
           type="button"

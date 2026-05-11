@@ -1,7 +1,7 @@
 /**
  * メニューページ用：データ駆動（配列 + map）の型とサンプルデータ
  * 画像は public/images/menu 配下を使用。
- * フォルダ構成: main / side / lunch / drink / alcohol。各メニューに imagePath を指定。
+ * フォルダ構成: main / side / lunch / drink / alcohol / takeout。各メニューに imagePath を指定。
  * 税込 = Math.round(税抜 * 1.1)
  */
 
@@ -26,7 +26,7 @@ export type MenuItemBase = {
   nameEn?: string
   /** 説明文（改行 \n 可） */
   description?: string
-  /** 画像パス（/images/menu/main|side|lunch|drink|alcohol/xxx.jpg） */
+  /** 画像パス（/images/menu/main|side|lunch|drink|alcohol|takeout/xxx.jpg） */
   imagePath?: string
   /** ソースなど選択肢（表示用） */
   options?: string[]
@@ -145,7 +145,7 @@ export const menuSectionsSample: MenuSection[] = [
   },
 ]
 
-/** main / side / drink / dessert の各セクション（画像は public/images/menu/main|side|lunch|drink|alcohol から指定） */
+/** main / side / drink / dessert / TAKEOUT の各セクション（画像は public/images/menu/main|side|lunch|drink|alcohol|takeout から指定） */
 export const mainMenuSections: MenuSection[] = [
   {
     sectionTitle: 'メイン',
@@ -177,6 +177,11 @@ export const mainMenuSections: MenuSection[] = [
   },
   {
     sectionTitle: 'デザート',
+    items: [],
+  },
+  /** テイクアウトの実データは app/menu/page.tsx の takeout と揃えて編集（メイン／牛ステーキ／パスタ・サラダ等／おつまみ550／弁当） */
+  {
+    sectionTitle: 'TAKEOUT',
     items: [],
   },
 ]

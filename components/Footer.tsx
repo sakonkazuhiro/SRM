@@ -8,7 +8,7 @@ export default function Footer() {
       <div className={styles.container}>
         <div className={styles.tagline}>
           <p className="textStickerSoft breakAfterPeriod">{breakAfterPeriod('人を元気にする食卓。')}</p>
-          <p className="textStickerSoft breakAfterPeriod">{breakAfterPeriod('心温まる洋食レストラン。')}</p>
+          <p className="textStickerSoft breakAfterPeriod">{breakAfterPeriod('鉄板ステーキと心温まる洋食の店。')}</p>
         </div>
 
         <div className={styles.logoContainer}>
@@ -29,7 +29,6 @@ export default function Footer() {
           <Link href="/notice">お知らせ</Link>
           <Link href="/reviews">口コミ</Link>
           <Link href="/message">オーナーシェフの言葉</Link>
-          <Link href="/contact">お問い合わせ</Link>
         </div>
 
         <div className={styles.social}>

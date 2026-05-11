@@ -7,7 +7,7 @@ import { ImageLightboxProvider } from '@/components/ImageLightbox'
 
 export const metadata: Metadata = {
   title: 'ホシのキッチン | 洋食レストラン',
-  description: '星翔オーナーシェフがお届けする、心温まる洋食レストラン「ホシのキッチン」',
+  description: '星翔オーナーシェフがお届けする、鉄板ステーキと心温まる洋食の店「ホシのキッチン」',
 }
 
 export default function RootLayout({
