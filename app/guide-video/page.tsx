@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import styles from './page.module.css'
+import GuideVideoPlayer from '@/components/GuideVideoPlayer'
 
 export default function GuideVideoPage() {
   return (
@@ -14,14 +15,7 @@ export default function GuideVideoPage() {
       <section className={styles.videoSection}>
         <div className="container">
           <div className={styles.videoWrap}>
-            <video
-              className={styles.video}
-              src="/images/shop/800166146.197005.mp4"
-              controls
-              playsInline
-              preload="metadata"
-              aria-label="鶯谷駅・入谷駅からの道案内動画"
-            />
+            <GuideVideoPlayer />
             <div className={styles.back}>
               <Link href="/" className="btn">
                 ホームへ戻る

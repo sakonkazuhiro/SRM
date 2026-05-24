@@ -39,13 +39,28 @@
 }
 
 .video {
+  display: block;
   width: 100%;
-  max-height: 70vh;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  max-height: min(70vh, 720px);
+  margin: 0 auto;
+  object-fit: contain;
   border-radius: 16px;
   box-shadow:
     0 12px 40px rgba(0, 0, 0, 0.12),
     0 2px 12px rgba(0, 0, 0, 0.08);
   background: #000;
+}
+
+.videoError {
+  margin: 0;
+  padding: 2rem 1.25rem;
+  border-radius: 16px;
+  background: #fff5f5;
+  color: #8b2e2e;
+  line-height: 1.7;
+  border: 1px solid rgba(196, 30, 58, 0.2);
 }
 
 .back {
