@@ -139,29 +139,32 @@ type ClickableVideoProps = React.VideoHTMLAttributes<HTMLVideoElement> & {
 export function ClickableVideo({ src, onClick, onKeyDown, className, ...rest }: ClickableVideoProps) {
   const { openImage } = useImageLightbox()
 
-  const handleClick = (e: React.MouseEvent<HTMLVideoElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault()
     openImage(src)
-    onClick?.(e)
+    onClick?.(e as unknown as React.MouseEvent<HTMLVideoElement>)
   }
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLVideoElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       openImage(src)
     }
-    onKeyDown?.(e)
+    onKeyDown?.(e as unknown as React.KeyboardEvent<HTMLVideoElement>)
   }
 
+  const { 'aria-label': ariaLabel, ...videoProps } = rest
+
   return (
-    <video
-      {...rest}
-      src={src}
+    <div
+      className={`${styles.clickableVideoWrap} ${styles.clickable}`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
-      className={`${className ?? ''} ${styles.clickable}`.trim()}
-    />
+      aria-label={ariaLabel}
+    >
+      <video {...videoProps} src={src} className={className} />
+    </div>
   )
 }

@@ -39,7 +39,7 @@ export default function Home() {
                   muted
                   loop
                   playsInline
-                  preload="metadata"
+                  preload="auto"
                   aria-label="当店自慢の自家製ハンバーグ"
                 />
               </div>
