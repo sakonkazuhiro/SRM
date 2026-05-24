@@ -9,6 +9,10 @@ type ImageLightboxContextValue = {
 
 const ImageLightboxContext = createContext<ImageLightboxContextValue | null>(null)
 
+function isVideoSrc(src: string): boolean {
+  return /\.(mp4|webm|mov)(\?|$)/i.test(src)
+}
+
 export function useImageLightbox() {
   const ctx = useContext(ImageLightboxContext)
   if (!ctx) return { openImage: () => {} }
@@ -17,6 +21,7 @@ export function useImageLightbox() {
 
 export function ImageLightboxProvider({ children }: { children: React.ReactNode }) {
   const [src, setSrc] = useState<string | null>(null)
+  const isVideo = src ? isVideoSrc(src) : false
 
   const openImage = useCallback((s: string) => {
     setSrc(s)
@@ -54,7 +59,7 @@ export function ImageLightboxProvider({ children }: { children: React.ReactNode 
           className={styles.overlay}
           role="dialog"
           aria-modal="true"
-          aria-label="画像を拡大表示"
+          aria-label={isVideo ? '動画を拡大表示' : '画像を拡大表示'}
           onClick={handleBackdropClick}
           onKeyDown={handleKeyDown}
         >
@@ -66,8 +71,21 @@ export function ImageLightboxProvider({ children }: { children: React.ReactNode 
           >
             ×
           </button>
-          <div className={styles.imageWrap}>
-            <img src={src} alt="" className={styles.fullImage} draggable={false} />
+          <div className={styles.imageWrap} onClick={(e) => e.stopPropagation()}>
+            {isVideo ? (
+              <video
+                src={src}
+                className={styles.fullVideo}
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                draggable={false}
+              />
+            ) : (
+              <img src={src} alt="" className={styles.fullImage} draggable={false} />
+            )}
           </div>
         </div>
       )}
@@ -109,6 +127,41 @@ export function ClickableImage({ src, alt, onClick, ...rest }: ClickableImagePro
           : undefined
       }
       className={src ? `${rest.className ?? ''} ${styles.clickable}`.trim() : rest.className}
+    />
+  )
+}
+
+/** クリックで全画面表示する動画（おすすめメニュー等） */
+type ClickableVideoProps = React.VideoHTMLAttributes<HTMLVideoElement> & {
+  src: string
+}
+
+export function ClickableVideo({ src, onClick, onKeyDown, className, ...rest }: ClickableVideoProps) {
+  const { openImage } = useImageLightbox()
+
+  const handleClick = (e: React.MouseEvent<HTMLVideoElement>) => {
+    e.preventDefault()
+    openImage(src)
+    onClick?.(e)
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLVideoElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      openImage(src)
+    }
+    onKeyDown?.(e)
+  }
+
+  return (
+    <video
+      {...rest}
+      src={src}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      className={`${className ?? ''} ${styles.clickable}`.trim()}
     />
   )
 }

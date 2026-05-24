@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notices } from '@/data/notices'
 import NoticeItem from '@/components/NoticeItem'
 import AboutImageSlider from '@/components/AboutImageSlider'
-import { ClickableImage } from '@/components/ImageLightbox'
+import { ClickableImage, ClickableVideo } from '@/components/ImageLightbox'
 import { breakAfterPeriod } from '@/lib/breakAfterPeriod'
 export default function Home() {
   return (
@@ -32,9 +32,9 @@ export default function Home() {
           <div className={styles.menuGrid}>
             <div className={styles.menuCard}>
               <div className={`${styles.menuImage} ${styles.menuImageHamburger}`}>
-                <video
+                <ClickableVideo
                   className={styles.menuCardVideo}
-                  src="/images/shop/800166746.876420.mp4"
+                  src="/images/shop/801346458.019104.mp4"
                   autoPlay
                   muted
                   loop
@@ -54,7 +54,16 @@ export default function Home() {
             </div>
             <div className={styles.menuCard}>
               <div className={styles.menuImage}>
-                <ClickableImage src="/images/menu/main/main/26-01-31_122.jpg" alt="国産黒毛和牛A5ランク ミスジ" className={styles.menuCardImage} loading="lazy" decoding="async" />
+                <ClickableVideo
+                  className={styles.menuCardVideo}
+                  src="/images/shop/801345717.641275.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="国産黒毛和牛A5ランク ミスジ"
+                />
               </div>
               <div className={styles.menuInfo}>
                 <h3 className={styles.menuCardHeading}>国産黒毛和牛A5ランク ミスジ</h3>
@@ -63,9 +72,9 @@ export default function Home() {
             </div>
             <div className={styles.menuCard}>
               <div className={styles.menuImage}>
-                <video
+                <ClickableVideo
                   className={styles.menuCardVideo}
-                  src="/images/shop/800166746.985992.mp4"
+                  src="/images/shop/801345717.744205.mp4"
                   autoPlay
                   muted
                   loop
@@ -81,7 +90,7 @@ export default function Home() {
             </div>
             <div className={styles.menuCard}>
               <div className={styles.menuImage}>
-                <video
+                <ClickableVideo
                   className={styles.menuCardVideo}
                   src="/images/shop/800166746.943383.mp4"
                   autoPlay
