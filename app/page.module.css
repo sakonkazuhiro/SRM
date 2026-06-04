@@ -228,6 +228,17 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.menuCardPrice {
+  font-family: inherit !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  margin: 0 0 0.5rem 0 !important;
+  padding: 0 !important;
+  color: #c41e3a !important;
+  text-align: left !important;
+}
+
 .menuCardBody {
   font-family: inherit !important;
   font-size: 1rem !important;

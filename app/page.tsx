@@ -45,6 +45,7 @@ export default function Home() {
               </div>
               <div className={styles.menuInfo}>
                 <h3 className={styles.menuCardHeading}>当店自慢の自家製ハンバーグ</h3>
+                <p className={styles.menuCardPrice}>200g　1,518円（税込）</p>
                 <p className={`${styles.menuCardBody} breakAfterPeriod`}>
                   {breakAfterPeriod(
                     '厳選した牛肉を100％使用した手ごねで、ミディアムレアに仕上げアツアツの鉄板で提供するこだわりのハンバーグです。',
@@ -67,6 +68,7 @@ export default function Home() {
               </div>
               <div className={styles.menuInfo}>
                 <h3 className={styles.menuCardHeading}>国産黒毛和牛A5ランク ミスジ</h3>
+                <p className={styles.menuCardPrice}>200g　3,080円（税込）</p>
                 <p className={`${styles.menuCardBody} breakAfterPeriod`}>{breakAfterPeriod('国産和牛の赤身が味わえる、あっさりとしたステーキです。')}</p>
               </div>
             </div>
@@ -85,6 +87,7 @@ export default function Home() {
               </div>
               <div className={styles.menuInfo}>
                 <h3 className={styles.menuCardHeading}>国産黒毛和牛A5ランク ランプ</h3>
+                <p className={styles.menuCardPrice}>200g　3,520円（税込）</p>
                 <p className={`${styles.menuCardBody} breakAfterPeriod`}>{breakAfterPeriod('国産和牛のランプ。コクのある味わいのステーキです。')}</p>
               </div>
             </div>
@@ -103,6 +106,7 @@ export default function Home() {
               </div>
               <div className={styles.menuInfo}>
                 <h3 className={styles.menuCardHeading}>国産黒毛和牛A5ランク サーロイン</h3>
+                <p className={styles.menuCardPrice}>200g　3,960円（税込）</p>
                 <p className={`${styles.menuCardBody} breakAfterPeriod`}>{breakAfterPeriod('国産黒毛和牛のサーロイン。とろける食感が自慢のステーキです。')}</p>
               </div>
             </div>
