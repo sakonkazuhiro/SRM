@@ -73,8 +73,27 @@ function extractWeight(name: string): string {
   return m ? m[0] : name.split(/\s/).pop() ?? ''
 }
 
-/** 旧カテゴリを RenderSection に変換（価格は税込から税抜を逆算、税率10%） */
-function oldCategoryToRenderSection(cat: MenuCategory): RenderSection {
+const TAX_RATE_DINE_IN = 1.1
+const TAX_RATE_TAKEOUT = 1.08
+
+/**
+ * テイクアウト用：税込は店内表示と同じ（データの価格そのまま）。
+ * 税抜のみ8%換算（例: 税込1,518 → 税抜1,490 ＝ 本体1,380×1.08）。
+ */
+function takeoutPricesFromListed(shopTaxIncl: number): { priceExcl: number; priceIncl: number } {
+  const body = Math.round(shopTaxIncl / TAX_RATE_DINE_IN)
+  return {
+    priceExcl: Math.round(body * TAX_RATE_TAKEOUT),
+    priceIncl: shopTaxIncl,
+  }
+}
+
+/** 旧カテゴリを RenderSection に変換（価格は税込から税抜を逆算） */
+function oldCategoryToRenderSection(
+  cat: MenuCategory,
+  taxRate: number,
+  isTakeout = false,
+): RenderSection {
   let sectionNotes: SectionNotes | undefined
   if (cat.sectionNotes) {
     sectionNotes = cat.sectionNotes
@@ -135,8 +154,13 @@ function oldCategoryToRenderSection(cat: MenuCategory): RenderSection {
         priceNote: item.price,
       }
     }
-    const priceIncl = parseInt(priceMatch[0].replace(/,/g, ''), 10)
-    const priceExcl = Math.round(priceIncl / 1.1)
+    const listedIncl = parseInt(priceMatch[0].replace(/,/g, ''), 10)
+    const { priceExcl, priceIncl } = isTakeout
+      ? takeoutPricesFromListed(listedIncl)
+      : {
+          priceExcl: Math.round(listedIncl / taxRate),
+          priceIncl: listedIncl,
+        }
     return {
       name: item.name,
       description: item.description,
@@ -1111,7 +1135,11 @@ export default function Menu() {
       sectionNotes: menuSectionsSample[0].sectionNotes,
       displayItems: sectionToDisplayItems(menuSectionsSample[0]),
     }
-    const restSections = menuCategories.map(oldCategoryToRenderSection)
+    const isTakeout = activeTab === 'takeout'
+    const taxRate = isTakeout ? TAX_RATE_TAKEOUT : TAX_RATE_DINE_IN
+    const restSections = menuCategories.map((cat) =>
+      oldCategoryToRenderSection(cat, taxRate, isTakeout),
+    )
     if (activeTab === 'main') {
       return [firstNewSection, ...restSections]
     }
