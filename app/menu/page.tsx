@@ -74,25 +74,12 @@ function extractWeight(name: string): string {
 }
 
 const TAX_RATE_DINE_IN = 1.1
-const TAX_RATE_TAKEOUT = 1.08
-
-/**
- * テイクアウト用：税込は店内表示と同じ（データの価格そのまま）。
- * 税抜のみ8%換算（例: 税込1,518 → 税抜1,490 ＝ 本体1,380×1.08）。
- */
-function takeoutPricesFromListed(shopTaxIncl: number): { priceExcl: number; priceIncl: number } {
-  const body = Math.round(shopTaxIncl / TAX_RATE_DINE_IN)
-  return {
-    priceExcl: Math.round(body * TAX_RATE_TAKEOUT),
-    priceIncl: shopTaxIncl,
-  }
-}
 
 /** 旧カテゴリを RenderSection に変換（価格は税込から税抜を逆算） */
 function oldCategoryToRenderSection(
   cat: MenuCategory,
   taxRate: number,
-  isTakeout = false,
+  taxInclOnly = false,
 ): RenderSection {
   let sectionNotes: SectionNotes | undefined
   if (cat.sectionNotes) {
@@ -155,19 +142,22 @@ function oldCategoryToRenderSection(
       }
     }
     const listedIncl = parseInt(priceMatch[0].replace(/,/g, ''), 10)
-    const { priceExcl, priceIncl } = isTakeout
-      ? takeoutPricesFromListed(listedIncl)
-      : {
-          priceExcl: Math.round(listedIncl / taxRate),
-          priceIncl: listedIncl,
-        }
+    if (taxInclOnly) {
+      return {
+        name: item.name,
+        description: item.description,
+        imagePath: item.imagePath,
+        descriptionStyle,
+        priceIncl: listedIncl,
+      }
+    }
     return {
       name: item.name,
       description: item.description,
       imagePath: item.imagePath,
       descriptionStyle,
-      priceExcl,
-      priceIncl,
+      priceExcl: Math.round(listedIncl / taxRate),
+      priceIncl: listedIncl,
     }
   })
   return { sectionTitle: cat.category, sectionNotes, displayItems }
@@ -1136,15 +1126,44 @@ export default function Menu() {
       displayItems: sectionToDisplayItems(menuSectionsSample[0]),
     }
     const isTakeout = activeTab === 'takeout'
-    const taxRate = isTakeout ? TAX_RATE_TAKEOUT : TAX_RATE_DINE_IN
     const restSections = menuCategories.map((cat) =>
-      oldCategoryToRenderSection(cat, taxRate, isTakeout),
+      oldCategoryToRenderSection(cat, TAX_RATE_DINE_IN, isTakeout),
     )
     if (activeTab === 'main') {
       return [firstNewSection, ...restSections]
     }
     return restSections
   }, [activeTab, menuCategories])
+
+  const renderItemPrice = (item: DisplayItem) => {
+    if (item.priceTiers != null && item.priceTiers.length > 0) {
+      return (
+        <div className={styles.priceTiersWrapper}>
+          {item.priceTiers.map((tier, i) => (
+            <div key={i} className={styles.priceWrapper}>
+              <span className={styles.priceExcludingTax}>{tier.excl.toLocaleString()}円（税抜）</span>
+              <span className={styles.price}>{tier.incl.toLocaleString()}円（税込）</span>
+            </div>
+          ))}
+        </div>
+      )
+    }
+    if (activeTab === 'takeout' && item.priceIncl != null) {
+      return <span className={styles.price}>{item.priceIncl.toLocaleString()}円（税込）</span>
+    }
+    if (item.priceExcl != null && item.priceIncl != null) {
+      return (
+        <div className={styles.priceWrapper}>
+          <span className={styles.priceExcludingTax}>{item.priceExcl.toLocaleString()}円（税抜）</span>
+          <span className={styles.price}>{item.priceIncl.toLocaleString()}円（税込）</span>
+        </div>
+      )
+    }
+    if (item.priceNote) {
+      return <span className={styles.price}>{item.priceNote}</span>
+    }
+    return <span className={styles.price}>※価格はスタッフまで</span>
+  }
 
   return (
     <div className={`${styles.menu} ${(activeTab === 'dessertDrink' || activeTab === 'drink') ? styles.menuDrink : ''}`}>
@@ -1242,14 +1261,7 @@ export default function Menu() {
                           {item.notes != null && item.notes.length > 0 && (
                             <p className={styles.menuNote}>{item.notes.join(' ')}</p>
                           )}
-                          <div className={styles.priceContainer}>
-                            {item.priceExcl != null && item.priceIncl != null && (
-                              <div className={styles.priceWrapper}>
-                                <span className={styles.priceExcludingTax}>{item.priceExcl.toLocaleString()}円（税抜）</span>
-                                <span className={styles.price}>{item.priceIncl.toLocaleString()}円（税込）</span>
-                              </div>
-                            )}
-                          </div>
+                          <div className={styles.priceContainer}>{renderItemPrice(item)}</div>
                         </div>
                       </div>
                     ))}
@@ -1286,11 +1298,16 @@ export default function Menu() {
                             {section.displayItems.map((item, i) => (
                               <div key={i} className={styles.priceWrapper}>
                                 <span className={styles.steakWeight}>{extractWeight(item.name)}</span>
-                                {item.priceExcl != null && item.priceIncl != null && (
-                                  <>
-                                    <span className={styles.priceExcludingTax}>{item.priceExcl.toLocaleString()}円（税抜）</span>
-                                    <span className={styles.price}>{item.priceIncl.toLocaleString()}円（税込）</span>
-                                  </>
+                                {activeTab === 'takeout' && item.priceIncl != null ? (
+                                  <span className={styles.price}>{item.priceIncl.toLocaleString()}円（税込）</span>
+                                ) : (
+                                  item.priceExcl != null &&
+                                  item.priceIncl != null && (
+                                    <>
+                                      <span className={styles.priceExcludingTax}>{item.priceExcl.toLocaleString()}円（税抜）</span>
+                                      <span className={styles.price}>{item.priceIncl.toLocaleString()}円（税込）</span>
+                                    </>
+                                  )
                                 )}
                               </div>
                             ))}
@@ -1354,27 +1371,7 @@ export default function Menu() {
                       {item.notes != null && item.notes.length > 0 && (
                         <p className={styles.menuNote}>{item.notes.join(' ')}</p>
                       )}
-                      <div className={styles.priceContainer}>
-                        {item.priceTiers != null && item.priceTiers.length > 0 ? (
-                          <div className={styles.priceTiersWrapper}>
-                            {item.priceTiers.map((tier, i) => (
-                              <div key={i} className={styles.priceWrapper}>
-                                <span className={styles.priceExcludingTax}>{tier.excl.toLocaleString()}円（税抜）</span>
-                                <span className={styles.price}>{tier.incl.toLocaleString()}円（税込）</span>
-                              </div>
-                            ))}
-                          </div>
-                        ) : item.priceExcl != null && item.priceIncl != null ? (
-                          <div className={styles.priceWrapper}>
-                            <span className={styles.priceExcludingTax}>{item.priceExcl.toLocaleString()}円（税抜）</span>
-                            <span className={styles.price}>{item.priceIncl.toLocaleString()}円（税込）</span>
-                          </div>
-                        ) : item.priceNote ? (
-                          <span className={styles.price}>{item.priceNote}</span>
-                        ) : (
-                          <span className={styles.price}>※価格はスタッフまで</span>
-                        )}
-                      </div>
+                      <div className={styles.priceContainer}>{renderItemPrice(item)}</div>
                     </div>
                   </div>
                 ))}
