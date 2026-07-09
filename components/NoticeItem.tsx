@@ -3,7 +3,7 @@
 import { Fragment } from 'react'
 import type { NoticeItem as NoticeItemType } from '@/data/notices'
 import AboutImageSlider from '@/components/AboutImageSlider'
-import { ClickableImage } from '@/components/ImageLightbox'
+import { ClickableImage, ClickableVideo } from '@/components/ImageLightbox'
 import { breakAfterPeriod } from '@/lib/breakAfterPeriod'
 import styles from './NoticeItem.module.css'
 
@@ -54,7 +54,16 @@ export default function NoticeItem({ notice }: NoticeItemProps) {
     <div className={styles.noticeItem}>
       {!notice.hideImage && (
         <div className={styles.noticeImage}>
-          {notice.image ? (
+          {notice.video ? (
+            <ClickableVideo
+              className={styles.noticeVideo}
+              src={notice.video}
+              controls
+              playsInline
+              preload="metadata"
+              aria-label={notice.videoAlt ?? ''}
+            />
+          ) : notice.image ? (
             <ClickableImage
               src={notice.image}
               alt={notice.imageAlt ?? ''}
