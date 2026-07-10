@@ -151,6 +151,76 @@
   display: block;
 }
 
+.media {
+  background-color: #fff;
+  padding: 80px 0;
+}
+
+.mediaCard {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mediaBanner {
+  margin: 0 auto 1.75rem;
+  max-width: 560px;
+}
+
+.mediaBanner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.mediaBody {
+  margin-bottom: 2rem;
+}
+
+.mediaDate {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #c41e3a;
+  letter-spacing: 0.04em;
+}
+
+.mediaOutlet {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.mediaProgram {
+  margin: 0 0 1.25rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #c41e3a;
+  line-height: 1.5;
+}
+
+.mediaText {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #444;
+  line-height: 1.9;
+}
+
+.mediaLp {
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+.mediaLp img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
 .recommend {
   background-color: #f9f9f9;
 }
@@ -616,6 +686,27 @@
 
   .heroDescription {
     font-size: 1rem;
+  }
+
+  .media {
+    padding: 56px 0;
+  }
+
+  .mediaBanner {
+    max-width: 92%;
+    margin-bottom: 1.5rem;
+  }
+
+  .mediaProgram {
+    font-size: 1.2rem;
+  }
+
+  .mediaText {
+    font-size: 1rem;
+  }
+
+  .mediaLp {
+    max-width: 92%;
   }
 
   .aboutContent {

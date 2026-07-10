@@ -22,6 +22,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* メディア掲載・取材実績 */}
+      <section className={styles.media}>
+        <div className="container">
+          <h2>📺 メディア掲載・取材実績</h2>
+          <div className={styles.mediaCard}>
+            <div className={styles.mediaBanner}>
+              <ClickableImage
+                src="/images/news/fa89a219-db99-4cdb-88b0-30cf3ce148df.png"
+                alt="めざましテレビのイマドキという番組に出演いたしました！"
+              />
+            </div>
+            <div className={styles.mediaBody}>
+              <p className={styles.mediaDate}>2026.07.10</p>
+              <p className={styles.mediaOutlet}>フジテレビ</p>
+              <p className={styles.mediaProgram}>めざましテレビ「イマドキ」</p>
+              <p className={styles.mediaText}>
+                国産和牛肩ロース100％の
+                <br />
+                自家製ハンバーグを
+                <br />
+                取材していただきました。
+              </p>
+            </div>
+            <div className={styles.mediaLp}>
+              <ClickableImage
+                src="/images/news/hosinokitinLP.png"
+                alt="ホシのキッチン めざましテレビ出演 LP"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* おすすめメニューセクション */}
       <section className={styles.recommend}>
         <div className="container">
