@@ -47,7 +47,7 @@ export default function Home() {
             </div>
             <div className={styles.mediaLp}>
               <ClickableImage
-                src="/images/news/hosinokitinLP.png"
+                src="/images/news/hosiLP.png"
                 alt="ホシのキッチン めざましテレビ出演 LP"
               />
             </div>
