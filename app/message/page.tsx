@@ -28,31 +28,79 @@ export default function Message() {
               <h2 className={styles.role}>オーナーシェフ 星 翔</h2>
               <div className={styles.messageText}>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('はじめまして。ホシのキッチン、オーナーシェフの星翔です。')}
+                  {breakAfterPeriod('はじめまして。ホシのキッチン オーナーシェフの 星 翔です。')}
                 </p>
                 <p className="breakAfterPeriod">
                   {breakAfterPeriod('この度は、ホシのキッチンのホームページをご覧いただき、誠にありがとうございます。')}
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('おかげさまで、2025年2月5日のオープンから4か月を迎えようとしております。日々たくさんのお客様にご来店いただき、心より感謝申し上げます。')}
+                  {breakAfterPeriod('おかげさまで、2026年2月5日のオープンから、まもなく半年を迎えます。')}
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('私はこれまで、浅草の老舗洋食店「モンブラン」や「神谷バー」などで経験を積み、長年レストランの現場で料理と向き合ってまいりました。')}
+                  {breakAfterPeriod('この半年間、本当にたくさんのお客様との出会いがありました。')}
+                </p>
+                <p className={styles.customerQuotes}>
+                  「美味しかったよ。」
+                  <br />
+                  「また来るね。」
+                  <br />
+                  「家族を連れてきました。」
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('その中で強く感じてきたのは、料理はただ“食べるもの”ではなく、人を笑顔にし、心を温かくできる力があるということです。')}
+                  {breakAfterPeriod('そんな何気ない一言が、私たちにとって何よりの励みです。')}
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('ホシのキッチンでは、ステーキや洋食を中心に、一皿一皿を丁寧に、真心を込めてお作りしております。美味しさはもちろん、「また来たい」と思っていただけるような、温かい空間づくりも大切にしております。')}
+                  {breakAfterPeriod('支えてくださる皆さまのおかげで、この半年を迎えられることに心より感謝申し上げます。')}
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('ご家族、ご友人、大切な方とのお食事。お仕事帰りのひと息。皆さまの日常の中で、少しでもホッとできる場所になれましたら幸いです。')}
+                  {breakAfterPeriod('私はこれまで、浅草の老舗洋食店「モンブラン」などで経験を積み、長年料理と向き合ってきました。')}
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('これからも新しいメニューや季節限定メニューにも挑戦しながら、皆さまに楽しんでいただけるお店を目指してまいります。')}
+                  {breakAfterPeriod('その中で強く感じたのは、料理には人を笑顔にし、幸せな時間をつくる力があるということです。')}
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('ぜひお気軽に、ホシのキッチンへお立ち寄りください。皆さまのご来店を、心よりお待ちしております。')}
+                  {breakAfterPeriod('ホシのキッチンでは、その想いを一皿一皿に込めています。')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('国産牛100％のハンバーグ、ステーキ、昔ながらの洋食。')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('どの料理も、「美味しかった」で終わるのではなく、「また食べたい」「また来たい」と思っていただける一皿を目指して、毎日丁寧にお作りしています。')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('そして、料理だけでなく、お客様がほっとできる温かい空間づくりも大切にしています。')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('ご家族との楽しい時間。恋人との大切なひととき。お仕事帰りのご褒美。一人でゆっくり過ごす時間。')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('そのどれもが、皆さまにとって少しでも特別な時間になれば、これ以上嬉しいことはありません。')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('半年という節目を迎えられたのは、皆さまのおかげです。')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('だからこそ、ここで満足することなく、これからも新メニューや季節限定メニューに挑戦し、より美味しく、より居心地の良いお店を目指してまいります。')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('「入谷で洋食ならホシのキッチン」')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('そう思っていただけるお店になれるよう、スタッフ一同、真心を込めて皆さまをお迎えいたします。')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('これからもホシのキッチンを、どうぞよろしくお願いいたします。')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('半年の感謝を込めて、期間限定のイベントや新メニューもご用意しております。ぜひこの機会にホシのキッチンへお越しください。')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('皆さまのご来店を心よりお待ちしております。')}
+                </p>
+                <p className={styles.signature}>
+                  ホシのキッチン
+                  <br />
+                  オーナーシェフ　星 翔
                 </p>
               </div>
             </div>
@@ -67,31 +115,42 @@ export default function Message() {
               />
             </div>
             <div className={styles.messageContent}>
-              <h2 className={styles.role}>店長より</h2>
+              <h2 className={styles.role}>店長</h2>
               <div className={styles.messageText}>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('こんにちは。ホシのキッチン 店長でございます。')}
+                  {breakAfterPeriod('はじめまして。ホシのキッチン店長です。')}
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('この度は、当店のホームページをご覧いただき、誠にありがとうございます。')}
+                  {breakAfterPeriod('いつもホシのキッチンをご利用いただき、本当にありがとうございます。')}
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('オープンから4か月。少しずつではありますが、地域のお客様をはじめ、多くのお客様に足を運んでいただけるようになりました。スタッフ一同、日々感謝の気持ちでいっぱいです。')}
+                  {breakAfterPeriod('おかげさまで、ホシのキッチンはオープンから半年という節目を迎えようとしています。')}
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('ホシのキッチンでは、お料理だけでなく、お店で過ごしていただく時間も大切にしております。')}
+                  {breakAfterPeriod('この半年間、多くのお客様と出会い、「美味しかった」「また来ます」という温かいお言葉をいただくたびに、この仕事の喜びを改めて感じています。')}
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('「また来たい」「なんだか落ち着く」そう感じていただけるよう、温かい接客と居心地の良い空間づくりを心がけております。')}
+                  {breakAfterPeriod('ホシのキッチンは、美味しい料理をお届けすることはもちろんですが、「また帰ってきたくなるお店」でありたいと考えています。')}
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('お一人様でも、ご家族でも、ご友人同士でも。どなたでも気軽に立ち寄れる、地域に愛される洋食レストランを目指しております。')}
+                  {breakAfterPeriod('初めてご来店されるお客様にも、常連のお客様にも、心地よくお過ごしいただけるよう、スタッフ一人ひとりが笑顔と真心を大切にしながら、お迎えしております。')}
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('これからもスタッフ一同、笑顔と感謝を忘れず、お客様をお迎えしてまいります。')}
+                  {breakAfterPeriod('料理の美味しさはもちろん、接客やお店の雰囲気も含めて、「今日はホシのキッチンに来て良かった」と思っていただけることが、私たちの何よりの喜びです。')}
                 </p>
                 <p className="breakAfterPeriod">
-                  {breakAfterPeriod('皆さまのご来店を、心よりお待ちしております。')}
+                  {breakAfterPeriod('これからもスタッフ一同、力を合わせながら、皆さまに愛されるお店を目指してまいります。')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('ご来店の際には、おすすめのメニューや季節限定メニューなどもお気軽にお声掛けください。')}
+                </p>
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod('皆さまとお会いできることを、スタッフ一同、心より楽しみにしております。')}
+                </p>
+                <p className={styles.signature}>
+                  ホシのキッチン
+                  <br />
+                  店長
                 </p>
               </div>
             </div>

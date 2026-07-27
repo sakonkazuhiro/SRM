@@ -26,6 +26,42 @@ export default function Reviews() {
   // サンプル口コミデータ（手動で追加・編集可能）
   const [reviews] = useState<Review[]>([
     {
+      id: 12,
+      nickname: 'オニギリ様',
+      date: '2026.07.20',
+      comment:
+        'Google評価★４.０/５.０\n\nお客様から嬉しいお声をいただいています\n\n入谷駅から徒歩圏内で夜遅くまで営業しているのが嬉しいです。\nハンバーグも美味しく、レトロな雰囲気の店内でゆっくり食事を楽しめました。\n\n食事: 4/5　サービス: 4/5　雰囲気: 4/5\n（Google口コミより）',
+      rating: 4,
+      sourceUrl: GOOGLE_REVIEWS_VIEW_URL,
+    },
+    {
+      id: 11,
+      nickname: 'VCDV様',
+      date: '2026.06.22',
+      comment:
+        'Google評価★４.０/５.０\n\nお客様から嬉しいお声をいただいています\n\n肉汁あふれる自家製ハンバーグと濃厚なデミグラスソースが絶品。\nコーンやナポリタンなど付け合わせも充実していて、昔ながらの洋食を楽しめました。\n店内の雰囲気も良く、満足度の高いランチでした。\n\n食事: 4/5　サービス: 3/5　雰囲気: 4/5\n（Google口コミより）',
+      rating: 4,
+      sourceUrl: GOOGLE_REVIEWS_VIEW_URL,
+    },
+    {
+      id: 10,
+      nickname: 'Enamillionaire様',
+      date: '2026.06.15',
+      comment:
+        'Google評価★５.０/５.０\n\nお客様から嬉しいお声をいただいています\n\nラストオーダー直前の来店でしたが、快く迎えていただきました。\nミスジ100gステーキは火入れが絶妙で、最後まで柔らかく美味しかったです。\nランチのライス大もボリューム満点で最高でした！\n\n食事: 5/5　サービス: 5/5　雰囲気: 5/5\n（Google口コミより）',
+      rating: 5,
+      sourceUrl: GOOGLE_REVIEWS_VIEW_URL,
+    },
+    {
+      id: 9,
+      nickname: 'Kaz M様',
+      date: '2026.05.18',
+      comment:
+        'Google評価★５.０/５.０\n\nお客様から嬉しいお声をいただいています\n\nA newly opened Yoshoku restaurant.\nWelcome to the hood!\n\n（新しくオープンした洋食レストラン。入谷へようこそ！）\n\n食事: 5/5　サービス: 5/5　雰囲気: 5/5\n（Google口コミより）',
+      rating: 5,
+      sourceUrl: GOOGLE_REVIEWS_VIEW_URL,
+    },
+    {
       id: 8,
       nickname: 'BASTILLE Sir様',
       date: '2026.04.28',
