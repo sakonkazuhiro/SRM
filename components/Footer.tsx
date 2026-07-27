@@ -57,7 +57,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.copyright}>
-          <p>&copy; 2024 ホシのキッチン. All rights reserved.</p>
+          <p>&copy; 2026 ホシのキッチン. All rights reserved.</p>
           <p>
             Web制作・運営：
             <Link href="https://ph-orcin-rho.vercel.app/" target="_blank" rel="noopener noreferrer">
