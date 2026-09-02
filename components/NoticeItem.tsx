@@ -33,6 +33,58 @@ function splitContentWithGwRestDays(content: string): { before: string; restLine
   return { before: m[1], restLines, after: m[3] }
 }
 
+const SILVER_WEEK_SCHEDULE_LINE = /^\d+月\d+日（[^）]+）/
+
+/** シルバーウィーク営業案内（日程表の「臨時営業」「定休日」「振替休日」のみ赤字） */
+function splitContentWithSilverWeek(content: string): {
+  introLines: string[]
+  scheduleLines: string[]
+  footerParagraphs: string[]
+} | null {
+  if (!content.includes('シルバーウィーク')) return null
+  const lines = content.split('\n')
+  const scheduleStart = lines.findIndex((line) => SILVER_WEEK_SCHEDULE_LINE.test(line))
+  if (scheduleStart < 0) return null
+
+  const introLines = lines.slice(0, scheduleStart).filter((line) => line.trim() !== '')
+  const scheduleLines: string[] = []
+  let i = scheduleStart
+  while (i < lines.length && SILVER_WEEK_SCHEDULE_LINE.test(lines[i])) {
+    scheduleLines.push(lines[i])
+    i++
+  }
+  if (scheduleLines.length === 0) return null
+
+  const footerParagraphs = lines
+    .slice(i)
+    .join('\n')
+    .trim()
+    .split(/\n\n+/)
+    .filter((paragraph) => paragraph.trim())
+
+  return { introLines, scheduleLines, footerParagraphs }
+}
+
+const SILVER_WEEK_RED_TERMS = ['臨時営業', '定休日', '振替休日'] as const
+
+function renderSilverWeekTextWithHighlights(text: string, applyPeriodBreak = true) {
+  const content = applyPeriodBreak ? breakAfterPeriod(text) : text
+  const parts = content.split(/(臨時営業|定休日|振替休日)/)
+  return parts.map((part, i) =>
+    SILVER_WEEK_RED_TERMS.includes(part as (typeof SILVER_WEEK_RED_TERMS)[number]) ? (
+      <span key={i} className={styles.restDayLine}>
+        {part}
+      </span>
+    ) : (
+      <Fragment key={i}>{part}</Fragment>
+    )
+  )
+}
+
+function renderSilverWeekScheduleLine(line: string) {
+  return renderSilverWeekTextWithHighlights(line, false)
+}
+
 export default function NoticeItem({ notice }: NoticeItemProps) {
   if (notice.type === 'imageSlider' && notice.images?.length) {
     const slides = notice.images.map((src) => ({ src, alt: notice.title ?? '' }))
@@ -133,6 +185,34 @@ export default function NoticeItem({ notice }: NoticeItemProps) {
                   <br />
                   <br />
                   {breakAfterPeriod(parsedGw.after.replace(/^\n+/, ''))}
+                </p>
+              )
+            }
+            const parsedSw = splitContentWithSilverWeek(notice.content)
+            if (parsedSw) {
+              return (
+                <p className="breakAfterPeriod">
+                  {breakAfterPeriod(parsedSw.introLines.join('\n'))}
+                  <br />
+                  <br />
+                  {parsedSw.scheduleLines.map((line, i) => (
+                    <Fragment key={`schedule-${i}`}>
+                      {renderSilverWeekScheduleLine(line)}
+                      <br />
+                    </Fragment>
+                  ))}
+                  <br />
+                  {parsedSw.footerParagraphs.map((paragraph, i) => (
+                    <Fragment key={`footer-${i}`}>
+                      {renderSilverWeekTextWithHighlights(paragraph)}
+                      {i < parsedSw.footerParagraphs.length - 1 ? (
+                        <>
+                          <br />
+                          <br />
+                        </>
+                      ) : null}
+                    </Fragment>
+                  ))}
                 </p>
               )
             }
